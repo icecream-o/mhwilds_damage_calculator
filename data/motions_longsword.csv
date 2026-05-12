@@ -1,0 +1,9 @@
+motion_name,motion_value,frames,is_draw,tags,damage_type
+縦斬り,22,28,false,,
+踏み込み斬り,26,30,false,,
+突き,17,22,false,,
+鬼人斬り,35,30,false,,
+気刃斬り,30,35,false,,
+気刃兜割,110,90,false,,
+居合抜刀気刃斬り,70,50,true,draw,
+見切り斬り,28,36,false,,

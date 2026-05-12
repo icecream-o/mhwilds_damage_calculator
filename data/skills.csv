@@ -1,0 +1,15 @@
+id,name,max_level,category,description,require_hitzone_physical,require_tags,match_any,require_damage_type
+attack,攻撃,5,normal,攻撃力アップ,,,,
+critical-eye,見切り,7,normal,会心率アップ,,,,
+critical-boost,超会心,3,normal,会心倍率を上昇,,,,
+weakness-exploit,弱点特効,3,normal,物理肉質45以上で会心率+,45,,,
+punishing-draw-tech,抜刀術【技】,3,normal,抜刀斬りの会心率+,,draw,,
+punishing-draw-power,抜刀術【力】,3,normal,抜刀斬りの攻撃力+,,draw,,
+ranger,飛燕,3,normal,ジャンプ攻撃の会心率+,,jump|aerial,true,
+artillery,砲術,3,normal,砲撃ダメージ強化,,,,shell-normal|shell-spread|shell-long
+agitator,挑戦者,7,normal,怒り時に攻撃力・会心率+（条件付き）,,,,
+resentment,逆襲,5,normal,被弾後に攻撃力+（条件付き）,,,,
+peak-performance,フルチャージ,3,normal,体力満タン時に攻撃力+（条件付き）,,,,
+element-crit,会心撃【属性】,3,normal,会心時に属性ダメージ+,,,,
+water-attack,水属性攻撃強化,5,normal,水属性値+,,,,
+razor-sharp,業物,3,normal,斬れ味の消費を抑える（DPS換算は別途）,,,,

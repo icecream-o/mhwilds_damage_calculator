@@ -1,0 +1,3 @@
+id,name,max_level,category,description,require_hitzone_physical,require_tags,match_any,require_damage_type
+garuga-soul,ガルルガの魂,1,series,ガルルガシリーズ3部位以上で発動,,,,
+gore-soul,ゴア・マガラの魂,1,series,ゴアマガラシリーズ3部位以上で発動,,,,

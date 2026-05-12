@@ -1,0 +1,13 @@
+id,name,category,exclusive_group,attack_bonus,attack_multiplier,affinity_bonus
+demon-drug-g,鬼人薬グレート,item,atk-up-large,7,,
+demon-drug,鬼人薬,item,atk-up-large,5,,
+might-seed,怪力の種,item,atk-up-small,10,,
+might-pill,怪力の丸薬,item,atk-up-small,25,,
+powercharm,力の護符,item,,6,,
+powertalon,力の爪,item,,9,,
+cat-attack-l,ネコ飯 攻撃力UP【大】,cat-food,cat-atk,15,,
+cat-attack-m,ネコ飯 攻撃力UP【中】,cat-food,cat-atk,10,,
+cat-attack-s,ネコ飯 攻撃力UP【小】,cat-food,cat-atk,5,,
+horn-attack-l,笛 攻撃力UP【大】,horn,horn-atk,,1.15,
+horn-attack-m,笛 攻撃力UP【中】,horn,horn-atk,,1.1,
+horn-affinity,笛 会心率UP,horn,horn-affinity,,,20

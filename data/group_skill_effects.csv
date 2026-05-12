@@ -1,0 +1,7 @@
+skill_id,level,attack_bonus,affinity_bonus,crit_multiplier,element_multiplier,attack_multiplier,physical_multiplier
+consecutive-hit,1,4,,,,,
+consecutive-hit,2,8,,,,,
+consecutive-hit,3,12,,,,,
+elemental-mastery,1,,,,1.05,,
+elemental-mastery,2,,,,1.08,,
+elemental-mastery,3,,,,1.1,,

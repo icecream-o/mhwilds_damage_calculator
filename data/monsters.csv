@@ -1,0 +1,5 @@
+monster_id,monster_name,base_defense_rate,variant_normal_mod,variant_veteran_mod,variant_apex_mod,part_id,part_name,physical,fire,water,thunder,ice,dragon,wounded_physical_bonus,enraged_physical,enraged_fire,enraged_water,enraged_thunder,enraged_ice,enraged_dragon
+gore-magala,ゴア・マガラ,1.0,1.0,0.95,0.85,head,頭部,85,5,35,15,,,10,90,5,40,20,,
+gore-magala,ゴア・マガラ,1.0,1.0,0.95,0.85,body,胴体,50,5,20,10,,,,,,,,,
+gore-magala,ゴア・マガラ,1.0,1.0,0.95,0.85,wings,翼,45,,25,20,,,,,,,,,
+gore-magala,ゴア・マガラ,1.0,1.0,0.95,0.85,tail,尻尾,40,,15,,,,,,,,,,

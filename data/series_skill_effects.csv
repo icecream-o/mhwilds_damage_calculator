@@ -1,0 +1,3 @@
+skill_id,level,attack_bonus,affinity_bonus,crit_multiplier,element_multiplier,attack_multiplier,physical_multiplier
+garuga-soul,1,,15,,,,
+gore-soul,1,10,,,,,
