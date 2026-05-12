@@ -4,33 +4,66 @@
     "name": "ゴア・マガラ",
     "baseDefenseRate": 1.0,
     "variants": [
-      { "id": "normal",  "name": "通常",   "defenseRateMod": 1.0 },
-      { "id": "veteran", "name": "歴戦",   "defenseRateMod": 0.95 },
-      { "id": "apex",    "name": "護竜",   "defenseRateMod": 0.85 }
+      {
+        "id": "normal",
+        "name": "通常",
+        "defenseRateMod": 1.0
+      },
+      {
+        "id": "veteran",
+        "name": "歴戦",
+        "defenseRateMod": 0.95
+      },
+      {
+        "id": "apex",
+        "name": "護竜",
+        "defenseRateMod": 0.85
+      }
     ],
     "parts": [
       {
-        "id": "head", "name": "頭部",
+        "id": "head",
+        "name": "頭部",
         "physical": 85,
-        "element": { "水": 35, "雷": 15, "火": 5 },
+        "element": {
+          "火": 5,
+          "水": 35,
+          "雷": 15
+        },
         "woundedPhysicalBonus": 10,
         "enragedPhysical": 90,
-        "enragedElement": { "水": 40, "雷": 20, "火": 5 }
+        "enragedElement": {
+          "火": 5,
+          "水": 40,
+          "雷": 20
+        }
       },
       {
-        "id": "body", "name": "胴体",
+        "id": "body",
+        "name": "胴体",
         "physical": 50,
-        "element": { "水": 20, "雷": 10, "火": 5 }
+        "element": {
+          "火": 5,
+          "水": 20,
+          "雷": 10
+        }
       },
       {
-        "id": "wings", "name": "翼",
+        "id": "wings",
+        "name": "翼",
         "physical": 45,
-        "element": { "水": 25, "雷": 20 }
+        "element": {
+          "水": 25,
+          "雷": 20
+        }
       },
       {
-        "id": "tail", "name": "尻尾",
+        "id": "tail",
+        "name": "尻尾",
         "physical": 40,
-        "element": { "水": 15 }
+        "element": {
+          "水": 15
+        }
       }
     ]
   }

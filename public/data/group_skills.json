@@ -4,23 +4,41 @@
     "name": "連撃",
     "maxLevel": 3,
     "category": "group",
-    "description": "同部位に連続ヒットで攻撃力+",
     "effects": [
-      { "level": 1, "attackBonus": 4 },
-      { "level": 2, "attackBonus": 8 },
-      { "level": 3, "attackBonus": 12 }
-    ]
+      {
+        "level": 1,
+        "attackBonus": 4.0
+      },
+      {
+        "level": 2,
+        "attackBonus": 8.0
+      },
+      {
+        "level": 3,
+        "attackBonus": 12.0
+      }
+    ],
+    "description": "同部位に連続ヒットで攻撃力+"
   },
   {
     "id": "elemental-mastery",
     "name": "属性適応",
     "maxLevel": 3,
     "category": "group",
-    "description": "属性値+",
     "effects": [
-      { "level": 1, "elementMultiplier": 1.05 },
-      { "level": 2, "elementMultiplier": 1.08 },
-      { "level": 3, "elementMultiplier": 1.10 }
-    ]
+      {
+        "level": 1,
+        "elementMultiplier": 1.05
+      },
+      {
+        "level": 2,
+        "elementMultiplier": 1.08
+      },
+      {
+        "level": 3,
+        "elementMultiplier": 1.1
+      }
+    ],
+    "description": "属性値+"
   }
 ]
