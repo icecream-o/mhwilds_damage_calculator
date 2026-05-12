@@ -14,26 +14,33 @@ interface Props {
 export function MotionPickerModal({ open, initialPattern, weaponType, onConfirm, onClose }: Props) {
   const [name, setName] = useState('');
   const [ratio, setRatio] = useState(0.33);
-  const [sequence, setSequence] = useState<Motion[]>([]);
+  const [sequence, setSequence] = useState<Array<{ id: string; motion: Motion }>>([]);
   const [available, setAvailable] = useState<Motion[]>([]);
+  const [loading, setLoading] = useState(false);
 
   // モーダルが開くたびに初期値をリセット
   useEffect(() => {
     if (!open) return;
     setName(initialPattern?.name ?? '');
     setRatio(initialPattern?.ratio ?? 0.33);
-    setSequence(initialPattern ? [...initialPattern.motions] : []);
-    getMotionsFor(weaponType).then(setAvailable);
+    setSequence(initialPattern ? initialPattern.motions.map(m => ({ id: crypto.randomUUID(), motion: m })) : []);
+    setAvailable([]);
+    setLoading(true);
+    let cancelled = false;
+    getMotionsFor(weaponType)
+      .then(motions => { if (!cancelled) { setAvailable(motions); setLoading(false); } })
+      .catch(() => { if (!cancelled) setLoading(false); });
+    return () => { cancelled = true; };
   }, [open, weaponType, initialPattern]);
 
   if (!open) return null;
 
-  const addMotion = (m: Motion) => setSequence(prev => [...prev, m]);
-  const removeMotion = (idx: number) => setSequence(prev => prev.filter((_, i) => i !== idx));
+  const addMotion = (m: Motion) => setSequence(prev => [...prev, { id: crypto.randomUUID(), motion: m }]);
+  const removeMotion = (id: string) => setSequence(prev => prev.filter(item => item.id !== id));
 
   const handleConfirm = () => {
     if (!name.trim() || sequence.length === 0) return;
-    onConfirm({ name: name.trim(), ratio, motions: sequence });
+    onConfirm({ name: name.trim(), ratio, motions: sequence.map(item => item.motion) });
     onClose();
   };
 
@@ -77,8 +84,11 @@ export function MotionPickerModal({ open, initialPattern, weaponType, onConfirm,
           <div>
             <div className="modal-label">利用可能モーション（クリックで追加）</div>
             <div className="motion-available">
-              {available.length === 0 && (
+              {loading && available.length === 0 && (
                 <span style={{ fontSize: 11, color: 'var(--text-4)' }}>読み込み中...</span>
+              )}
+              {!loading && available.length === 0 && (
+                <span style={{ fontSize: 11, color: 'var(--text-4)' }}>モーションデータなし</span>
               )}
               {available.map(m => (
                 <button
@@ -100,14 +110,14 @@ export function MotionPickerModal({ open, initialPattern, weaponType, onConfirm,
               {sequence.length === 0 && (
                 <span className="motion-seq-empty">上からモーションを選んでください</span>
               )}
-              {sequence.map((m, i) => (
+              {sequence.map(({ id, motion }) => (
                 <button
-                  key={i}
+                  key={id}
                   className="motion-seq-chip"
-                  onClick={() => removeMotion(i)}
+                  onClick={() => removeMotion(id)}
                   title="クリックで削除"
                 >
-                  {m.motionName} <span style={{ opacity: 0.6, fontSize: 9 }}>✕</span>
+                  {motion.motionName} <span style={{ opacity: 0.6, fontSize: 9 }}>✕</span>
                 </button>
               ))}
             </div>
