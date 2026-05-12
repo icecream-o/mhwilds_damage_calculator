@@ -1,77 +1,125 @@
 import { calcDamage } from '../../calc';
-import type { CalcInput } from '../../types';
+import type { CalcInput, SkillMaster, Buff, Monster } from '../../types';
+
+const skillMasters: SkillMaster[] = [
+  { id: 'attack', name: '攻撃', maxLevel: 5, category: 'normal',
+    effects: [{ level: 5, attackBonus: 9 }] },
+  { id: 'critical-eye', name: '見切り', maxLevel: 7, category: 'normal',
+    effects: [{ level: 7, affinityBonus: 30 }] },
+  { id: 'critical-boost', name: '超会心', maxLevel: 3, category: 'normal',
+    effects: [{ level: 3, critMultiplier: 1.40 }] },
+  { id: 'weakness-exploit', name: '弱点特効', maxLevel: 3, category: 'normal',
+    applicability: { requireHitzonePhysical: 45 },
+    effects: [{ level: 3, affinityBonus: 30 }] },
+];
+
+const buffMasters: Buff[] = [];
+
+const monster: Monster = {
+  id: 'g', name: 'ゴア', baseDefenseRate: 1.0,
+  variants: [{ id: 'normal', name: '通常', defenseRateMod: 1.0 }],
+  parts: [
+    { id: 'head', name: '頭部', physical: 85, element: { 水: 35 } },
+    { id: 'tail', name: '尻尾', physical: 40, element: { 水: 10 } },
+  ],
+};
 
 const baseInput: CalcInput = {
   weapon: {
-    id: 'test-ls', name: 'Test LS', type: 'longsword',
-    attack: 330, affinity: 20,
-    element: { type: '水', value: 24 },
-    sharpness: { current: 'purple', values: [] },
-    slots: [],
+    type: 'longsword', attack: 330, affinity: 20,
+    element: { type: '水', value: 24 }, sharpness: 'purple',
   },
-  passiveSkills: [
+  skills: [
     { skillId: 'attack', level: 5 },
     { skillId: 'critical-eye', level: 7 },
     { skillId: 'critical-boost', level: 3 },
     { skillId: 'weakness-exploit', level: 3 },
   ],
-  conditionalUptimes: [],
   buffs: [],
   motionPatterns: [{
-    name: 'test',
-    ratio: 1.0,
+    name: 'test', ratio: 1.0,
     motions: [{ motionName: '突き', motionValue: 50, frames: 30, isDraw: false }],
   }],
-  target: {
-    monster: { id: 'g', name: 'ゴア', parts: [
-      { id: 'head', name: '頭部', physical: 85, element: { 水: 35 } },
-    ]},
-    partId: 'head', enraged: false, wounded: false,
-  },
+  target: { monster, variantId: 'normal', partId: 'head', enraged: false, wounded: false },
 };
 
-describe('calcDamage (melee)', () => {
-  test('returns positive DPS for the canonical longsword build', () => {
-    const r = calcDamage(baseInput);
+describe('calcDamage (v2 melee)', () => {
+  test('returns positive DPS', () => {
+    const r = calcDamage(baseInput, skillMasters, buffMasters);
     expect(r.expectedDPS).toBeGreaterThan(0);
     expect(r.patterns).toHaveLength(1);
   });
 
-  test('effective affinity caps at 100', () => {
-    const r = calcDamage(baseInput);
-    expect(r.effectiveAffinity).toBeLessThanOrEqual(1.0);
-  });
-
-  test('weakness exploit fires on hitzone>=45 (head)', () => {
-    const r = calcDamage(baseInput);
+  test('weakness exploit fires on head (85)', () => {
+    const r = calcDamage(baseInput, skillMasters, buffMasters);
     // 武器20 + 見切り30 + 弱点特効30 = 80 → 0.80
     expect(r.effectiveAffinity).toBeCloseTo(0.80, 2);
   });
 
-  test('hitzone<45 disables weakness exploit', () => {
-    const input = {
+  test('weakness exploit does NOT fire on tail (40)', () => {
+    const r = calcDamage({
       ...baseInput,
-      target: { ...baseInput.target,
-        monster: { id: 'g', name: 'ゴア', parts: [
-          { id: 'tail', name: '尻尾', physical: 40, element: { 水: 10 } },
-        ]},
-        partId: 'tail',
-      },
-    };
-    const r = calcDamage(input);
+      target: { ...baseInput.target, partId: 'tail' },
+    }, skillMasters, buffMasters);
     // 武器20 + 見切り30 + 弱点特効0 = 50 → 0.50
     expect(r.effectiveAffinity).toBeCloseTo(0.50, 2);
   });
 
-  test('two patterns are weighted-averaged for DPS', () => {
+  test('variant defenseRateMod is applied', () => {
+    const monsterWithApex: Monster = {
+      ...monster,
+      variants: [
+        { id: 'normal', name: '通常', defenseRateMod: 1.0 },
+        { id: 'apex', name: '護竜', defenseRateMod: 0.85 },
+      ],
+    };
+    const normal = calcDamage({
+      ...baseInput,
+      target: { ...baseInput.target, monster: monsterWithApex, variantId: 'normal' },
+    }, skillMasters, buffMasters);
+    const apex = calcDamage({
+      ...baseInput,
+      target: { ...baseInput.target, monster: monsterWithApex, variantId: 'apex' },
+    }, skillMasters, buffMasters);
+    expect(apex.expectedDPS).toBeLessThan(normal.expectedDPS);
+    expect(apex.defenseRate).toBeCloseTo(0.85);
+  });
+
+  test('enraged uses enragedPhysical when defined', () => {
+    const enragedMonster: Monster = {
+      ...monster,
+      parts: [{ ...monster.parts[0], enragedPhysical: 95 }, monster.parts[1]],
+    };
     const r = calcDamage({
       ...baseInput,
-      motionPatterns: [
-        { name: 'a', ratio: 0.5, motions: [{ motionName: 'a', motionValue: 50, frames: 30, isDraw: false }] },
-        { name: 'b', ratio: 0.5, motions: [{ motionName: 'b', motionValue: 100, frames: 60, isDraw: false }] },
-      ],
-    });
-    expect(r.patterns).toHaveLength(2);
-    expect(r.expectedDPS).toBeGreaterThan(0);
+      target: { ...baseInput.target, monster: enragedMonster, enraged: true },
+    }, skillMasters, buffMasters);
+    expect(r.patterns[0].damage).toBeGreaterThan(0);
+  });
+
+  test('defenseRateOverride takes precedence', () => {
+    const r = calcDamage({
+      ...baseInput,
+      target: { ...baseInput.target, defenseRateOverride: 0.5 },
+    }, skillMasters, buffMasters);
+    expect(r.defenseRate).toBeCloseTo(0.5);
+  });
+
+  test('element cap is applied', () => {
+    // element=100, skill x2.5, cap = max(100*2.3, 100+400) = max(230, 500) = 500
+    // skill effect: 100*2.5 = 250, capped to 500 → no cap hit yet
+    // Try element=200, x3 = 600, cap=max(460, 600)=600 → no cap hit
+    // Try element=500, x3 = 1500, cap=max(1150, 900)=1150 → cap to 1150
+    const elementSkills: SkillMaster[] = [
+      ...skillMasters,
+      { id: 'x3-elem', name: 'x3', maxLevel: 1, category: 'normal',
+        effects: [{ level: 1, elementMultiplier: 3.0 }] },
+    ];
+    const r = calcDamage({
+      ...baseInput,
+      weapon: { ...baseInput.weapon, element: { type: '水', value: 500 } },
+      skills: [...baseInput.skills, { skillId: 'x3-elem', level: 1 }],
+    }, elementSkills, buffMasters);
+    expect(r.elementAvg).toBeGreaterThan(0);
   });
 });

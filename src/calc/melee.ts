@@ -1,8 +1,11 @@
-import type { CalcInput, DamageResult, PatternResult, Motion } from '../types';
+import type {
+  CalcInput, DamageResult, PatternResult, Motion, Monster, MonsterPart,
+  SkillMaster, Buff, MotionTag, DamageType,
+} from '../types';
 import { meleeSharpnessMult, elementSharpnessMult } from './sharpness';
 import { clampAffinity, critCoefficient } from './affinity';
-import { attackSkillBonus, affinitySkillBonus, critMultiplier } from './skills';
-import { applyConditionalUptimes } from './conditional';
+import { resolveSkills } from './skill_resolver';
+import { resolveBuffs } from './buffs';
 
 const WEAPON_COEF: Record<string, number> = {
   'longsword': 3.3, 'greatsword': 4.8, 'sword-and-shield': 1.4,
@@ -11,62 +14,113 @@ const WEAPON_COEF: Record<string, number> = {
   'charge-blade': 3.6, 'insect-glaive': 3.1,
 };
 
+function effectivePart(part: MonsterPart, enraged: boolean): {
+  physical: number;
+  element: MonsterPart['element'];
+} {
+  return {
+    physical: enraged && part.enragedPhysical !== undefined ? part.enragedPhysical : part.physical,
+    element: enraged && part.enragedElement !== undefined ? part.enragedElement : part.element,
+  };
+}
+
+function computeDefenseRate(monster: Monster, variantId: string, override?: number): number {
+  if (override !== undefined) return override;
+  const variant = monster.variants.find(v => v.id === variantId);
+  const mod = variant?.defenseRateMod ?? 1.0;
+  return monster.baseDefenseRate * mod;
+}
+
+function elementCap(baseValue: number, override?: number): number {
+  if (override !== undefined) return override;
+  return Math.max(baseValue * 2.3, baseValue + 400);
+}
+
+interface MotionDamage { physical: number; element: number; }
+
 function calcMotionDamage(
   motion: Motion,
   input: CalcInput,
-  conditionalAttack: number,
-  conditionalAffinity: number,
-): { physical: number; element: number } {
+  skillMasters: SkillMaster[],
+  buffAgg: ReturnType<typeof resolveBuffs>,
+): MotionDamage {
   const part = input.target.monster.parts.find(p => p.id === input.target.partId)!;
-  const physicalHitzone = part.physical + (input.target.wounded ? (part.woundedPhysicalBonus ?? 10) : 0);
-  const elementHitzone  = input.weapon.element ? (part.element[input.weapon.element.type] ?? 0) : 0;
+  const eff = effectivePart(part, input.target.enraged);
+  const physicalHitzone = eff.physical + (input.target.wounded ? (part.woundedPhysicalBonus ?? 10) : 0);
+  const elementHitzone  = input.weapon.element ? (eff.element[input.weapon.element.type] ?? 0) : 0;
 
-  const attackBonus = attackSkillBonus(input.passiveSkills) + conditionalAttack;
-  const attack      = input.weapon.attack + attackBonus;
+  // モーションタグ・ダメージタイプ
+  const tags: readonly MotionTag[] = (motion.tags ?? (motion.isDraw ? ['draw'] : [])) as readonly MotionTag[];
+  const damageType: DamageType = motion.damageType ?? 'physical';
 
-  const affBonus = affinitySkillBonus(input.passiveSkills,
-    { hitzonePhysical: physicalHitzone, isDraw: motion.isDraw });
-  const affinity = clampAffinity(input.weapon.affinity + affBonus + conditionalAffinity);
+  // スキル解決
+  const skills = resolveSkills(input.skills, skillMasters, {
+    hitzonePhysical: physicalHitzone, tags, damageType,
+  });
 
-  const critMult = affinity >= 0 ? critMultiplier(input.passiveSkills) : 0.75;
+  // 攻撃力期待値
+  const attack = (input.weapon.attack + skills.attackBonus + buffAgg.attackBonus)
+               * skills.attackMultiplier * buffAgg.attackMultiplier;
+
+  // 会心率期待値
+  const affinity = clampAffinity(
+    input.weapon.affinity + skills.affinityBonus + buffAgg.affinityBonus
+  );
+
+  // 会心倍率
+  const critMult = affinity >= 0 ? skills.critMultiplier : 0.75;
   const critCoef = critCoefficient(affinity, critMult);
 
-  const coef       = WEAPON_COEF[input.weapon.type] ?? 1.0;
-  const sharpPhys  = meleeSharpnessMult(input.weapon.sharpness.current);
-  const sharpElem  = elementSharpnessMult(input.weapon.sharpness.current);
+  // 物理ダメージ
+  const coef = WEAPON_COEF[input.weapon.type] ?? 1.0;
+  const sharpPhys = meleeSharpnessMult(input.weapon.sharpness);
+  const sharpElem = elementSharpnessMult(input.weapon.sharpness);
 
-  const physical = (attack / coef)
-                 * (motion.motionValue / 100)
-                 * sharpPhys
-                 * critCoef
-                 * (physicalHitzone / 100);
+  let physical: number;
+  if (damageType === 'fixed') {
+    physical = motion.motionValue;
+  } else {
+    physical = (attack / coef)
+             * (motion.motionValue / 100)
+             * sharpPhys
+             * critCoef
+             * skills.physicalMultiplier
+             * (physicalHitzone / 100);
+  }
 
-  const element = input.weapon.element
-    ? input.weapon.element.value
-      * sharpElem
-      * (elementHitzone / 100)
-    : 0;
+  // 属性ダメージ
+  let element = 0;
+  if (input.weapon.element && damageType !== 'fixed') {
+    const baseValue = input.weapon.element.value;
+    const cap = elementCap(baseValue, input.weapon.elementCap);
+    const effectiveElementValue = Math.min(baseValue * skills.elementMultiplier, cap);
+    element = effectiveElementValue
+            * sharpElem
+            * (elementHitzone / 100);
+  }
 
   return { physical, element };
 }
 
-export function calcMeleeDamage(input: CalcInput): DamageResult {
-  const cond = applyConditionalUptimes(input.conditionalUptimes, input.passiveSkills);
-
-  const part = input.target.monster.parts.find(p => p.id === input.target.partId)!;
-  const physicalHitzone = part.physical + (input.target.wounded ? (part.woundedPhysicalBonus ?? 10) : 0);
+export function calcMeleeDamage(
+  input: CalcInput,
+  skillMasters: SkillMaster[],
+  buffMasters: Buff[],
+): DamageResult {
+  const buffAgg = resolveBuffs(input.buffs, buffMasters);
+  const defenseRate = computeDefenseRate(input.target.monster, input.target.variantId, input.target.defenseRateOverride);
 
   let physicalSum = 0, elementSum = 0;
 
   const patterns: PatternResult[] = input.motionPatterns.map(p => {
     let phys = 0, elem = 0, frames = 0;
     for (const m of p.motions) {
-      const d = calcMotionDamage(m, input, cond.attackBonus, cond.affinityBonus);
+      const d = calcMotionDamage(m, input, skillMasters, buffAgg);
       phys += d.physical;
       elem += d.element;
       frames += m.frames;
     }
-    const damage = Math.floor(phys + elem);
+    const damage = Math.floor((phys + elem) * defenseRate);
     physicalSum += phys * p.ratio;
     elementSum  += elem * p.ratio;
     return { name: p.name, damage, frames, ratio: p.ratio };
@@ -76,18 +130,24 @@ export function calcMeleeDamage(input: CalcInput): DamageResult {
   const weightedTime = patterns.reduce((s, r) => s + r.frames * r.ratio, 0);
   const dps = weightedTime > 0 ? (weightedDmg / weightedTime) * 60 : 0;
 
-  const affBonus = affinitySkillBonus(input.passiveSkills,
-    { hitzonePhysical: physicalHitzone, isDraw: false });
-  const repAffinity = clampAffinity(input.weapon.affinity + affBonus + cond.affinityBonus) / 100;
-  const repCritMult = repAffinity >= 0 ? critMultiplier(input.passiveSkills) : 0.75;
-  const repCritCoef = critCoefficient(repAffinity * 100, repCritMult);
+  // 代表値（表示用）: 頭部 / 抜刀無し
+  const part = input.target.monster.parts.find(p => p.id === input.target.partId)!;
+  const eff = effectivePart(part, input.target.enraged);
+  const physicalHitzone = eff.physical + (input.target.wounded ? (part.woundedPhysicalBonus ?? 10) : 0);
+  const repSkills = resolveSkills(input.skills, skillMasters, {
+    hitzonePhysical: physicalHitzone, tags: [], damageType: 'physical',
+  });
+  const repAff = clampAffinity(input.weapon.affinity + repSkills.affinityBonus + buffAgg.affinityBonus) / 100;
+  const repCritMult = repAff >= 0 ? repSkills.critMultiplier : 0.75;
+  const repCritCoef = critCoefficient(repAff * 100, repCritMult);
 
   return {
     expectedDPS: dps,
     physicalAvg: Math.round(physicalSum),
     elementAvg:  Math.round(elementSum),
-    effectiveAffinity: repAffinity,
+    effectiveAffinity: repAff,
     critCoefficient: repCritCoef,
+    defenseRate,
     patterns,
   };
 }
