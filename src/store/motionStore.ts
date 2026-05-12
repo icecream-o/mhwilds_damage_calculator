@@ -7,6 +7,8 @@ interface MotionStore {
   updatePattern: (idx: number, patch: Partial<MotionPattern>) => void;
   removePattern: (idx: number) => void;
   setRatio: (idx: number, ratio: number) => void;
+  duplicatePattern: (idx: number) => void;
+  setPatterns: (patterns: MotionPattern[]) => void;
 }
 
 export const useMotionStore = create<MotionStore>((set) => ({
@@ -21,4 +23,15 @@ export const useMotionStore = create<MotionStore>((set) => ({
   setRatio: (idx, ratio) => set((s) => ({
     patterns: s.patterns.map((p, i) => i === idx ? { ...p, ratio } : p),
   })),
+  duplicatePattern: (idx) => set((s) => {
+    const src = s.patterns[idx];
+    if (!src) return s;
+    const copy: MotionPattern = {
+      ...src,
+      name: `${src.name} (コピー)`,
+      motions: [...src.motions],
+    };
+    return { patterns: [...s.patterns, copy] };
+  }),
+  setPatterns: (patterns) => set({ patterns }),
 }));
