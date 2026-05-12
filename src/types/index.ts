@@ -198,11 +198,3 @@ export interface DamageResult {
   patterns: PatternResult[];
 }
 
-// === 旧型（暫定互換、Plan A 末尾の Task で削除） ===
-export interface Build {
-  id: string;
-  name: string;
-  weaponId: string;
-  createdAt: number;
-  updatedAt: number;
-}

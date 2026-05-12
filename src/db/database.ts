@@ -1,16 +1,14 @@
 import Dexie, { type Table } from 'dexie';
-import type { Build, ThemeId } from '../types';
+import type { ThemeId } from '../types';
 
 interface ThemePref { id: 'current'; theme: ThemeId; }
 
 class AppDB extends Dexie {
-  builds!:    Table<Build, string>;
   themePref!: Table<ThemePref, 'current'>;
 
   constructor() {
     super('mhwilds-calc');
-    this.version(1).stores({
-      builds:    'id, updatedAt',
+    this.version(2).stores({
       themePref: 'id',
     });
   }

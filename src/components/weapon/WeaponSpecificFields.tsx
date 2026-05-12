@@ -1,4 +1,4 @@
-import type { WeaponType, WeaponInput, GunlanceShellType, BowBinType, ChargeBladeBin, SwitchAxeBin } from '../../types';
+import type { WeaponType, GunlanceShellType, BowBinType, ChargeBladeBin, SwitchAxeBin } from '../../types';
 import { Field } from '../shared/Field';
 import { useWeaponStore } from '../../store/weaponStore';
 
