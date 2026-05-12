@@ -300,11 +300,10 @@ interface Motion {
 type MotionTag =
   | 'draw'           // 抜刀
   | 'jump' | 'aerial'
-  | 'mounted'        // セクレト騎乗
-  | 'focus-strike'   // 集中攻撃（傷部位向け）
   | 'offset'         // オフセット
   | 'tackle'
   | 'finisher';
+// 注: 集中攻撃（focus-strike）、騎乗攻撃（mounted）はスコープ外
 
 type DamageType =
   | 'physical'           // 通常物理
@@ -346,6 +345,7 @@ interface Buff {
   id: string;
   name: string;
   category: 'item' | 'cat-food' | 'horn' | 'environment';
+  exclusiveGroup?: string;  // 同一グループ内は最強値だけ採用（例: 'atk-boost-large'）
   attackBonus?: number;
   attackMultiplier?: number;
   affinityBonus?: number;
@@ -456,14 +456,20 @@ elif motion.damageType == 'fixed':
 #### Step 5: 属性ダメージ
 ```
 if weapon.element exists:
-  elemMult = base
-           × Σ(element skill multipliers, e.g. 水属性攻撃強化)
-           × elementSharpnessMult(weapon.sharpness)
-           × elementCritCoef  // 会心撃【属性】発動時のみ
-  element = weapon.element.value
-          × elemMult
+  // 属性値カンスト判定（現環境: 元属性値 × 2.3 と (元属性値 + 400) の大きい方）
+  baseElementValue = weapon.element.value
+  cap = max(baseElementValue × 2.3, baseElementValue + 400)
+  skillMultiplier = Σ(element skill multipliers, e.g. 水属性攻撃強化)
+  effectiveElementValue = min(baseElementValue × skillMultiplier, cap)
+
+  element = effectiveElementValue
+          × elementSharpnessMult(weapon.sharpness)
+          × elementCritCoef  // 会心撃【属性】発動時のみ
           × (elementHitzone / 100)
 ```
+
+> **注意:** 属性キャップ値（×2.3 or +400）はアップデートで変動する可能性がある。
+> CSV 上で武器種ごとに上書きできるようにしておく（`elementCap` フィールド、未指定時はデフォルト式適用）。
 
 #### Step 6: パターン総ダメージ・フレーム
 ```
@@ -688,13 +694,20 @@ html2canvas で結果カード + 主要入力を画像化。SNS共有用。
 - **アーティア武器のロール上限**: ロール条件・最大値はゲーム解析次第 → 最終ATK直接入力なので不問
 
 ### 12.2 未確定で後続Planで詰めるもの
-- 集中攻撃の倍率値（要 Kiranico/コミュニティ確認）
 - オフセット攻撃の補正値
-- セクレト騎乗時の補正
 - 痛撃肉質補正の正確な数値
-- 怒り時の物理・属性肉質変動（モンスターごとに大きく異なる）
-- 弓の矢タイプ（連射/拡散/貫通）×Lvの扱い: 現状は **モーション側にエンコード**（連射Lv5矢の溜めIIIショット = 1モーション）とする方針。武器プロパティに含めない
-- 強撃ビン・接撃ビン等の正確な倍率値（Wilds実数値の確証取得が必要）
+- 怒り時の物理・属性肉質変動（モンスターごとに大きく異なる）→ Plan D でモンスターごとに収集
+- 強撃ビン 1.3倍 / 接撃ビン 1.4倍 は暫定値、Kiranico スクレイピングで確定
+- 属性キャップの式（現環境: 元属性値 × 2.3 と +400 の大きい方）はアップデートで変動の可能性あり、CSV上書き可能とする
+- 弓矢タイプは「最大溜め前提のモーション」をモーションDBにエンコード（武器プロパティに含めない）
+
+### 12.3 スコープ外（明示的に対応しない）
+- 集中攻撃（focus-strike）
+- 騎乗攻撃（セクレト騎乗）
+- 弾系武器の距離補正（常に適正距離前提）
+- 武器種固有の追加倍率（武器係数で吸収。必要なら後追い）
+- アイテム使用時のフレーム消費（バフは常時発動前提）
+- 龍封力・状態異常蓄積期待値（DPS計算に集中）
 
 ---
 
