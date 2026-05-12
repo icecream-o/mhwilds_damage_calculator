@@ -113,7 +113,8 @@ def convert_buffs(buffs_file: Path) -> list:
             if eg := row.get("exclusive_group", "").strip():
                 buff["exclusiveGroup"] = eg
             for csv_field, json_field in BUFF_FIELD_MAP.items():
-                if v := _float_or_none(row.get(csv_field, "")):
+                v = _float_or_none(row.get(csv_field, ""))
+                if v is not None:
                     buff[json_field] = v
             result.append(buff)
     return result
@@ -137,7 +138,8 @@ def _write_json(data: object, output_file: Path) -> None:
 
 
 def main(targets: list[str] | None = None) -> None:
-    all_targets = targets or ["skills", "series", "group", "buffs", "monsters", "motions"]
+    # monsters と motions は Task 3/4 で実装されるまでデフォルトから除外
+    all_targets = targets or ["skills", "series", "group", "buffs"]
 
     if "skills" in all_targets:
         data = convert_skills(
