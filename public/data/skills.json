@@ -1,0 +1,17 @@
+[
+  { "id": "attack", "name": "攻撃", "maxLevel": 5 },
+  { "id": "critical-eye", "name": "見切り", "maxLevel": 7 },
+  { "id": "critical-boost", "name": "超会心", "maxLevel": 3 },
+  { "id": "weakness-exploit", "name": "弱点特効", "maxLevel": 3 },
+  { "id": "punishing-draw-power", "name": "抜刀術【力】", "maxLevel": 3 },
+  { "id": "punishing-draw-technique", "name": "抜刀術【技】", "maxLevel": 3 },
+  { "id": "razor-sharp", "name": "業物", "maxLevel": 3 },
+  { "id": "agitator", "name": "挑戦者", "maxLevel": 7 },
+  { "id": "resentment", "name": "逆襲", "maxLevel": 5 },
+  { "id": "peak-performance", "name": "フルチャージ", "maxLevel": 3 },
+  { "id": "element-crit", "name": "会心撃【属性】", "maxLevel": 3 },
+  { "id": "water-attack", "name": "水属性攻撃強化", "maxLevel": 5 },
+  { "id": "constitution", "name": "体術", "maxLevel": 5 },
+  { "id": "stun-resistance", "name": "気絶耐性", "maxLevel": 3 },
+  { "id": "earplugs", "name": "耳栓", "maxLevel": 5 }
+]

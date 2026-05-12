@@ -1,0 +1,30 @@
+[
+  {
+    "id": "ls-amatsu", "name": "業物【神流】", "type": "longsword",
+    "attack": 330, "affinity": 20,
+    "element": { "type": "水", "value": 24 },
+    "sharpness": { "current": "purple", "values": [
+      {"color":"red","value":50},{"color":"orange","value":50},{"color":"yellow","value":50},
+      {"color":"green","value":80},{"color":"blue","value":120},{"color":"white","value":150},{"color":"purple","value":50}
+    ]},
+    "slots": [3, 2, 1]
+  },
+  {
+    "id": "ls-azure", "name": "飛竜刀【蒼】", "type": "longsword",
+    "attack": 310, "affinity": 30,
+    "element": null,
+    "sharpness": { "current": "white", "values": [
+      {"color":"green","value":100},{"color":"blue","value":150},{"color":"white","value":120}
+    ]},
+    "slots": [2, 2]
+  },
+  {
+    "id": "ls-ravage", "name": "黒龍棍【千千】", "type": "longsword",
+    "attack": 350, "affinity": -20,
+    "element": { "type": "龍", "value": 30 },
+    "sharpness": { "current": "white", "values": [
+      {"color":"green","value":120},{"color":"blue","value":160},{"color":"white","value":80}
+    ]},
+    "slots": [3, 3]
+  }
+]

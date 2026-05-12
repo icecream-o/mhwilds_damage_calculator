@@ -1,0 +1,12 @@
+[
+  { "id": "garuga-head", "name": "ガルルガヘルム", "part": "head",
+    "skills": [{"skillId":"weakness-exploit","level":2}], "slots": [1, 1] },
+  { "id": "nergi-chest", "name": "ネルギガンテメイル", "part": "chest",
+    "skills": [{"skillId":"critical-eye","level":2}], "slots": [2, 2, 1] },
+  { "id": "gore-arms", "name": "ゴアマガラアーム", "part": "arms",
+    "skills": [{"skillId":"agitator","level":2}], "slots": [1] },
+  { "id": "tigrex-waist", "name": "ティガレックスコイル", "part": "waist",
+    "skills": [{"skillId":"attack","level":2}], "slots": [3] },
+  { "id": "mam-legs", "name": "マムガイラグリーヴ", "part": "legs",
+    "skills": [{"skillId":"critical-boost","level":1}], "slots": [1, 1] }
+]

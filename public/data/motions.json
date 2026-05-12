@@ -1,0 +1,12 @@
+{
+  "longsword": [
+    { "motionName": "縦斬り",         "motionValue": 22, "frames": 28, "isDraw": false },
+    { "motionName": "踏み込み斬り",   "motionValue": 26, "frames": 30, "isDraw": false },
+    { "motionName": "突き",           "motionValue": 17, "frames": 22, "isDraw": false },
+    { "motionName": "鬼人斬り",       "motionValue": 35, "frames": 30, "isDraw": false },
+    { "motionName": "気刃斬り",       "motionValue": 30, "frames": 35, "isDraw": false },
+    { "motionName": "気刃兜割",       "motionValue": 110, "frames": 90, "isDraw": false },
+    { "motionName": "居合抜刀気刃斬り","motionValue": 70, "frames": 50, "isDraw": true },
+    { "motionName": "見切り斬り",     "motionValue": 28, "frames": 36, "isDraw": false }
+  ]
+}

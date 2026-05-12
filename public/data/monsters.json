@@ -1,0 +1,11 @@
+[
+  {
+    "id": "gore-magala", "name": "ゴア・マガラ",
+    "parts": [
+      { "id": "head", "name": "頭部",   "physical": 85, "element": { "水": 35, "雷": 15, "火": 5 }, "woundedPhysicalBonus": 10 },
+      { "id": "body", "name": "胴体",   "physical": 50, "element": { "水": 20, "雷": 10, "火": 5 } },
+      { "id": "wings","name": "翼",     "physical": 45, "element": { "水": 25, "雷": 20 } },
+      { "id": "tail", "name": "尻尾",   "physical": 40, "element": { "水": 15 } }
+    ]
+  }
+]
