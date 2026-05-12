@@ -5,3 +5,9 @@ dist
 .env.local
 .vite
 coverage
+
+# Python scraper
+scripts/scraper/cache/
+__pycache__/
+.pytest_cache/
+*.pyc
