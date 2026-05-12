@@ -1,0 +1,6 @@
+motion_name,motion_value,frames,is_draw,tags,damage_type
+演奏1,22,35,false,,
+演奏2,25,38,false,,
+演奏3,28,42,false,,
+こだま,35,55,false,,
+ジャンプ演奏,24,40,false,jump,

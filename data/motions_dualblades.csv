@@ -1,0 +1,8 @@
+motion_name,motion_value,frames,is_draw,tags,damage_type
+斬り,8,13,false,,
+斬り返し,8,13,false,,
+上段斬り,10,15,false,,
+鬼人斬り1,8,12,false,,
+鬼人斬り2,8,12,false,,
+鬼人乱舞(1発),7,11,false,,
+空中乱舞,8,20,false,jump|aerial,

@@ -1,0 +1,8 @@
+motion_name,motion_value,frames,is_draw,tags,damage_type
+斬り1,13,18,false,,
+斬り2,13,18,false,,
+斬り3,14,20,false,,
+盾攻撃1,11,18,false,,
+盾攻撃2,13,20,false,,
+ジャンプ斬り,14,30,false,jump,
+抜刀斬り,12,20,true,draw,

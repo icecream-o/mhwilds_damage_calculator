@@ -1,0 +1,10 @@
+motion_name,motion_value,frames,is_draw,tags,damage_type
+縦振り,28,42,false,,
+横振り,22,35,false,,
+溜め斬りLv1,26,40,false,,
+溜め斬りLv2,52,65,false,,
+溜め斬りLv3,80,90,false,,
+強溜め斬りLv1,30,45,false,,
+強溜め斬りLv2,60,70,false,,
+強溜め斬りLv3,90,95,false,,
+抜刀溜め斬りLv3,77,90,true,draw,

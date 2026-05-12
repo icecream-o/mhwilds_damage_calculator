@@ -1,0 +1,8 @@
+motion_name,motion_value,frames,is_draw,tags,damage_type
+縦振り,28,30,false,,
+横振り,22,28,false,,
+溜め1,30,50,false,,
+溜め2,42,65,false,,
+溜め3スタンプ,65,85,false,,
+スタンプ,54,60,false,,
+ジャンプスタンプ,48,55,false,jump|aerial,

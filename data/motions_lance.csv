@@ -1,0 +1,7 @@
+motion_name,motion_value,frames,is_draw,tags,damage_type
+突き1,20,22,false,,
+突き2,20,22,false,,
+突き3,22,24,false,,
+突き刺しフィニッシュ,30,40,false,finisher,
+ジャンプ突き,26,40,false,jump,
+ガードカウンター,28,35,false,offset,
