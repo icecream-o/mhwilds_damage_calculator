@@ -1,0 +1,18 @@
+[
+  {
+    "id": "garuga-soul",
+    "name": "ガルルガの魂",
+    "maxLevel": 1,
+    "category": "series",
+    "description": "ガルルガシリーズ3部位以上で発動",
+    "effects": [ { "level": 1, "affinityBonus": 15 } ]
+  },
+  {
+    "id": "gore-soul",
+    "name": "ゴア・マガラの魂",
+    "maxLevel": 1,
+    "category": "series",
+    "description": "ゴアマガラシリーズ3部位以上で発動",
+    "effects": [ { "level": 1, "attackBonus": 10 } ]
+  }
+]
