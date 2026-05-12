@@ -259,3 +259,74 @@ class TestConvertMonsters:
         result = convert_monsters(mf)
         assert len(result[0]["variants"]) == 2
         assert result[0]["variants"][-1]["id"] == "veteran"
+
+
+from csv_to_json import convert_motions
+
+MOTION_ROW_DEFAULTS = {
+    "motion_name": "", "motion_value": "0", "frames": "0",
+    "is_draw": "false", "tags": "", "damage_type": "",
+}
+
+
+class TestConvertMotions:
+    def test_basic_motion_no_tags(self, tmp_path, monkeypatch):
+        # DATA_DIRをtmp_pathに差し替える
+        import csv_to_json
+        monkeypatch.setattr(csv_to_json, "DATA_DIR", tmp_path)
+
+        write_csv(tmp_path, "motions_longsword.csv", [
+            {**MOTION_ROW_DEFAULTS,
+             "motion_name": "縦斬り", "motion_value": "22", "frames": "28"},
+        ])
+        result = convert_motions()
+        assert "longsword" in result
+        motions = result["longsword"]
+        assert len(motions) == 1
+        m = motions[0]
+        assert m["motionName"] == "縦斬り"
+        assert m["motionValue"] == 22
+        assert m["frames"] == 28
+        assert m["isDraw"] is False
+        assert "tags" not in m
+        assert "damageType" not in m
+
+    def test_draw_motion_with_tag(self, tmp_path, monkeypatch):
+        import csv_to_json
+        monkeypatch.setattr(csv_to_json, "DATA_DIR", tmp_path)
+
+        write_csv(tmp_path, "motions_longsword.csv", [
+            {**MOTION_ROW_DEFAULTS,
+             "motion_name": "居合抜刀気刃斬り", "motion_value": "70",
+             "frames": "50", "is_draw": "true", "tags": "draw"},
+        ])
+        result = convert_motions()
+        m = result["longsword"][0]
+        assert m["isDraw"] is True
+        assert m["tags"] == ["draw"]
+
+    def test_gunlance_shell_motion(self, tmp_path, monkeypatch):
+        import csv_to_json
+        monkeypatch.setattr(csv_to_json, "DATA_DIR", tmp_path)
+
+        write_csv(tmp_path, "motions_gunlance.csv", [
+            {**MOTION_ROW_DEFAULTS,
+             "motion_name": "通常砲撃Lv1", "motion_value": "20",
+             "frames": "40", "is_draw": "false",
+             "tags": "", "damage_type": "shell-normal"},
+        ])
+        result = convert_motions()
+        assert "gunlance" in result
+        m = result["gunlance"][0]
+        assert m["damageType"] == "shell-normal"
+
+    def test_missing_weapon_csv_is_skipped(self, tmp_path, monkeypatch):
+        import csv_to_json
+        monkeypatch.setattr(csv_to_json, "DATA_DIR", tmp_path)
+        # longsword 以外のCSVが存在しない場合は出力しない
+        write_csv(tmp_path, "motions_longsword.csv", [
+            {**MOTION_ROW_DEFAULTS,
+             "motion_name": "縦斬り", "motion_value": "22", "frames": "28"},
+        ])
+        result = convert_motions()
+        assert set(result.keys()) == {"longsword"}

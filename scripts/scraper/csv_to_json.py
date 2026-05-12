@@ -179,8 +179,28 @@ def convert_monsters(monsters_file: Path) -> list:
 
 
 def convert_motions() -> dict:
-    """motions_{weapon}.csv → motions.json の辞書（Task 4 で実装）"""
-    raise NotImplementedError
+    """motions_{weapon}.csv → motions.json の辞書"""
+    result: dict[str, list] = {}
+    for weapon in WEAPON_TYPES:
+        csv_file = DATA_DIR / f"motions_{weapon}.csv"
+        if not csv_file.exists():
+            continue
+        motions = []
+        with open(csv_file, newline="", encoding="utf-8") as f:
+            for row in csv.DictReader(f):
+                motion: dict = {
+                    "motionName": row["motion_name"],
+                    "motionValue": int(row["motion_value"]),
+                    "frames": int(row["frames"]),
+                    "isDraw": row.get("is_draw", "false").strip().lower() == "true",
+                }
+                if tags := _tags(row.get("tags", "")):
+                    motion["tags"] = tags
+                if dt := row.get("damage_type", "").strip():
+                    motion["damageType"] = dt
+                motions.append(motion)
+        result[weapon] = motions
+    return result
 
 
 def _write_json(data: object, output_file: Path) -> None:
@@ -191,8 +211,7 @@ def _write_json(data: object, output_file: Path) -> None:
 
 
 def main(targets: list[str] | None = None) -> None:
-    # motions は Task 4 で実装されるまでデフォルトから除外
-    all_targets = targets or ["skills", "series", "group", "buffs", "monsters"]
+    all_targets = targets or ["skills", "series", "group", "buffs", "monsters", "motions"]
 
     if "skills" in all_targets:
         data = convert_skills(
