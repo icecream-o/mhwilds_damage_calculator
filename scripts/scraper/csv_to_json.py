@@ -203,6 +203,20 @@ def convert_motions() -> dict:
     return result
 
 
+def convert_shelling_table(shelling_file: Path) -> dict:
+    """shelling_table.csv → shelling_table.json の辞書
+    出力形式: {"normal": {"1": 12, "2": 16, ...}, "spread": {...}, "long": {...}}
+    """
+    result: dict[str, dict[str, int]] = {}
+    with open(shelling_file, newline="", encoding="utf-8") as f:
+        for row in csv.DictReader(f):
+            shell_type = row["shell_type"]
+            level = row["level"]          # 文字列キーのまま保持
+            damage = int(row["damage"])
+            result.setdefault(shell_type, {})[level] = damage
+    return result
+
+
 def _write_json(data: object, output_file: Path) -> None:
     output_file.parent.mkdir(parents=True, exist_ok=True)
     with open(output_file, "w", encoding="utf-8") as f:
@@ -211,7 +225,7 @@ def _write_json(data: object, output_file: Path) -> None:
 
 
 def main(targets: list[str] | None = None) -> None:
-    all_targets = targets or ["skills", "series", "group", "buffs", "monsters", "motions"]
+    all_targets = targets or ["skills", "series", "group", "buffs", "monsters", "motions", "shelling"]
 
     if "skills" in all_targets:
         data = convert_skills(
@@ -242,6 +256,10 @@ def main(targets: list[str] | None = None) -> None:
     if "motions" in all_targets:
         data = convert_motions()
         _write_json(data, PUBLIC_DATA_DIR / "motions.json")
+
+    if "shelling" in all_targets:
+        data = convert_shelling_table(DATA_DIR / "shelling_table.csv")
+        _write_json(data, PUBLIC_DATA_DIR / "shelling_table.json")
 
 
 if __name__ == "__main__":

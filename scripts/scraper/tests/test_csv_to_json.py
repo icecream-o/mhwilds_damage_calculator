@@ -1,7 +1,10 @@
 import csv
 import pytest
 from pathlib import Path
-from csv_to_json import convert_skills, convert_buffs, convert_monsters
+from csv_to_json import (
+    convert_skills, convert_buffs, convert_monsters, convert_motions,
+    convert_shelling_table,
+)
 
 
 def write_csv(tmp_path: Path, name: str, rows: list[dict]) -> Path:
@@ -261,8 +264,6 @@ class TestConvertMonsters:
         assert result[0]["variants"][-1]["id"] == "veteran"
 
 
-from csv_to_json import convert_motions
-
 MOTION_ROW_DEFAULTS = {
     "motion_name": "", "motion_value": "0", "frames": "0",
     "is_draw": "false", "tags": "", "damage_type": "",
@@ -330,3 +331,28 @@ class TestConvertMotions:
         ])
         result = convert_motions()
         assert set(result.keys()) == {"longsword"}
+
+
+class TestConvertShellingTable:
+    def test_basic_structure(self, tmp_path):
+        content = "shell_type,level,damage\nnormal,1,12\nnormal,2,16\nspread,1,14\n"
+        f = tmp_path / "shelling_table.csv"
+        f.write_text(content, encoding="utf-8")
+        result = convert_shelling_table(f)
+        assert result == {"normal": {"1": 12, "2": 16}, "spread": {"1": 14}}
+
+    def test_level_key_is_string(self, tmp_path):
+        content = "shell_type,level,damage\nnormal,1,12\n"
+        f = tmp_path / "shelling_table.csv"
+        f.write_text(content, encoding="utf-8")
+        result = convert_shelling_table(f)
+        assert "1" in result["normal"]
+        assert result["normal"]["1"] == 12
+
+    def test_all_three_shell_types(self, tmp_path):
+        lines = ["shell_type,level,damage",
+                 "normal,1,12", "spread,1,14", "long,1,13"]
+        f = tmp_path / "shelling_table.csv"
+        f.write_text("\n".join(lines), encoding="utf-8")
+        result = convert_shelling_table(f)
+        assert set(result.keys()) == {"normal", "spread", "long"}
