@@ -1,36 +1,43 @@
 import { useEffect, useMemo, useState } from 'react';
 import { AppLayout } from './components/layout/AppLayout';
-import { WeaponCard } from './components/builder/WeaponCard';
-import { ArmorCard } from './components/builder/ArmorCard';
-import { SkillsCard } from './components/builder/SkillsCard';
-import { MonsterCard } from './components/builder/MonsterCard';
+import { WeaponInputCard } from './components/weapon/WeaponInputCard';
+import { SkillsInputCard } from './components/skills/SkillsInputCard';
+import { MonsterCard } from './components/monster/MonsterCard';
+import { BuffsCard } from './components/buffs/BuffsCard';
 import { PatternList } from './components/motion/PatternList';
 import { HeroResult } from './components/result/HeroResult';
 import { BreakdownCard } from './components/result/BreakdownCard';
 import { FormulaTab } from './components/formula/FormulaTab';
 import { ThemeTab } from './components/theme/ThemeTab';
-import { useBuildStore } from './store/buildStore';
+
+import { useWeaponStore } from './store/weaponStore';
+import { useSkillStore } from './store/skillStore';
+import { useBuffStore } from './store/buffStore';
 import { useMotionStore } from './store/motionStore';
 import { useTargetStore } from './store/targetStore';
 import { useThemeStore } from './store/themeStore';
-import { aggregateSkills } from './utils/aggregateSkills';
-import { loadDecorations } from './data/decorations';
+
+import { loadSkills } from './data/skills';
+import { loadSeriesSkills } from './data/series_skills';
+import { loadGroupSkills } from './data/group_skills';
+import { loadBuffs } from './data/buffs';
 import { loadMonsters } from './data/monsters';
 import { getMotionsFor } from './data/motions';
+
 import { calcDamage } from './calc';
-import type { DamageResult, Decoration, Monster, Motion } from './types';
+import type { DamageResult, SkillMaster, Buff, Monster, Motion } from './types';
 
 function CalcPage({ result }: { result: DamageResult | null }) {
   return (
     <div className="page">
       <div className="col">
-        <WeaponCard />
-        <ArmorCard />
-        <SkillsCard />
+        <WeaponInputCard />
+        <SkillsInputCard />
       </div>
       <div className="col">
         <PatternList result={result} />
         <MonsterCard />
+        <BuffsCard />
       </div>
       <div className="col col-result">
         <HeroResult result={result} />
@@ -41,26 +48,37 @@ function CalcPage({ result }: { result: DamageResult | null }) {
 }
 
 export default function App() {
-  const weapon = useBuildStore(s => s.weapon);
-  const armor = useBuildStore(s => s.armor);
-  const talisman = useBuildStore(s => s.talisman);
-  const conditionalUptimes = useBuildStore(s => s.conditionalUptimes);
+  const weapon = useWeaponStore(s => s.weapon);
+  const skills = useSkillStore(s => s.skills);
+  const buffs = useBuffStore(s => s.selected);
   const patterns = useMotionStore(s => s.patterns);
   const addPattern = useMotionStore(s => s.addPattern);
-  const { monsterId, partId, enraged, wounded } = useTargetStore();
+  const monsterId = useTargetStore(s => s.monsterId);
+  const variantId = useTargetStore(s => s.variantId);
+  const partId = useTargetStore(s => s.partId);
+  const enraged = useTargetStore(s => s.enraged);
+  const wounded = useTargetStore(s => s.wounded);
+  const defenseRateOverride = useTargetStore(s => s.defenseRateOverride);
   const hydrate = useThemeStore(s => s.hydrate);
 
-  const [decos, setDecos] = useState<Decoration[]>([]);
+  const [skillMasters, setSkillMasters] = useState<SkillMaster[]>([]);
+  const [buffMasters, setBuffMasters] = useState<Buff[]>([]);
   const [monsters, setMonsters] = useState<Monster[]>([]);
 
   useEffect(() => { hydrate(); }, [hydrate]);
 
   useEffect(() => {
-    Promise.all([loadDecorations(), loadMonsters()]).then(([d, m]) => { setDecos(d); setMonsters(m); });
+    Promise.all([loadSkills(), loadSeriesSkills(), loadGroupSkills(), loadBuffs(), loadMonsters()])
+      .then(([n, s, g, b, m]) => {
+        setSkillMasters([...n, ...s, ...g]);
+        setBuffMasters(b);
+        setMonsters(m);
+      });
   }, []);
 
+  // 太刀のデフォルトパターン投入
   useEffect(() => {
-    if (!weapon || patterns.length > 0) return;
+    if (patterns.length > 0) return;
     getMotionsFor(weapon.type).then((all: Motion[]) => {
       if (all.length === 0) return;
       const find = (name: string) => all.find(m => m.motionName === name);
@@ -73,22 +91,27 @@ export default function App() {
       if (helm)        addPattern({ name: '兜割',              ratio: 0.05, motions: [helm] });
     });
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [weapon]);
+  }, [weapon.type]);
 
   const result: DamageResult | null = useMemo(() => {
-    if (!weapon || !monsterId || !partId) return null;
+    if (!monsterId || !variantId || !partId) return null;
     const monster = monsters.find(m => m.id === monsterId);
     if (!monster) return null;
-    const passive = aggregateSkills(armor, talisman, decos);
-    return calcDamage({
-      weapon,
-      passiveSkills: passive,
-      conditionalUptimes,
-      buffs: [],
-      motionPatterns: patterns,
-      target: { monster, partId, enraged, wounded },
-    });
-  }, [weapon, armor, talisman, decos, conditionalUptimes, patterns, monsters, monsterId, partId, enraged, wounded]);
+    try {
+      return calcDamage({
+        weapon,
+        skills,
+        buffs,
+        motionPatterns: patterns,
+        target: {
+          monster, variantId, partId, enraged, wounded,
+          defenseRateOverride: defenseRateOverride ?? undefined,
+        },
+      }, skillMasters, buffMasters);
+    } catch {
+      return null;
+    }
+  }, [weapon, skills, buffs, patterns, monsters, monsterId, variantId, partId, enraged, wounded, defenseRateOverride, skillMasters, buffMasters]);
 
   return (
     <AppLayout
