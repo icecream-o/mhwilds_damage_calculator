@@ -1,17 +1,191 @@
 [
-  { "id": "attack", "name": "攻撃", "maxLevel": 5 },
-  { "id": "critical-eye", "name": "見切り", "maxLevel": 7 },
-  { "id": "critical-boost", "name": "超会心", "maxLevel": 3 },
-  { "id": "weakness-exploit", "name": "弱点特効", "maxLevel": 3 },
-  { "id": "punishing-draw-power", "name": "抜刀術【力】", "maxLevel": 3 },
-  { "id": "punishing-draw-technique", "name": "抜刀術【技】", "maxLevel": 3 },
-  { "id": "razor-sharp", "name": "業物", "maxLevel": 3 },
-  { "id": "agitator", "name": "挑戦者", "maxLevel": 7 },
-  { "id": "resentment", "name": "逆襲", "maxLevel": 5 },
-  { "id": "peak-performance", "name": "フルチャージ", "maxLevel": 3 },
-  { "id": "element-crit", "name": "会心撃【属性】", "maxLevel": 3 },
-  { "id": "water-attack", "name": "水属性攻撃強化", "maxLevel": 5 },
-  { "id": "constitution", "name": "体術", "maxLevel": 5 },
-  { "id": "stun-resistance", "name": "気絶耐性", "maxLevel": 3 },
-  { "id": "earplugs", "name": "耳栓", "maxLevel": 5 }
+  {
+    "id": "attack",
+    "name": "攻撃",
+    "maxLevel": 5,
+    "category": "normal",
+    "description": "攻撃力アップ",
+    "effects": [
+      { "level": 1, "attackBonus": 3 },
+      { "level": 2, "attackBonus": 5 },
+      { "level": 3, "attackBonus": 6 },
+      { "level": 4, "attackBonus": 7 },
+      { "level": 5, "attackBonus": 9 }
+    ]
+  },
+  {
+    "id": "critical-eye",
+    "name": "見切り",
+    "maxLevel": 7,
+    "category": "normal",
+    "description": "会心率アップ",
+    "effects": [
+      { "level": 1, "affinityBonus": 4 },
+      { "level": 2, "affinityBonus": 8 },
+      { "level": 3, "affinityBonus": 12 },
+      { "level": 4, "affinityBonus": 16 },
+      { "level": 5, "affinityBonus": 20 },
+      { "level": 6, "affinityBonus": 25 },
+      { "level": 7, "affinityBonus": 30 }
+    ]
+  },
+  {
+    "id": "critical-boost",
+    "name": "超会心",
+    "maxLevel": 3,
+    "category": "normal",
+    "description": "会心倍率を上昇",
+    "effects": [
+      { "level": 1, "critMultiplier": 1.30 },
+      { "level": 2, "critMultiplier": 1.35 },
+      { "level": 3, "critMultiplier": 1.40 }
+    ]
+  },
+  {
+    "id": "weakness-exploit",
+    "name": "弱点特効",
+    "maxLevel": 3,
+    "category": "normal",
+    "description": "物理肉質45以上で会心率+",
+    "applicability": { "requireHitzonePhysical": 45 },
+    "effects": [
+      { "level": 1, "affinityBonus": 10 },
+      { "level": 2, "affinityBonus": 20 },
+      { "level": 3, "affinityBonus": 30 }
+    ]
+  },
+  {
+    "id": "punishing-draw-tech",
+    "name": "抜刀術【技】",
+    "maxLevel": 3,
+    "category": "normal",
+    "description": "抜刀斬りの会心率+",
+    "applicability": { "requireTags": ["draw"] },
+    "effects": [
+      { "level": 1, "affinityBonus": 10 },
+      { "level": 2, "affinityBonus": 20 },
+      { "level": 3, "affinityBonus": 30 }
+    ]
+  },
+  {
+    "id": "punishing-draw-power",
+    "name": "抜刀術【力】",
+    "maxLevel": 3,
+    "category": "normal",
+    "description": "抜刀斬りの攻撃力+",
+    "applicability": { "requireTags": ["draw"] },
+    "effects": [
+      { "level": 1, "attackBonus": 5 },
+      { "level": 2, "attackBonus": 10 },
+      { "level": 3, "attackBonus": 15 }
+    ]
+  },
+  {
+    "id": "ranger",
+    "name": "飛燕",
+    "maxLevel": 3,
+    "category": "normal",
+    "description": "ジャンプ攻撃の会心率+",
+    "applicability": { "requireTags": ["jump", "aerial"], "matchAny": true },
+    "effects": [
+      { "level": 1, "affinityBonus": 5 },
+      { "level": 2, "affinityBonus": 10 },
+      { "level": 3, "affinityBonus": 15 }
+    ]
+  },
+  {
+    "id": "artillery",
+    "name": "砲術",
+    "maxLevel": 3,
+    "category": "normal",
+    "description": "砲撃ダメージ強化",
+    "applicability": {
+      "requireDamageType": ["shell-normal", "shell-spread", "shell-long"]
+    },
+    "effects": [
+      { "level": 1, "physicalMultiplier": 1.10 },
+      { "level": 2, "physicalMultiplier": 1.20 },
+      { "level": 3, "physicalMultiplier": 1.30 }
+    ]
+  },
+  {
+    "id": "agitator",
+    "name": "挑戦者",
+    "maxLevel": 7,
+    "category": "normal",
+    "description": "怒り時に攻撃力・会心率+（条件付き）",
+    "effects": [
+      { "level": 1, "attackBonus": 4, "affinityBonus": 3 },
+      { "level": 2, "attackBonus": 8, "affinityBonus": 5 },
+      { "level": 3, "attackBonus": 12, "affinityBonus": 7 },
+      { "level": 4, "attackBonus": 16, "affinityBonus": 10 },
+      { "level": 5, "attackBonus": 20, "affinityBonus": 12 },
+      { "level": 6, "attackBonus": 24, "affinityBonus": 15 },
+      { "level": 7, "attackBonus": 25, "affinityBonus": 15 }
+    ]
+  },
+  {
+    "id": "resentment",
+    "name": "逆襲",
+    "maxLevel": 5,
+    "category": "normal",
+    "description": "被弾後に攻撃力+（条件付き）",
+    "effects": [
+      { "level": 1, "attackBonus": 5 },
+      { "level": 2, "attackBonus": 10 },
+      { "level": 3, "attackBonus": 15 },
+      { "level": 4, "attackBonus": 20 },
+      { "level": 5, "attackBonus": 25 }
+    ]
+  },
+  {
+    "id": "peak-performance",
+    "name": "フルチャージ",
+    "maxLevel": 3,
+    "category": "normal",
+    "description": "体力満タン時に攻撃力+（条件付き）",
+    "effects": [
+      { "level": 1, "attackBonus": 5 },
+      { "level": 2, "attackBonus": 10 },
+      { "level": 3, "attackBonus": 20 }
+    ]
+  },
+  {
+    "id": "element-crit",
+    "name": "会心撃【属性】",
+    "maxLevel": 3,
+    "category": "normal",
+    "description": "会心時に属性ダメージ+",
+    "effects": [
+      { "level": 1, "elementMultiplier": 1.15 },
+      { "level": 2, "elementMultiplier": 1.25 },
+      { "level": 3, "elementMultiplier": 1.35 }
+    ]
+  },
+  {
+    "id": "water-attack",
+    "name": "水属性攻撃強化",
+    "maxLevel": 5,
+    "category": "normal",
+    "description": "水属性値+",
+    "effects": [
+      { "level": 1, "elementMultiplier": 1.05 },
+      { "level": 2, "elementMultiplier": 1.06 },
+      { "level": 3, "elementMultiplier": 1.08 },
+      { "level": 4, "elementMultiplier": 1.10 },
+      { "level": 5, "elementMultiplier": 1.20 }
+    ]
+  },
+  {
+    "id": "razor-sharp",
+    "name": "業物",
+    "maxLevel": 3,
+    "category": "normal",
+    "description": "斬れ味の消費を抑える（DPS換算は別途）",
+    "effects": [
+      { "level": 1 },
+      { "level": 2 },
+      { "level": 3 }
+    ]
+  }
 ]
