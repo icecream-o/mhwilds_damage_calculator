@@ -39,7 +39,7 @@ function CalcPage({ result }: { result: DamageResult | null }) {
         <MonsterCard />
         <BuffsCard />
       </div>
-      <div className="col col-result">
+      <div className="col col-result" id="result-panel">
         <HeroResult result={result} />
         <BreakdownCard result={result} />
       </div>
