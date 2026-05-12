@@ -7,6 +7,7 @@ import { clampAffinity, critCoefficient } from './affinity';
 import { resolveSkills } from './skill_resolver';
 import { resolveBuffs } from './buffs';
 import { shellDamage } from './shelling';
+import { resolveWeaponState } from './weapon_state';
 
 const WEAPON_COEF: Record<string, number> = {
   'longsword': 3.3, 'greatsword': 4.8, 'sword-and-shield': 1.4,
@@ -64,6 +65,8 @@ function calcMotionDamage(
     hitzonePhysical: physicalHitzone, tags, damageType,
   });
 
+  const weaponState = resolveWeaponState(input.weapon, tags, damageType);
+
   // 攻撃力期待値
   const attack = (input.weapon.attack + skills.attackBonus + buffAgg.attackBonus)
                * skills.attackMultiplier * buffAgg.attackMultiplier;
@@ -96,6 +99,7 @@ function calcMotionDamage(
              * sharpPhys
              * critCoef
              * skills.physicalMultiplier
+             * weaponState.physicalMultiplier
              * (physicalHitzone / 100);
   }
 
@@ -107,7 +111,8 @@ function calcMotionDamage(
     const effectiveElementValue = Math.min(baseValue * skills.elementMultiplier, cap);
     element = effectiveElementValue
             * sharpElem
-            * (elementHitzone / 100);
+            * (elementHitzone / 100)
+            * weaponState.elementMultiplier;
   }
 
   return { physical, element };
