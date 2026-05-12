@@ -23,6 +23,14 @@ const validSnap: AppSnapshot = {
   },
 };
 
+beforeEach(() => {
+  useWeaponStore.setState({ weapon: { type: 'longsword', attack: 200, affinity: 0, element: null, sharpness: 'white' } });
+  useSkillStore.setState({ skills: [] });
+  useBuffStore.setState({ selected: [] });
+  useMotionStore.setState({ patterns: [] });
+  useTargetStore.setState({ monsterId: null, variantId: null, partId: null, enraged: false, wounded: false, defenseRateOverride: null });
+});
+
 // ────── parseSnapshot ──────
 test('parseSnapshot rejects null', () => {
   expect(() => parseSnapshot(null)).toThrow('Invalid snapshot');

@@ -40,7 +40,7 @@ export function parseSnapshot(json: unknown): AppSnapshot {
   if (snap['version'] !== 1) {
     throw new Error(`Unsupported snapshot version: ${snap['version']}`);
   }
-  if (!snap['weapon'] || !snap['skills'] || !snap['patterns'] || !snap['target']) {
+  if (snap['weapon'] == null || snap['skills'] == null || snap['patterns'] == null || snap['target'] == null) {
     throw new Error('Invalid snapshot: missing required fields (weapon, skills, patterns, target)');
   }
   return snap as unknown as AppSnapshot;
