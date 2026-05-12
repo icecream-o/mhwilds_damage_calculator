@@ -8,6 +8,6 @@ coverage
 
 # Python scraper
 scripts/scraper/cache/
-__pycache__/
-.pytest_cache/
+scripts/scraper/**/__pycache__/
+scripts/scraper/.pytest_cache/
 *.pyc
