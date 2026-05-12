@@ -105,6 +105,43 @@ describe('calcDamage (v2 melee)', () => {
     expect(r.defenseRate).toBeCloseTo(0.5);
   });
 
+  test('gunlance shell-normal bypasses attack/sharpness/hitzone', () => {
+    const gl: CalcInput = {
+      weapon: {
+        type: 'gunlance', attack: 330, affinity: 0,
+        element: null, sharpness: 'purple',
+        gunlanceShell: { type: 'normal', level: 5 },  // base damage = 28
+      },
+      skills: [],
+      buffs: [],
+      motionPatterns: [{
+        name: 'shell', ratio: 1.0,
+        motions: [{ motionName: '砲撃', motionValue: 0, frames: 35, isDraw: false, damageType: 'shell-normal' }],
+      }],
+      target: { monster, variantId: 'normal', partId: 'head', enraged: false, wounded: false },
+    };
+    const r = calcDamage(gl, [], []);
+    // shell normal Lv5 base = 28, no artillery, defenseRate = 1.0 → floor(28) = 28
+    expect(r.patterns[0].damage).toBe(28);
+    expect(r.expectedDPS).toBeGreaterThan(0);
+  });
+
+  test('bow arrow motion returns positive DPS without throwing', () => {
+    const bow: CalcInput = {
+      weapon: { type: 'bow', attack: 200, affinity: 0, element: null, sharpness: 'purple' },
+      skills: [],
+      buffs: [],
+      motionPatterns: [{
+        name: 'charged', ratio: 1.0,
+        motions: [{ motionName: '溜め射ちLv3', motionValue: 24, frames: 45, isDraw: false, damageType: 'arrow' }],
+      }],
+      target: { monster, variantId: 'normal', partId: 'head', enraged: false, wounded: false },
+    };
+    // Must NOT throw "not yet supported"
+    const r = calcDamage(bow, [], []);
+    expect(r.expectedDPS).toBeGreaterThan(0);
+  });
+
   test('element cap is applied', () => {
     // element=100, skill x2.5, cap = max(100*2.3, 100+400) = max(230, 500) = 500
     // skill effect: 100*2.5 = 250, capped to 500 → no cap hit yet

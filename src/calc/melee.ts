@@ -1,18 +1,24 @@
 import type {
   CalcInput, DamageResult, PatternResult, Motion, Monster, MonsterPart,
-  SkillMaster, Buff, MotionTag, DamageType,
+  SkillMaster, Buff, MotionTag, DamageType, WeaponType,
 } from '../types';
 import { meleeSharpnessMult, elementSharpnessMult } from './sharpness';
 import { clampAffinity, critCoefficient } from './affinity';
 import { resolveSkills } from './skill_resolver';
 import { resolveBuffs } from './buffs';
+import { shellDamage } from './shelling';
 
 const WEAPON_COEF: Record<string, number> = {
   'longsword': 3.3, 'greatsword': 4.8, 'sword-and-shield': 1.4,
   'dual-blades': 1.4, 'hammer': 5.2, 'hunting-horn': 4.2,
   'lance': 2.3, 'gunlance': 2.3, 'switch-axe': 5.4,
   'charge-blade': 3.6, 'insect-glaive': 3.1,
+  'bow': 1.2, 'light-bowgun': 1.3, 'heavy-bowgun': 1.5,
 };
+
+function isRanged(type: WeaponType): boolean {
+  return type === 'bow' || type === 'light-bowgun' || type === 'heavy-bowgun';
+}
 
 function effectivePart(part: MonsterPart, enraged: boolean): {
   physical: number;
@@ -49,11 +55,11 @@ function calcMotionDamage(
   const physicalHitzone = eff.physical + (input.target.wounded ? (part.woundedPhysicalBonus ?? 10) : 0);
   const elementHitzone  = input.weapon.element ? (eff.element[input.weapon.element.type] ?? 0) : 0;
 
-  // モーションタグ・ダメージタイプ
+  // モーションタグ・ダメージタイプ（v1互換: isDraw → 'draw' タグ）
   const tags: readonly MotionTag[] = (motion.tags ?? (motion.isDraw ? ['draw'] : [])) as readonly MotionTag[];
   const damageType: DamageType = motion.damageType ?? 'physical';
 
-  // スキル解決
+  // スキル解決（タグ・肉質・ダメージタイプ条件付き）
   const skills = resolveSkills(input.skills, skillMasters, {
     hitzonePhysical: physicalHitzone, tags, damageType,
   });
@@ -62,24 +68,29 @@ function calcMotionDamage(
   const attack = (input.weapon.attack + skills.attackBonus + buffAgg.attackBonus)
                * skills.attackMultiplier * buffAgg.attackMultiplier;
 
-  // 会心率期待値
+  // 会心期待値
   const affinity = clampAffinity(
     input.weapon.affinity + skills.affinityBonus + buffAgg.affinityBonus
   );
-
-  // 会心倍率
   const critMult = affinity >= 0 ? skills.critMultiplier : 0.75;
   const critCoef = critCoefficient(affinity, critMult);
 
-  // 物理ダメージ
   const coef = WEAPON_COEF[input.weapon.type] ?? 1.0;
-  const sharpPhys = meleeSharpnessMult(input.weapon.sharpness);
-  const sharpElem = elementSharpnessMult(input.weapon.sharpness);
+  // 弓・弾系は斬れ味補正なし（斬れ味ゲージ自体が存在しない）
+  const ranged = isRanged(input.weapon.type);
+  const sharpPhys = ranged ? 1.0 : meleeSharpnessMult(input.weapon.sharpness);
+  const sharpElem = ranged ? 1.0 : elementSharpnessMult(input.weapon.sharpness);
 
   let physical: number;
   if (damageType === 'fixed') {
+    // 固定値ダメージ（スキル・肉質・会心・斬れ味なし）
     physical = motion.motionValue;
+  } else if (damageType.startsWith('shell-')) {
+    // 砲撃ダメージ: テーブル値 × 砲術倍率。攻撃力・会心・斬れ味・肉質は無効
+    const shell = input.weapon.gunlanceShell;
+    physical = shell ? shellDamage(shell.type, shell.level, skills.physicalMultiplier) : 0;
   } else {
+    // 通常物理・弓矢・弾系
     physical = (attack / coef)
              * (motion.motionValue / 100)
              * sharpPhys
@@ -88,9 +99,9 @@ function calcMotionDamage(
              * (physicalHitzone / 100);
   }
 
-  // 属性ダメージ
+  // 属性ダメージ（砲撃・固定値は属性なし）
   let element = 0;
-  if (input.weapon.element && damageType !== 'fixed') {
+  if (input.weapon.element && damageType !== 'fixed' && !damageType.startsWith('shell-')) {
     const baseValue = input.weapon.element.value;
     const cap = elementCap(baseValue, input.weapon.elementCap);
     const effectiveElementValue = Math.min(baseValue * skills.elementMultiplier, cap);
@@ -130,7 +141,7 @@ export function calcMeleeDamage(
   const weightedTime = patterns.reduce((s, r) => s + r.frames * r.ratio, 0);
   const dps = weightedTime > 0 ? (weightedDmg / weightedTime) * 60 : 0;
 
-  // 代表値（表示用）: 頭部 / 抜刀無し
+  // 代表値（表示用）: 常時スキルのみ・タグなし
   const part = input.target.monster.parts.find(p => p.id === input.target.partId)!;
   const eff = effectivePart(part, input.target.enraged);
   const physicalHitzone = eff.physical + (input.target.wounded ? (part.woundedPhysicalBonus ?? 10) : 0);

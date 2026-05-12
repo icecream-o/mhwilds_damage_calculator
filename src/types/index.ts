@@ -17,7 +17,9 @@ export interface Element { type: ElementType; value: number; }
 // === v2: モーションタグ・ダメージタイプ ===
 export type MotionTag =
   | 'draw' | 'jump' | 'aerial'
-  | 'offset' | 'tackle' | 'finisher';
+  | 'offset' | 'tackle' | 'finisher'
+  | 'binshot-power' | 'binshot-close' | 'binshot-element'
+  | 'phial-active' | 'discharge';
 
 export type DamageType =
   | 'physical'
