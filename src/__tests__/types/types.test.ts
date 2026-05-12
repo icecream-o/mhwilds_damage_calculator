@@ -1,4 +1,4 @@
-import type { Weapon, Skill, MotionPattern, Build, ThemeId } from '../../types';
+import type { Weapon, Skill, MotionPattern, ThemeId } from '../../types';
 
 test('types are importable', () => {
   const w: Weapon = {
