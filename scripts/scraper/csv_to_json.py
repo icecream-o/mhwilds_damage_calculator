@@ -149,7 +149,7 @@ def convert_monsters(monsters_file: Path) -> list:
                     "parts": [],
                 }
 
-            # 部位
+            # 部位（element は TypeScript 型で必須フィールドのため空でも出力する）
             part: dict = {
                 "id": row["part_id"],
                 "name": row["part_name"],
