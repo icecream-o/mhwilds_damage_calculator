@@ -1,0 +1,6 @@
+motion_name,motion_value,frames,is_draw,tags,damage_type
+縦斬り,33,35,false,,
+横斬り,26,30,false,,
+ジャンプ斬り,30,45,false,jump,
+属性解放斬り,42,50,false,phial-active,
+属性解放フィニッシュ,55,60,false,phial-active|finisher,

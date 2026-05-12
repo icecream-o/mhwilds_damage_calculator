@@ -1,0 +1,6 @@
+motion_name,motion_value,frames,is_draw,tags,damage_type
+斬り,12,20,false,,
+縦斬り,15,22,false,,
+跳躍斬り,18,32,false,jump,
+空中縦斬り,24,35,false,aerial,
+空中竜巻斬り,30,45,false,aerial|finisher,

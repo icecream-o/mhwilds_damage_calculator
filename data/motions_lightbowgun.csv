@@ -1,0 +1,6 @@
+motion_name,motion_value,frames,is_draw,tags,damage_type
+通常弾Lv1,18,28,false,,bowgun-bullet
+通常弾Lv2,24,32,false,,bowgun-bullet
+通常弾Lv3,30,36,false,,bowgun-bullet
+散弾Lv1(1発),7,30,false,,bowgun-bullet
+属性弾,12,32,false,,bowgun-bullet

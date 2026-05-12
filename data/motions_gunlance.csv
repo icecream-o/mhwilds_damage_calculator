@@ -1,0 +1,6 @@
+motion_name,motion_value,frames,is_draw,tags,damage_type
+縦斬り,23,30,false,,
+横斬り,17,25,false,,
+突き,20,28,false,,
+砲撃,0,35,false,,shell-normal
+竜撃砲,0,80,false,,shell-long

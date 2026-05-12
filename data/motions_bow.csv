@@ -1,0 +1,6 @@
+motion_name,motion_value,frames,is_draw,tags,damage_type
+溜め射ちLv1,12,30,false,,arrow
+溜め射ちLv2,18,38,false,,arrow
+溜め射ちLv3,24,45,false,,arrow
+剛射(強撃),28,50,false,binshot-power,arrow
+剛射(接撃),26,48,false,binshot-close,arrow

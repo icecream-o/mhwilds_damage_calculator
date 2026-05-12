@@ -1,0 +1,6 @@
+motion_name,motion_value,frames,is_draw,tags,damage_type
+斬り,18,28,false,,
+縦斬り,22,32,false,,
+盾突き,16,25,false,,
+超高出力解放,50,70,false,discharge|finisher,
+連続フィニッシュ,40,55,false,discharge,

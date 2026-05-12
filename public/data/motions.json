@@ -51,5 +51,566 @@
       "frames": 36,
       "isDraw": false
     }
+  ],
+  "greatsword": [
+    {
+      "motionName": "縦振り",
+      "motionValue": 28,
+      "frames": 42,
+      "isDraw": false
+    },
+    {
+      "motionName": "横振り",
+      "motionValue": 22,
+      "frames": 35,
+      "isDraw": false
+    },
+    {
+      "motionName": "溜め斬りLv1",
+      "motionValue": 26,
+      "frames": 40,
+      "isDraw": false
+    },
+    {
+      "motionName": "溜め斬りLv2",
+      "motionValue": 52,
+      "frames": 65,
+      "isDraw": false
+    },
+    {
+      "motionName": "溜め斬りLv3",
+      "motionValue": 80,
+      "frames": 90,
+      "isDraw": false
+    },
+    {
+      "motionName": "強溜め斬りLv1",
+      "motionValue": 30,
+      "frames": 45,
+      "isDraw": false
+    },
+    {
+      "motionName": "強溜め斬りLv2",
+      "motionValue": 60,
+      "frames": 70,
+      "isDraw": false
+    },
+    {
+      "motionName": "強溜め斬りLv3",
+      "motionValue": 90,
+      "frames": 95,
+      "isDraw": false
+    },
+    {
+      "motionName": "抜刀溜め斬りLv3",
+      "motionValue": 77,
+      "frames": 90,
+      "isDraw": true,
+      "tags": [
+        "draw"
+      ]
+    }
+  ],
+  "dualblades": [
+    {
+      "motionName": "斬り",
+      "motionValue": 8,
+      "frames": 13,
+      "isDraw": false
+    },
+    {
+      "motionName": "斬り返し",
+      "motionValue": 8,
+      "frames": 13,
+      "isDraw": false
+    },
+    {
+      "motionName": "上段斬り",
+      "motionValue": 10,
+      "frames": 15,
+      "isDraw": false
+    },
+    {
+      "motionName": "鬼人斬り1",
+      "motionValue": 8,
+      "frames": 12,
+      "isDraw": false
+    },
+    {
+      "motionName": "鬼人斬り2",
+      "motionValue": 8,
+      "frames": 12,
+      "isDraw": false
+    },
+    {
+      "motionName": "鬼人乱舞(1発)",
+      "motionValue": 7,
+      "frames": 11,
+      "isDraw": false
+    },
+    {
+      "motionName": "空中乱舞",
+      "motionValue": 8,
+      "frames": 20,
+      "isDraw": false,
+      "tags": [
+        "jump",
+        "aerial"
+      ]
+    }
+  ],
+  "swordshield": [
+    {
+      "motionName": "斬り1",
+      "motionValue": 13,
+      "frames": 18,
+      "isDraw": false
+    },
+    {
+      "motionName": "斬り2",
+      "motionValue": 13,
+      "frames": 18,
+      "isDraw": false
+    },
+    {
+      "motionName": "斬り3",
+      "motionValue": 14,
+      "frames": 20,
+      "isDraw": false
+    },
+    {
+      "motionName": "盾攻撃1",
+      "motionValue": 11,
+      "frames": 18,
+      "isDraw": false
+    },
+    {
+      "motionName": "盾攻撃2",
+      "motionValue": 13,
+      "frames": 20,
+      "isDraw": false
+    },
+    {
+      "motionName": "ジャンプ斬り",
+      "motionValue": 14,
+      "frames": 30,
+      "isDraw": false,
+      "tags": [
+        "jump"
+      ]
+    },
+    {
+      "motionName": "抜刀斬り",
+      "motionValue": 12,
+      "frames": 20,
+      "isDraw": true,
+      "tags": [
+        "draw"
+      ]
+    }
+  ],
+  "hammer": [
+    {
+      "motionName": "縦振り",
+      "motionValue": 28,
+      "frames": 30,
+      "isDraw": false
+    },
+    {
+      "motionName": "横振り",
+      "motionValue": 22,
+      "frames": 28,
+      "isDraw": false
+    },
+    {
+      "motionName": "溜め1",
+      "motionValue": 30,
+      "frames": 50,
+      "isDraw": false
+    },
+    {
+      "motionName": "溜め2",
+      "motionValue": 42,
+      "frames": 65,
+      "isDraw": false
+    },
+    {
+      "motionName": "溜め3スタンプ",
+      "motionValue": 65,
+      "frames": 85,
+      "isDraw": false
+    },
+    {
+      "motionName": "スタンプ",
+      "motionValue": 54,
+      "frames": 60,
+      "isDraw": false
+    },
+    {
+      "motionName": "ジャンプスタンプ",
+      "motionValue": 48,
+      "frames": 55,
+      "isDraw": false,
+      "tags": [
+        "jump",
+        "aerial"
+      ]
+    }
+  ],
+  "huntinghorn": [
+    {
+      "motionName": "演奏1",
+      "motionValue": 22,
+      "frames": 35,
+      "isDraw": false
+    },
+    {
+      "motionName": "演奏2",
+      "motionValue": 25,
+      "frames": 38,
+      "isDraw": false
+    },
+    {
+      "motionName": "演奏3",
+      "motionValue": 28,
+      "frames": 42,
+      "isDraw": false
+    },
+    {
+      "motionName": "こだま",
+      "motionValue": 35,
+      "frames": 55,
+      "isDraw": false
+    },
+    {
+      "motionName": "ジャンプ演奏",
+      "motionValue": 24,
+      "frames": 40,
+      "isDraw": false,
+      "tags": [
+        "jump"
+      ]
+    }
+  ],
+  "lance": [
+    {
+      "motionName": "突き1",
+      "motionValue": 20,
+      "frames": 22,
+      "isDraw": false
+    },
+    {
+      "motionName": "突き2",
+      "motionValue": 20,
+      "frames": 22,
+      "isDraw": false
+    },
+    {
+      "motionName": "突き3",
+      "motionValue": 22,
+      "frames": 24,
+      "isDraw": false
+    },
+    {
+      "motionName": "突き刺しフィニッシュ",
+      "motionValue": 30,
+      "frames": 40,
+      "isDraw": false,
+      "tags": [
+        "finisher"
+      ]
+    },
+    {
+      "motionName": "ジャンプ突き",
+      "motionValue": 26,
+      "frames": 40,
+      "isDraw": false,
+      "tags": [
+        "jump"
+      ]
+    },
+    {
+      "motionName": "ガードカウンター",
+      "motionValue": 28,
+      "frames": 35,
+      "isDraw": false,
+      "tags": [
+        "offset"
+      ]
+    }
+  ],
+  "gunlance": [
+    {
+      "motionName": "縦斬り",
+      "motionValue": 23,
+      "frames": 30,
+      "isDraw": false
+    },
+    {
+      "motionName": "横斬り",
+      "motionValue": 17,
+      "frames": 25,
+      "isDraw": false
+    },
+    {
+      "motionName": "突き",
+      "motionValue": 20,
+      "frames": 28,
+      "isDraw": false
+    },
+    {
+      "motionName": "砲撃",
+      "motionValue": 0,
+      "frames": 35,
+      "isDraw": false,
+      "damageType": "shell-normal"
+    },
+    {
+      "motionName": "竜撃砲",
+      "motionValue": 0,
+      "frames": 80,
+      "isDraw": false,
+      "damageType": "shell-long"
+    }
+  ],
+  "switchaxe": [
+    {
+      "motionName": "縦斬り",
+      "motionValue": 33,
+      "frames": 35,
+      "isDraw": false
+    },
+    {
+      "motionName": "横斬り",
+      "motionValue": 26,
+      "frames": 30,
+      "isDraw": false
+    },
+    {
+      "motionName": "ジャンプ斬り",
+      "motionValue": 30,
+      "frames": 45,
+      "isDraw": false,
+      "tags": [
+        "jump"
+      ]
+    },
+    {
+      "motionName": "属性解放斬り",
+      "motionValue": 42,
+      "frames": 50,
+      "isDraw": false,
+      "tags": [
+        "phial-active"
+      ]
+    },
+    {
+      "motionName": "属性解放フィニッシュ",
+      "motionValue": 55,
+      "frames": 60,
+      "isDraw": false,
+      "tags": [
+        "phial-active",
+        "finisher"
+      ]
+    }
+  ],
+  "chargeblade": [
+    {
+      "motionName": "斬り",
+      "motionValue": 18,
+      "frames": 28,
+      "isDraw": false
+    },
+    {
+      "motionName": "縦斬り",
+      "motionValue": 22,
+      "frames": 32,
+      "isDraw": false
+    },
+    {
+      "motionName": "盾突き",
+      "motionValue": 16,
+      "frames": 25,
+      "isDraw": false
+    },
+    {
+      "motionName": "超高出力解放",
+      "motionValue": 50,
+      "frames": 70,
+      "isDraw": false,
+      "tags": [
+        "discharge",
+        "finisher"
+      ]
+    },
+    {
+      "motionName": "連続フィニッシュ",
+      "motionValue": 40,
+      "frames": 55,
+      "isDraw": false,
+      "tags": [
+        "discharge"
+      ]
+    }
+  ],
+  "insectglaive": [
+    {
+      "motionName": "斬り",
+      "motionValue": 12,
+      "frames": 20,
+      "isDraw": false
+    },
+    {
+      "motionName": "縦斬り",
+      "motionValue": 15,
+      "frames": 22,
+      "isDraw": false
+    },
+    {
+      "motionName": "跳躍斬り",
+      "motionValue": 18,
+      "frames": 32,
+      "isDraw": false,
+      "tags": [
+        "jump"
+      ]
+    },
+    {
+      "motionName": "空中縦斬り",
+      "motionValue": 24,
+      "frames": 35,
+      "isDraw": false,
+      "tags": [
+        "aerial"
+      ]
+    },
+    {
+      "motionName": "空中竜巻斬り",
+      "motionValue": 30,
+      "frames": 45,
+      "isDraw": false,
+      "tags": [
+        "aerial",
+        "finisher"
+      ]
+    }
+  ],
+  "bow": [
+    {
+      "motionName": "溜め射ちLv1",
+      "motionValue": 12,
+      "frames": 30,
+      "isDraw": false,
+      "damageType": "arrow"
+    },
+    {
+      "motionName": "溜め射ちLv2",
+      "motionValue": 18,
+      "frames": 38,
+      "isDraw": false,
+      "damageType": "arrow"
+    },
+    {
+      "motionName": "溜め射ちLv3",
+      "motionValue": 24,
+      "frames": 45,
+      "isDraw": false,
+      "damageType": "arrow"
+    },
+    {
+      "motionName": "剛射(強撃)",
+      "motionValue": 28,
+      "frames": 50,
+      "isDraw": false,
+      "tags": [
+        "binshot-power"
+      ],
+      "damageType": "arrow"
+    },
+    {
+      "motionName": "剛射(接撃)",
+      "motionValue": 26,
+      "frames": 48,
+      "isDraw": false,
+      "tags": [
+        "binshot-close"
+      ],
+      "damageType": "arrow"
+    }
+  ],
+  "lightbowgun": [
+    {
+      "motionName": "通常弾Lv1",
+      "motionValue": 18,
+      "frames": 28,
+      "isDraw": false,
+      "damageType": "bowgun-bullet"
+    },
+    {
+      "motionName": "通常弾Lv2",
+      "motionValue": 24,
+      "frames": 32,
+      "isDraw": false,
+      "damageType": "bowgun-bullet"
+    },
+    {
+      "motionName": "通常弾Lv3",
+      "motionValue": 30,
+      "frames": 36,
+      "isDraw": false,
+      "damageType": "bowgun-bullet"
+    },
+    {
+      "motionName": "散弾Lv1(1発)",
+      "motionValue": 7,
+      "frames": 30,
+      "isDraw": false,
+      "damageType": "bowgun-bullet"
+    },
+    {
+      "motionName": "属性弾",
+      "motionValue": 12,
+      "frames": 32,
+      "isDraw": false,
+      "damageType": "bowgun-bullet"
+    }
+  ],
+  "heavybowgun": [
+    {
+      "motionName": "通常弾Lv1",
+      "motionValue": 24,
+      "frames": 32,
+      "isDraw": false,
+      "damageType": "bowgun-bullet"
+    },
+    {
+      "motionName": "通常弾Lv2",
+      "motionValue": 32,
+      "frames": 38,
+      "isDraw": false,
+      "damageType": "bowgun-bullet"
+    },
+    {
+      "motionName": "通常弾Lv3",
+      "motionValue": 42,
+      "frames": 44,
+      "isDraw": false,
+      "damageType": "bowgun-bullet"
+    },
+    {
+      "motionName": "貫通弾Lv1(1発)",
+      "motionValue": 14,
+      "frames": 35,
+      "isDraw": false,
+      "damageType": "bowgun-bullet"
+    },
+    {
+      "motionName": "徹甲榴弾Lv1",
+      "motionValue": 30,
+      "frames": 40,
+      "isDraw": false,
+      "damageType": "bowgun-bullet"
+    }
   ]
 }
