@@ -1,7 +1,7 @@
 import csv
 import pytest
 from pathlib import Path
-from csv_to_json import convert_skills, convert_buffs
+from csv_to_json import convert_skills, convert_buffs, convert_monsters
 
 
 def write_csv(tmp_path: Path, name: str, rows: list[dict]) -> Path:
@@ -175,3 +175,87 @@ class TestConvertBuffs:
         result = convert_buffs(bf)
         assert "exclusiveGroup" not in result[0]
         assert result[0]["attackBonus"] == 6.0
+
+
+MONSTER_ROW_DEFAULTS = {
+    "monster_id": "", "monster_name": "", "base_defense_rate": "1.0",
+    "variant_normal_mod": "1.0", "variant_veteran_mod": "0.95",
+    "variant_apex_mod": "0.85",
+    "part_id": "", "part_name": "",
+    "physical": "0",
+    "fire": "", "water": "", "thunder": "", "ice": "", "dragon": "",
+    "wounded_physical_bonus": "", "enraged_physical": "",
+    "enraged_fire": "", "enraged_water": "", "enraged_thunder": "",
+    "enraged_ice": "", "enraged_dragon": "",
+}
+
+
+class TestConvertMonsters:
+    def test_single_monster_single_part(self, tmp_path):
+        mf = write_csv(tmp_path, "monsters.csv", [{
+            **MONSTER_ROW_DEFAULTS,
+            "monster_id": "gore-magala", "monster_name": "ゴア・マガラ",
+            "base_defense_rate": "1.0",
+            "variant_normal_mod": "1.0", "variant_veteran_mod": "0.95",
+            "variant_apex_mod": "0.85",
+            "part_id": "head", "part_name": "頭部",
+            "physical": "85", "water": "35", "thunder": "15",
+        }])
+        result = convert_monsters(mf)
+        assert len(result) == 1
+        m = result[0]
+        assert m["id"] == "gore-magala"
+        assert m["name"] == "ゴア・マガラ"
+        assert m["baseDefenseRate"] == 1.0
+        assert len(m["variants"]) == 3
+        assert m["variants"][0] == {"id": "normal", "name": "通常", "defenseRateMod": 1.0}
+        assert m["variants"][1] == {"id": "veteran", "name": "歴戦", "defenseRateMod": 0.95}
+        assert m["variants"][2] == {"id": "apex", "name": "護竜", "defenseRateMod": 0.85}
+        assert len(m["parts"]) == 1
+        part = m["parts"][0]
+        assert part["id"] == "head"
+        assert part["name"] == "頭部"
+        assert part["physical"] == 85
+        assert part["element"] == {"水": 35, "雷": 15}
+        assert "woundedPhysicalBonus" not in part
+        assert "enragedPhysical" not in part
+
+    def test_monster_with_wounded_and_enraged(self, tmp_path):
+        mf = write_csv(tmp_path, "monsters.csv", [{
+            **MONSTER_ROW_DEFAULTS,
+            "monster_id": "gore-magala", "monster_name": "ゴア・マガラ",
+            "part_id": "head", "part_name": "頭部",
+            "physical": "85", "water": "35",
+            "wounded_physical_bonus": "10",
+            "enraged_physical": "90", "enraged_water": "40",
+        }])
+        result = convert_monsters(mf)
+        part = result[0]["parts"][0]
+        assert part["woundedPhysicalBonus"] == 10
+        assert part["enragedPhysical"] == 90
+        assert part["enragedElement"] == {"水": 40}
+
+    def test_monster_multiple_parts_grouped(self, tmp_path):
+        mf = write_csv(tmp_path, "monsters.csv", [
+            {**MONSTER_ROW_DEFAULTS,
+             "monster_id": "gore-magala", "monster_name": "ゴア・マガラ",
+             "part_id": "head", "part_name": "頭部", "physical": "85"},
+            {**MONSTER_ROW_DEFAULTS,
+             "monster_id": "gore-magala", "monster_name": "ゴア・マガラ",
+             "part_id": "body", "part_name": "胴体", "physical": "50"},
+        ])
+        result = convert_monsters(mf)
+        assert len(result) == 1  # 1モンスター
+        assert len(result[0]["parts"]) == 2
+
+    def test_monster_no_apex_variant(self, tmp_path):
+        mf = write_csv(tmp_path, "monsters.csv", [{
+            **MONSTER_ROW_DEFAULTS,
+            "monster_id": "test-monster", "monster_name": "テストモンスター",
+            "variant_normal_mod": "1.0", "variant_veteran_mod": "0.95",
+            "variant_apex_mod": "",  # 護竜なし
+            "part_id": "head", "part_name": "頭部", "physical": "70",
+        }])
+        result = convert_monsters(mf)
+        assert len(result[0]["variants"]) == 2
+        assert result[0]["variants"][-1]["id"] == "veteran"

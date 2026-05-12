@@ -121,8 +121,61 @@ def convert_buffs(buffs_file: Path) -> list:
 
 
 def convert_monsters(monsters_file: Path) -> list:
-    """monsters.csv → monsters.json の要素リスト（Task 3 で実装）"""
-    raise NotImplementedError
+    """monsters.csv → monsters.json の要素リスト"""
+    ELEMENT_COLS = ["fire", "water", "thunder", "ice", "dragon"]
+    ENRAGED_COLS = ["enraged_fire", "enraged_water", "enraged_thunder",
+                    "enraged_ice", "enraged_dragon"]
+
+    monsters: dict[str, dict] = {}
+    with open(monsters_file, newline="", encoding="utf-8") as f:
+        for row in csv.DictReader(f):
+            mid = row["monster_id"]
+            if mid not in monsters:
+                variants = [
+                    {"id": "normal", "name": "通常",
+                     "defenseRateMod": float(row["variant_normal_mod"])}
+                ]
+                if v := row.get("variant_veteran_mod", "").strip():
+                    variants.append({"id": "veteran", "name": "歴戦",
+                                     "defenseRateMod": float(v)})
+                if v := row.get("variant_apex_mod", "").strip():
+                    variants.append({"id": "apex", "name": "護竜",
+                                     "defenseRateMod": float(v)})
+                monsters[mid] = {
+                    "id": mid,
+                    "name": row["monster_name"],
+                    "baseDefenseRate": float(row["base_defense_rate"]),
+                    "variants": variants,
+                    "parts": [],
+                }
+
+            # 部位
+            part: dict = {
+                "id": row["part_id"],
+                "name": row["part_name"],
+                "physical": int(row["physical"]),
+                "element": {},
+            }
+            for col in ELEMENT_COLS:
+                if v := _int_or_none(row.get(col, "")):
+                    part["element"][ELEMENT_NAME_MAP[col]] = v
+
+            if v := _int_or_none(row.get("wounded_physical_bonus", "")):
+                part["woundedPhysicalBonus"] = v
+            if v := _int_or_none(row.get("enraged_physical", "")):
+                part["enragedPhysical"] = v
+
+            enraged_elem: dict = {}
+            for col in ENRAGED_COLS:
+                elem_key = col.replace("enraged_", "")
+                if v := _int_or_none(row.get(col, "")):
+                    enraged_elem[ELEMENT_NAME_MAP[elem_key]] = v
+            if enraged_elem:
+                part["enragedElement"] = enraged_elem
+
+            monsters[mid]["parts"].append(part)
+
+    return list(monsters.values())
 
 
 def convert_motions() -> dict:
@@ -138,8 +191,8 @@ def _write_json(data: object, output_file: Path) -> None:
 
 
 def main(targets: list[str] | None = None) -> None:
-    # monsters と motions は Task 3/4 で実装されるまでデフォルトから除外
-    all_targets = targets or ["skills", "series", "group", "buffs"]
+    # motions は Task 4 で実装されるまでデフォルトから除外
+    all_targets = targets or ["skills", "series", "group", "buffs", "monsters"]
 
     if "skills" in all_targets:
         data = convert_skills(
