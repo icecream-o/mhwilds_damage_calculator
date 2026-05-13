@@ -66,8 +66,9 @@ export function PatternList({ result }: Props) {
       />
 
       {patterns.map((p, i) => (
+        // result.patterns は patterns と同じ順序。並び替え追加時は patternId 紐付けへ変更要。
         <PatternCard
-          key={i}
+          key={`${p.name}-${i}`}
           pattern={p}
           result={result?.patterns[i]}
           onRatioChange={(v) => setRatio(i, v)}
