@@ -133,7 +133,7 @@
     }
   },
   {
-    "id": "huo-shu-xing-gong-ji-qiang-hua",
+    "id": "fire-attack",
     "name": "火属性攻撃強化",
     "maxLevel": 3,
     "category": "normal",
@@ -179,7 +179,7 @@
     "description": "水属性の力を強化する。（武器の属性値の強化には、　上限があります）"
   },
   {
-    "id": "bing-shu-xing-gong-ji-qiang-hua",
+    "id": "ice-attack",
     "name": "氷属性攻撃強化",
     "maxLevel": 3,
     "category": "normal",
@@ -202,7 +202,7 @@
     "description": "氷属性の力を強化する。（武器の属性値の強化には、　上限があります）"
   },
   {
-    "id": "lei-shu-xing-gong-ji-qiang-hua",
+    "id": "thunder-attack",
     "name": "雷属性攻撃強化",
     "maxLevel": 3,
     "category": "normal",
@@ -225,7 +225,7 @@
     "description": "雷属性の力を強化する。（武器の属性値の強化には、　上限があります）"
   },
   {
-    "id": "long-shu-xing-gong-ji-qiang-hua",
+    "id": "dragon-attack",
     "name": "龍属性攻撃強化",
     "maxLevel": 3,
     "category": "normal",
@@ -434,7 +434,7 @@
     "description": "武器を研磨すると一定時間、斬れ味が下がらなくなる。"
   },
   {
-    "id": "xin-yan",
+    "id": "mind-eye",
     "name": "心眼",
     "maxLevel": 3,
     "category": "normal",
@@ -458,7 +458,7 @@
     }
   },
   {
-    "id": "dun-qi-shi-i",
+    "id": "bludgeoner",
     "name": "鈍器使い",
     "maxLevel": 3,
     "category": "normal",
@@ -1097,7 +1097,7 @@
     "description": "攻撃で会心が発生した際に、低確率で様々なアイテムを入手できる"
   },
   {
-    "id": "ni-hen-mi",
+    "id": "resentment-attack",
     "name": "逆恨み",
     "maxLevel": 5,
     "category": "normal",
@@ -1126,7 +1126,7 @@
     "description": "体力ゲージに赤い部分がある間、攻撃力が上がる。"
   },
   {
-    "id": "qiao-ji",
+    "id": "adrenaline-rush",
     "name": "巧撃",
     "maxLevel": 5,
     "category": "normal",
@@ -1237,7 +1237,7 @@
     }
   },
   {
-    "id": "hun-shen",
+    "id": "maximum-might",
     "name": "渾身",
     "maxLevel": 3,
     "category": "normal",
@@ -1772,7 +1772,7 @@
     "description": "戦闘中の大型モンスターが怒ると、攻撃力と会心率が上昇する。"
   },
   {
-    "id": "li-nojie-fang",
+    "id": "latent-power",
     "name": "力の解放",
     "maxLevel": 5,
     "category": "normal",
@@ -1849,7 +1849,7 @@
     "description": "攻撃を当て続けることで、段階的に攻撃力、属性値が上がる。（上昇効果は武器種ごとに異なる）"
   },
   {
-    "id": "gong-shi",
+    "id": "offensive-guard",
     "name": "攻勢",
     "maxLevel": 5,
     "category": "normal",
@@ -1984,7 +1984,7 @@
     "description": "大型モンスターへの奇襲攻撃が成功すると一定時間、攻撃が上昇する。"
   },
   {
-    "id": "wu-wo-nojing-di",
+    "id": "free-meal-master",
     "name": "無我の境地",
     "maxLevel": 3,
     "category": "normal",

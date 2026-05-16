@@ -6,15 +6,15 @@ import type { SkillMaster, ActiveSkill, SkillApplicability } from '../../types';
  * uptime スライダーで発動時間割合を指定可能にする。
  */
 const CONDITIONAL_IDS = new Set([
-  'agitator',         // 挑戦者: 怒り時
-  'resentment',       // 逆襲: 被弾後
-  'peak-performance', // フルチャージ: 体力満タン時
-  'ni-hen-mi',        // 逆恨み: 赤ゲージ時
-  'qiao-ji',          // 巧撃: 緊急回避成功後
-  'gong-shi',         // 攻勢: 赤ゲージ時
-  'hun-shen',         // 渾身: スタミナ満タン時
-  'li-nojie-fang',    // 力の解放: 一定条件発動時
-  'wu-wo-nojing-di',  // 無我の境地: 一定条件発動時
+  'agitator',          // 挑戦者: 怒り時
+  'resentment',        // 逆襲: 被弾後
+  'peak-performance',  // フルチャージ: 体力満タン時
+  'resentment-attack', // 逆恨み: 赤ゲージ時
+  'adrenaline-rush',   // 巧撃: 緊急回避成功後
+  'offensive-guard',   // 攻勢: 赤ゲージ時
+  'maximum-might',     // 渾身: スタミナ満タン時
+  'latent-power',      // 力の解放: 一定条件発動時
+  'free-meal-master',  // 無我の境地: 一定条件発動時
 ]);
 
 const DAMAGE_TYPE_LABEL: Record<string, string> = {

@@ -12,12 +12,12 @@ interface SkillStore {
 
 export const useSkillStore = create<SkillStore>((set) => ({
   skills: [
-    // デフォルト発動スキル例（MVP の状態を維持）
+    // デフォルト発動スキル例（MH Wilds 仕様: 見切り/超会心/弱点特効/挑戦者は Lv5 が上限）
     { skillId: 'attack', level: 5 },
-    { skillId: 'critical-eye', level: 7 },
-    { skillId: 'critical-boost', level: 3 },
-    { skillId: 'weakness-exploit', level: 3 },
-    { skillId: 'agitator', level: 7, uptime: 0.60 },
+    { skillId: 'critical-eye', level: 5 },
+    { skillId: 'critical-boost', level: 5 },
+    { skillId: 'weakness-exploit', level: 5 },
+    { skillId: 'agitator', level: 5, uptime: 0.60 },
     { skillId: 'resentment', level: 3, uptime: 0.30 },
   ],
   addSkill: (skillId, level) => set((s) =>

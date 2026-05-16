@@ -15,7 +15,7 @@ DATA = ROOT / "data"
 # 心眼: 硬い部位（≤45）への威力倍率。Wildsの正確な閾値は不明だが、弱点特効の
 #       鏡像値として≤45を採用。実測情報が出たら調整。
 MANUAL_APPLICABILITY = {
-    "xin-yan": {"require_hitzone_physical_max": "45"},
+    "mind-eye": {"require_hitzone_physical_max": "45"},
 }
 
 
@@ -32,8 +32,21 @@ NAME_TO_ID = {
     "逆襲":           "resentment",
     "フルチャージ":     "peak-performance",
     "会心撃【属性】":   "element-crit",
-    "水属性攻撃強化":   "water-attack",
     "業物":           "razor-sharp",
+    "心眼":           "mind-eye",
+    "渾身":           "maximum-might",
+    "逆恨み":          "resentment-attack",
+    "巧撃":           "adrenaline-rush",
+    "攻勢":           "offensive-guard",
+    "力の解放":        "latent-power",
+    "無我の境地":       "free-meal-master",
+    "鈍器使い":        "bludgeoner",
+    # 属性攻撃強化系（英語ID統一）
+    "火属性攻撃強化":   "fire-attack",
+    "水属性攻撃強化":   "water-attack",
+    "雷属性攻撃強化":   "thunder-attack",
+    "氷属性攻撃強化":   "ice-attack",
+    "龍属性攻撃強化":   "dragon-attack",
 }
 
 # 既存スキルの適用条件フィールドを読み込む
