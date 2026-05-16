@@ -15,23 +15,43 @@
       },
       {
         "level": 3,
-        "attackBonus": 6.0
-      },
-      {
-        "level": 4,
         "attackBonus": 7.0
       },
       {
+        "level": 4,
+        "attackBonus": 8.0,
+        "attackMultiplier": 1.02
+      },
+      {
         "level": 5,
-        "attackBonus": 9.0
+        "attackBonus": 9.0,
+        "attackMultiplier": 1.04
       }
     ],
-    "description": "攻撃力アップ"
+    "description": "プレイヤーの攻撃力を上げる。"
+  },
+  {
+    "id": "gong-menoshou-shi",
+    "name": "攻めの守勢",
+    "maxLevel": 3,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      },
+      {
+        "level": 2
+      },
+      {
+        "level": 3
+      }
+    ],
+    "description": "タイミング良くガードを成功させると、一定時間、攻撃力が上がる。"
   },
   {
     "id": "critical-eye",
     "name": "見切り",
-    "maxLevel": 7,
+    "maxLevel": 5,
     "category": "normal",
     "effects": [
       {
@@ -53,62 +73,38 @@
       {
         "level": 5,
         "affinityBonus": 20.0
-      },
-      {
-        "level": 6,
-        "affinityBonus": 25.0
-      },
-      {
-        "level": 7,
-        "affinityBonus": 30.0
       }
     ],
-    "description": "会心率アップ"
+    "description": "会心率がＵＰする。"
   },
   {
     "id": "critical-boost",
     "name": "超会心",
-    "maxLevel": 3,
+    "maxLevel": 5,
     "category": "normal",
     "effects": [
       {
         "level": 1,
-        "critMultiplier": 1.3
+        "critMultiplier": 1.28
       },
       {
         "level": 2,
-        "critMultiplier": 1.35
+        "critMultiplier": 1.31
       },
       {
         "level": 3,
+        "critMultiplier": 1.34
+      },
+      {
+        "level": 4,
+        "critMultiplier": 1.37
+      },
+      {
+        "level": 5,
         "critMultiplier": 1.4
       }
     ],
-    "description": "会心倍率を上昇"
-  },
-  {
-    "id": "weakness-exploit",
-    "name": "弱点特効",
-    "maxLevel": 3,
-    "category": "normal",
-    "effects": [
-      {
-        "level": 1,
-        "affinityBonus": 10.0
-      },
-      {
-        "level": 2,
-        "affinityBonus": 20.0
-      },
-      {
-        "level": 3,
-        "affinityBonus": 30.0
-      }
-    ],
-    "description": "物理肉質45以上で会心率+",
-    "applicability": {
-      "requireHitzonePhysical": 45
-    }
+    "description": "会心攻撃のダメージが増加する。"
   },
   {
     "id": "punishing-draw-tech",
@@ -118,18 +114,18 @@
     "effects": [
       {
         "level": 1,
-        "affinityBonus": 10.0
+        "affinityBonus": 50.0
       },
       {
         "level": 2,
-        "affinityBonus": 20.0
+        "affinityBonus": 75.0
       },
       {
         "level": 3,
-        "affinityBonus": 30.0
+        "affinityBonus": 100.0
       }
     ],
-    "description": "抜刀斬りの会心率+",
+    "description": "武器出し行動の後、一定時間、会心率が上がる。（騎乗中は発動しません）",
     "applicability": {
       "requireTags": [
         "draw"
@@ -137,9 +133,943 @@
     }
   },
   {
+    "id": "huo-shu-xing-gong-ji-qiang-hua",
+    "name": "火属性攻撃強化",
+    "maxLevel": 3,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      },
+      {
+        "level": 2,
+        "elementMultiplier": 1.1
+      },
+      {
+        "level": 3,
+        "elementMultiplier": 1.2
+      }
+    ],
+    "description": "火属性の力を強化する。（武器の属性値の強化には、　上限があります）"
+  },
+  {
+    "id": "water-attack",
+    "name": "水属性攻撃強化",
+    "maxLevel": 3,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      },
+      {
+        "level": 2,
+        "elementMultiplier": 1.1
+      },
+      {
+        "level": 3,
+        "elementMultiplier": 1.2
+      }
+    ],
+    "description": "水属性の力を強化する。（武器の属性値の強化には、　上限があります）"
+  },
+  {
+    "id": "bing-shu-xing-gong-ji-qiang-hua",
+    "name": "氷属性攻撃強化",
+    "maxLevel": 3,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      },
+      {
+        "level": 2,
+        "elementMultiplier": 1.1
+      },
+      {
+        "level": 3,
+        "elementMultiplier": 1.2
+      }
+    ],
+    "description": "氷属性の力を強化する。（武器の属性値の強化には、　上限があります）"
+  },
+  {
+    "id": "lei-shu-xing-gong-ji-qiang-hua",
+    "name": "雷属性攻撃強化",
+    "maxLevel": 3,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      },
+      {
+        "level": 2,
+        "elementMultiplier": 1.1
+      },
+      {
+        "level": 3,
+        "elementMultiplier": 1.2
+      }
+    ],
+    "description": "雷属性の力を強化する。（武器の属性値の強化には、　上限があります）"
+  },
+  {
+    "id": "long-shu-xing-gong-ji-qiang-hua",
+    "name": "龍属性攻撃強化",
+    "maxLevel": 3,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      },
+      {
+        "level": 2,
+        "elementMultiplier": 1.1
+      },
+      {
+        "level": 3,
+        "elementMultiplier": 1.2
+      }
+    ],
+    "description": "龍属性の力を強化する。（武器の属性値の強化には、　上限があります）"
+  },
+  {
+    "id": "du-shu-xing-qiang-hua",
+    "name": "毒属性強化",
+    "maxLevel": 3,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      },
+      {
+        "level": 2
+      },
+      {
+        "level": 3
+      }
+    ],
+    "description": "毒属性の蓄積値を強化する。（武器の属性値の強化には、　上限があります）"
+  },
+  {
+    "id": "ma-bei-shu-xing-qiang-hua",
+    "name": "麻痺属性強化",
+    "maxLevel": 3,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      },
+      {
+        "level": 2
+      },
+      {
+        "level": 3
+      }
+    ],
+    "description": "麻痺属性の蓄積値を強化する。（武器の属性値の強化には、　上限があります）"
+  },
+  {
+    "id": "shui-mian-shu-xing-qiang-hua",
+    "name": "睡眠属性強化",
+    "maxLevel": 3,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      },
+      {
+        "level": 2
+      },
+      {
+        "level": 3
+      }
+    ],
+    "description": "睡眠属性の蓄積値を強化する。（武器の属性値の強化には、　上限があります）"
+  },
+  {
+    "id": "bao-po-shu-xing-qiang-hua",
+    "name": "爆破属性強化",
+    "maxLevel": 3,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      },
+      {
+        "level": 2
+      },
+      {
+        "level": 3
+      }
+    ],
+    "description": "爆破属性の蓄積値を強化する。（武器の属性値の強化には、　上限があります）"
+  },
+  {
+    "id": "element-crit",
+    "name": "会心撃【属性】",
+    "maxLevel": 3,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      },
+      {
+        "level": 2
+      },
+      {
+        "level": 3
+      }
+    ],
+    "description": "攻撃で会心が発生した際に、与える属性ダメージ（火、水、雷、氷、龍）が高くなる。"
+  },
+  {
+    "id": "hui-xin-ji-te-shu",
+    "name": "会心撃【特殊】",
+    "maxLevel": 3,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      },
+      {
+        "level": 2
+      },
+      {
+        "level": 3
+      }
+    ],
+    "description": "攻撃で会心が発生した際に、与える状態異常値（麻痺、毒、睡眠、爆破）が高くなる。"
+  },
+  {
+    "id": "chiyazimasuta",
+    "name": "チャージマスター",
+    "maxLevel": 3,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      },
+      {
+        "level": 2
+      },
+      {
+        "level": 3
+      }
+    ],
+    "description": "溜め攻撃の属性値と状態異常蓄積値が上がる。"
+  },
+  {
+    "id": "jiang",
+    "name": "匠",
+    "maxLevel": 5,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      },
+      {
+        "level": 2
+      },
+      {
+        "level": 3
+      },
+      {
+        "level": 4
+      },
+      {
+        "level": 5
+      }
+    ],
+    "description": "武器の斬れ味ゲージが長くなる。ただし、斬れ味ゲージの限界以上には長くならない。"
+  },
+  {
+    "id": "razor-sharp",
+    "name": "業物",
+    "maxLevel": 3,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      },
+      {
+        "level": 2
+      },
+      {
+        "level": 3
+      }
+    ],
+    "description": "斬れ味の消耗を抑える。"
+  },
+  {
+    "id": "gang-ren-yan-mo",
+    "name": "剛刃研磨",
+    "maxLevel": 3,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      },
+      {
+        "level": 2
+      },
+      {
+        "level": 3
+      }
+    ],
+    "description": "武器を研磨すると一定時間、斬れ味が下がらなくなる。"
+  },
+  {
+    "id": "xin-yan",
+    "name": "心眼",
+    "maxLevel": 3,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      },
+      {
+        "level": 2
+      },
+      {
+        "level": 3
+      }
+    ],
+    "description": "攻撃が弾かれ辛くなり、硬い部位への攻撃の威力が上がる。"
+  },
+  {
+    "id": "dun-qi-shi-i",
+    "name": "鈍器使い",
+    "maxLevel": 3,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      },
+      {
+        "level": 2
+      },
+      {
+        "level": 3
+      }
+    ],
+    "description": "斬れ味が悪い時、与えるダメージが上昇する。"
+  },
+  {
+    "id": "da-ren-yun",
+    "name": "達人芸",
+    "maxLevel": 1,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      }
+    ],
+    "description": "会心発生時、斬れ味の消費を抑える。"
+  },
+  {
+    "id": "tong-chang-dan-tong-chang-shi-qiang-hua",
+    "name": "通常弾・通常矢強化",
+    "maxLevel": 1,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      }
+    ],
+    "description": "ボウガンの通常弾または弓の通常射撃、飛燕射ちの攻撃力が上がる。"
+  },
+  {
+    "id": "guan-tong-dan-long-noshi-qiang-hua",
+    "name": "貫通弾・竜の矢強化",
+    "maxLevel": 1,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      }
+    ],
+    "description": "ボウガンの貫通弾または弓の竜の一矢、竜の千々矢の攻撃力が上がる。"
+  },
+  {
+    "id": "san-dan-gang-she-qiang-hua",
+    "name": "散弾・剛射強化",
+    "maxLevel": 1,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      }
+    ],
+    "description": "ボウガンの散弾または弓の剛射、クイックショットの攻撃力が上がる。"
+  },
+  {
+    "id": "dan-dao-qiang-hua",
+    "name": "弾導強化",
+    "maxLevel": 3,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      },
+      {
+        "level": 2
+      },
+      {
+        "level": 3
+      }
+    ],
+    "description": "弾・矢の最大威力状態になる距離が広くなる。レベルが上がると威力も上昇する。"
+  },
+  {
+    "id": "su-she-qiang-hua",
+    "name": "速射強化",
+    "maxLevel": 1,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      }
+    ],
+    "description": "ライトボウガンの速射を強化する。"
+  },
+  {
+    "id": "huasutoshiyotsuto",
+    "name": "ファーストショット",
+    "maxLevel": 3,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      },
+      {
+        "level": 2
+      },
+      {
+        "level": 3
+      }
+    ],
+    "description": "ボウガンの装填速度が上がる。最大まで装填している時に発射した弾の威力が上昇する。"
+  },
+  {
+    "id": "huosushiyotsuto",
+    "name": "フォースショット",
+    "maxLevel": 3,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      },
+      {
+        "level": 2
+      },
+      {
+        "level": 3
+      }
+    ],
+    "description": "ボウガンに装填された弾、または弓に装填されたビンの４発目以降の会心率、４発目と６発目の攻撃力が上昇する。"
+  },
+  {
+    "id": "te-shu-she-ji-qiang-hua",
+    "name": "特殊射撃強化",
+    "maxLevel": 2,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      },
+      {
+        "level": 2
+      }
+    ],
+    "description": "ボウガンの特殊弾と弓の竜の一矢、竜の千々矢、導ノ矢の威力が上がる。"
+  },
+  {
+    "id": "du-binzhui-jia",
+    "name": "毒ビン追加",
+    "maxLevel": 1,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      }
+    ],
+    "description": "弓装備中、毒ビンの装填を可能にする。"
+  },
+  {
+    "id": "ma-bei-binzhui-jia",
+    "name": "麻痺ビン追加",
+    "maxLevel": 1,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      }
+    ],
+    "description": "弓装備中、麻痺ビンの装填を可能にする。"
+  },
+  {
+    "id": "shui-mian-binzhui-jia",
+    "name": "睡眠ビン追加",
+    "maxLevel": 1,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      }
+    ],
+    "description": "弓装備中、睡眠ビンの装填を可能にする。"
+  },
+  {
+    "id": "bao-po-binzhui-jia",
+    "name": "爆破ビン追加",
+    "maxLevel": 1,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      }
+    ],
+    "description": "弓装備中、爆破ビンの装填を可能にする。"
+  },
+  {
+    "id": "jian-qi-binzhui-jia",
+    "name": "減気ビン追加",
+    "maxLevel": 1,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      }
+    ],
+    "description": "弓装備中、減気ビンの装填を可能にする。"
+  },
+  {
+    "id": "ji-zhong",
+    "name": "集中",
+    "maxLevel": 3,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      },
+      {
+        "level": 2
+      },
+      {
+        "level": 3
+      }
+    ],
+    "description": "溜め攻撃の溜まる速度が速くなり、太刀、双剣、銃槍、剣斧、盾斧、弓、ボウガンのゲージが溜まりやすくなる。"
+  },
+  {
+    "id": "qiang-hua-chi-sok",
+    "name": "強化持続",
+    "maxLevel": 3,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      },
+      {
+        "level": 2
+      },
+      {
+        "level": 3
+      }
+    ],
+    "description": "太刀、双剣、剣斧、盾斧、操虫棍で発生する、強化状態の持続時間を長くする。"
+  },
+  {
     "id": "punishing-draw-power",
     "name": "抜刀術【力】",
     "maxLevel": 3,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1,
+        "attackBonus": 3.0
+      },
+      {
+        "level": 2,
+        "attackBonus": 5.0
+      },
+      {
+        "level": 3,
+        "attackBonus": 7.0
+      }
+    ],
+    "description": "武器出し攻撃に気絶を誘発する力が追加・強化され、攻撃力も少し上がる。（騎乗中は発動しません）",
+    "applicability": {
+      "requireTags": [
+        "draw"
+      ]
+    }
+  },
+  {
+    "id": "koshu",
+    "name": "ＫＯ術",
+    "maxLevel": 3,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      },
+      {
+        "level": 2
+      },
+      {
+        "level": 3
+      }
+    ],
+    "description": "モンスターを気絶状態にしやすくなる。"
+  },
+  {
+    "id": "sutaminaduo-qu",
+    "name": "スタミナ奪取",
+    "maxLevel": 3,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      },
+      {
+        "level": 2
+      },
+      {
+        "level": 3
+      }
+    ],
+    "description": "特定の攻撃が持つ、モンスターを疲れさせる効果が上がる。"
+  },
+  {
+    "id": "artillery",
+    "name": "砲術",
+    "maxLevel": 3,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      },
+      {
+        "level": 2
+      },
+      {
+        "level": 3
+      }
+    ],
+    "description": "ガンランスの砲撃、竜撃砲、盾斧のビン攻撃、徹甲榴弾など、爆発を伴う攻撃の威力が上昇する。",
+    "applicability": {
+      "requireDamageType": [
+        "shell-normal",
+        "shell-spread",
+        "shell-long"
+      ]
+    }
+  },
+  {
+    "id": "gao-su-bian-xing",
+    "name": "高速変形",
+    "maxLevel": 3,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      },
+      {
+        "level": 2
+      },
+      {
+        "level": 3
+      }
+    ],
+    "description": "スラッシュアックスとチャージアックスの変形アクションの速度と火力が上昇する。"
+  },
+  {
+    "id": "di-chui-kiming-ren",
+    "name": "笛吹き名人",
+    "maxLevel": 2,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      },
+      {
+        "level": 2
+      }
+    ],
+    "description": "狩猟笛の旋律効果の持続時間が長くなる。（武器変更をすると、このスキルの効果は失われます）"
+  },
+  {
+    "id": "liu-da-qiang-hua",
+    "name": "溜打強化",
+    "maxLevel": 1,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      }
+    ],
+    "description": "ハンマーの溜め攻撃がヒットした際気絶を誘発する力が強化され、ダメージが増加する。"
+  },
+  {
+    "id": "ranger",
+    "name": "飛燕",
+    "maxLevel": 1,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      }
+    ],
+    "description": "ジャンプ攻撃が強化される。",
+    "applicability": {
+      "requireTags": [
+        "jump",
+        "aerial"
+      ],
+      "matchAny": true
+    }
+  },
+  {
+    "id": "du-dameziqiang-hua",
+    "name": "毒ダメージ強化",
+    "maxLevel": 1,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      }
+    ],
+    "description": "モンスターに与える毒の効果時間を高める。"
+  },
+  {
+    "id": "gadoxing-neng",
+    "name": "ガード性能",
+    "maxLevel": 3,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      },
+      {
+        "level": 2
+      },
+      {
+        "level": 3
+      }
+    ],
+    "description": "ガード時にのけぞりにくくなり、消費スタミナも軽減される。"
+  },
+  {
+    "id": "gadoqiang-hua",
+    "name": "ガード強化",
+    "maxLevel": 3,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      },
+      {
+        "level": 2
+      },
+      {
+        "level": 3
+      }
+    ],
+    "description": "ガード時に受けるダメージを軽減し、通常はガードできない攻撃も、ガードできるようになる。"
+  },
+  {
+    "id": "pao-dan-zhuang-tian",
+    "name": "砲弾装填",
+    "maxLevel": 2,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      },
+      {
+        "level": 2
+      }
+    ],
+    "description": "砲弾の装填がスムーズになりガンランスの装填数が上昇、盾斧のビン装填数が増える。"
+  },
+  {
+    "id": "di-shi-shi-yong-gao-su-hua",
+    "name": "砥石使用高速化",
+    "maxLevel": 2,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      },
+      {
+        "level": 2
+      }
+    ],
+    "description": "砥石の使用時間が短くなる。"
+  },
+  {
+    "id": "ru-reren-wen",
+    "name": "濡れ刃紋",
+    "maxLevel": 3,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      },
+      {
+        "level": 2
+      },
+      {
+        "level": 3
+      }
+    ],
+    "description": "水に濡れた時、または泡状態の時、一定時間、会心率が上昇する。（それぞれの条件で重複して効果が発動）"
+  },
+  {
+    "id": "bai-chi-noben-liu",
+    "name": "白熾の奔流",
+    "maxLevel": 1,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      }
+    ],
+    "description": "攻撃を当てた時、確率で追加のダメージを与える。"
+  },
+  {
+    "id": "nai-xing-bian-huan-lei",
+    "name": "耐性変換【雷】",
+    "maxLevel": 1,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      }
+    ],
+    "description": "雷属性耐性の値が高いほど、武器の属性攻撃値が上昇する。"
+  },
+  {
+    "id": "ren-lin-yan-zhuang",
+    "name": "刃鱗研装",
+    "maxLevel": 1,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      }
+    ],
+    "description": "抜刀時、タイミングよくモンスターの攻撃を回避すると、特殊な斬れ味を得る。"
+  },
+  {
+    "id": "ren-lin-zeng-zhuang",
+    "name": "刃鱗増装",
+    "maxLevel": 1,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      }
+    ],
+    "description": "抜刀時、タイミングよくモンスターの攻撃を回避すると、特殊な装填された弾／ビンを得る。"
+  },
+  {
+    "id": "pawasuton",
+    "name": "パワーストーン",
+    "maxLevel": 1,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      }
+    ],
+    "description": "鉱石を入手すると、一定時間、攻撃力が上がる。"
+  },
+  {
+    "id": "shao-kipao-morokoshi",
+    "name": "焼き砲モロコシ",
+    "maxLevel": 1,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      }
+    ],
+    "description": "ガンランスの竜撃ゲージが赤く点滅している時、砲撃の威力と火属性攻撃値が上がる。"
+  },
+  {
+    "id": "yan-noliao-li-ren",
+    "name": "炎の料理人",
+    "maxLevel": 1,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      }
+    ],
+    "description": "肉を焼くと斬れ味が回復し、一定時間攻撃性能が上昇する。（結果によって効果時間、内容が変化）"
+  },
+  {
+    "id": "hui-bi-zhuang-tian",
+    "name": "回避装填",
+    "maxLevel": 1,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      }
+    ],
+    "description": "回避行動をした時、選択中の弾が自動で装填される。"
+  },
+  {
+    "id": "an-hei",
+    "name": "暗黒",
+    "maxLevel": 1,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      }
+    ],
+    "description": "一部の溜め斬りで、２段階以上に溜めて攻撃した時、ダメージを受ける。また、一定時間、攻撃力が上がる。"
+  },
+  {
+    "id": "shirudoopushiyon",
+    "name": "シールドオプション",
+    "maxLevel": 1,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      }
+    ],
+    "description": "ジャストガード成功時、一定時間、自分と一定範囲内の仲間の防御力が上がる"
+  },
+  {
+    "id": "lian-xi-puroguramu",
+    "name": "連携プログラム",
+    "maxLevel": 1,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      }
+    ],
+    "description": "飛天螺旋斬を使用した時、一定時間、自分と一定範囲内の仲間の会心率が上がる"
+  },
+  {
+    "id": "niyanniyanbou",
+    "name": "にゃんにゃんぼう",
+    "maxLevel": 1,
+    "category": "normal",
+    "effects": [],
+    "description": "攻撃で会心が発生した際に、低確率で様々なアイテムを入手できる"
+  },
+  {
+    "id": "ni-hen-mi",
+    "name": "逆恨み",
+    "maxLevel": 5,
     "category": "normal",
     "effects": [
       {
@@ -153,19 +1083,101 @@
       {
         "level": 3,
         "attackBonus": 15.0
+      },
+      {
+        "level": 4,
+        "attackBonus": 20.0
+      },
+      {
+        "level": 5,
+        "attackBonus": 25.0
       }
     ],
-    "description": "抜刀斬りの攻撃力+",
-    "applicability": {
-      "requireTags": [
-        "draw"
-      ]
-    }
+    "description": "体力ゲージに赤い部分がある間、攻撃力が上がる。"
   },
   {
-    "id": "ranger",
-    "name": "飛燕",
+    "id": "qiao-ji",
+    "name": "巧撃",
+    "maxLevel": 5,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1,
+        "attackBonus": 10.0
+      },
+      {
+        "level": 2,
+        "attackBonus": 15.0
+      },
+      {
+        "level": 3,
+        "attackBonus": 20.0
+      },
+      {
+        "level": 4,
+        "attackBonus": 25.0
+      },
+      {
+        "level": 5,
+        "attackBonus": 30.0
+      }
+    ],
+    "description": "回避時、タイミングよくモンスターの攻撃が重なると、一定時間攻撃力が上がる。"
+  },
+  {
+    "id": "peak-performance",
+    "name": "フルチャージ",
+    "maxLevel": 5,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1,
+        "attackBonus": 3.0
+      },
+      {
+        "level": 2,
+        "attackBonus": 6.0
+      },
+      {
+        "level": 3,
+        "attackBonus": 10.0
+      },
+      {
+        "level": 4,
+        "attackBonus": 15.0
+      },
+      {
+        "level": 5,
+        "attackBonus": 20.0
+      }
+    ],
+    "description": "体力が最大の時に攻撃力が上がる。"
+  },
+  {
+    "id": "resentment",
+    "name": "逆襲",
     "maxLevel": 3,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1,
+        "attackBonus": 10.0
+      },
+      {
+        "level": 2,
+        "attackBonus": 15.0
+      },
+      {
+        "level": 3,
+        "attackBonus": 25.0
+      }
+    ],
+    "description": "ふきとばされた後は、一定時間攻撃力が上がる。"
+  },
+  {
+    "id": "weakness-exploit",
+    "name": "弱点特効",
+    "maxLevel": 5,
     "category": "normal",
     "effects": [
       {
@@ -179,49 +1191,526 @@
       {
         "level": 3,
         "affinityBonus": 15.0
+      },
+      {
+        "level": 4,
+        "affinityBonus": 20.0
+      },
+      {
+        "level": 5,
+        "affinityBonus": 30.0
       }
     ],
-    "description": "ジャンプ攻撃の会心率+",
+    "description": "モンスターを攻撃した際、その部位に攻撃がかなり有効であれば、会心率が上がる。",
     "applicability": {
-      "requireTags": [
-        "jump",
-        "aerial"
-      ],
-      "matchAny": true
+      "requireHitzonePhysical": 45
     }
   },
   {
-    "id": "artillery",
-    "name": "砲術",
+    "id": "hun-shen",
+    "name": "渾身",
     "maxLevel": 3,
     "category": "normal",
     "effects": [
       {
         "level": 1,
-        "physicalMultiplier": 1.1
+        "affinityBonus": 10.0
       },
       {
         "level": 2,
-        "physicalMultiplier": 1.2
+        "affinityBonus": 20.0
       },
       {
         "level": 3,
-        "physicalMultiplier": 1.3
+        "affinityBonus": 30.0
       }
     ],
-    "description": "砲撃ダメージ強化",
-    "applicability": {
-      "requireDamageType": [
-        "shell-normal",
-        "shell-spread",
-        "shell-long"
-      ]
-    }
+    "description": "スタミナゲージが満タンの状態をしばらく維持していると、会心率が上がる。"
+  },
+  {
+    "id": "shu-xing-bian-huan",
+    "name": "属性変換",
+    "maxLevel": 3,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      },
+      {
+        "level": 2
+      },
+      {
+        "level": 3
+      }
+    ],
+    "description": "属性攻撃を受けると発動し、一定時間、龍属性に関する効果を得る。（効果終了の後、一定時間は発動しなくなります）"
+  },
+  {
+    "id": "fang-yu",
+    "name": "防御",
+    "maxLevel": 7,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      },
+      {
+        "level": 2
+      },
+      {
+        "level": 3
+      },
+      {
+        "level": 4
+      },
+      {
+        "level": 5
+      },
+      {
+        "level": 6
+      },
+      {
+        "level": 7
+      }
+    ],
+    "description": "プレイヤーの防御力を上げる。レベルが上がると耐性値にも影響がある。"
+  },
+  {
+    "id": "jing-ling-nojia-hu",
+    "name": "精霊の加護",
+    "maxLevel": 3,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      },
+      {
+        "level": 2
+      },
+      {
+        "level": 3
+      }
+    ],
+    "description": "プレイヤーが受けるダメージを一定確率で減少させる。"
+  },
+  {
+    "id": "huo-nai-xing",
+    "name": "火耐性",
+    "maxLevel": 3,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      },
+      {
+        "level": 2
+      },
+      {
+        "level": 3
+      }
+    ],
+    "description": "プレイヤーの火耐性を上げる。レベルが上がると防御力にも影響がある。"
+  },
+  {
+    "id": "shui-nai-xing",
+    "name": "水耐性",
+    "maxLevel": 3,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      },
+      {
+        "level": 2
+      },
+      {
+        "level": 3
+      }
+    ],
+    "description": "プレイヤーの水耐性を上げる。レベルが上がると防御力にも影響がある。"
+  },
+  {
+    "id": "lei-nai-xing",
+    "name": "雷耐性",
+    "maxLevel": 3,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      },
+      {
+        "level": 2
+      },
+      {
+        "level": 3
+      }
+    ],
+    "description": "プレイヤーの雷耐性を上げる。レベルが上がると防御力にも影響がある。"
+  },
+  {
+    "id": "bing-nai-xing",
+    "name": "氷耐性",
+    "maxLevel": 3,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      },
+      {
+        "level": 2
+      },
+      {
+        "level": 3
+      }
+    ],
+    "description": "プレイヤーの氷耐性を上げる。レベルが上がると防御力にも影響がある。"
+  },
+  {
+    "id": "long-nai-xing",
+    "name": "龍耐性",
+    "maxLevel": 3,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      },
+      {
+        "level": 2
+      },
+      {
+        "level": 3
+      }
+    ],
+    "description": "プレイヤーの龍耐性を上げる。レベルが上がると防御力にも影響がある。"
+  },
+  {
+    "id": "du-nai-xing",
+    "name": "毒耐性",
+    "maxLevel": 3,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      },
+      {
+        "level": 2
+      },
+      {
+        "level": 3
+      }
+    ],
+    "description": "毒状態の時に受けるダメージを減らす。"
+  },
+  {
+    "id": "ma-bei-nai-xing",
+    "name": "麻痺耐性",
+    "maxLevel": 3,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      },
+      {
+        "level": 2
+      },
+      {
+        "level": 3
+      }
+    ],
+    "description": "麻痺状態の時間を短くする。"
+  },
+  {
+    "id": "shui-mian-nai-xing",
+    "name": "睡眠耐性",
+    "maxLevel": 3,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      },
+      {
+        "level": 2
+      },
+      {
+        "level": 3
+      }
+    ],
+    "description": "睡眠状態の時間を短くする。"
+  },
+  {
+    "id": "fang-yu-li-downnai-xing",
+    "name": "防御力ＤＯＷＮ耐性",
+    "maxLevel": 3,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      },
+      {
+        "level": 2
+      },
+      {
+        "level": 3
+      }
+    ],
+    "description": "防御力DOWNに対する耐性を持つ。"
+  },
+  {
+    "id": "shu-xing-yararenai-xing",
+    "name": "属性やられ耐性",
+    "maxLevel": 3,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      },
+      {
+        "level": 2
+      },
+      {
+        "level": 3
+      }
+    ],
+    "description": "全ての属性やられ状態に対する耐性を得る。"
+  },
+  {
+    "id": "qi-jue-nai-xing",
+    "name": "気絶耐性",
+    "maxLevel": 3,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      },
+      {
+        "level": 2
+      },
+      {
+        "level": 3
+      }
+    ],
+    "description": "気絶状態の時間を短くする。"
+  },
+  {
+    "id": "lie-shang-nai-xing",
+    "name": "裂傷耐性",
+    "maxLevel": 3,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      },
+      {
+        "level": 2
+      },
+      {
+        "level": 3
+      }
+    ],
+    "description": "裂傷状態に対する耐性を持つ。"
+  },
+  {
+    "id": "ju-shu-nai-xing",
+    "name": "拘束耐性",
+    "maxLevel": 3,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      },
+      {
+        "level": 2
+      },
+      {
+        "level": 3
+      }
+    ],
+    "description": "糸拘束状態と凍結状態に対する耐性を得る。"
+  },
+  {
+    "id": "bao-po-yararenai-xing",
+    "name": "爆破やられ耐性",
+    "maxLevel": 3,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      },
+      {
+        "level": 2
+      },
+      {
+        "level": 3
+      }
+    ],
+    "description": "爆破やられに対する耐性を持つ。"
+  },
+  {
+    "id": "e-chou-nai-xing",
+    "name": "悪臭耐性",
+    "maxLevel": 2,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      },
+      {
+        "level": 2
+      }
+    ],
+    "description": "悪臭状態に対する耐性を持つ。"
+  },
+  {
+    "id": "huan-jing-shi-ying",
+    "name": "環境適応",
+    "maxLevel": 2,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      },
+      {
+        "level": 2
+      }
+    ],
+    "description": "暑さや寒さ、ダメージを受ける地形に対する耐性を得る。"
+  },
+  {
+    "id": "ti-li-hui-fu-liang-up",
+    "name": "体力回復量ＵＰ",
+    "maxLevel": 3,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      },
+      {
+        "level": 2
+      },
+      {
+        "level": 3
+      }
+    ],
+    "description": "体力回復がおこなわれたときに回復量が上がる。"
+  },
+  {
+    "id": "hui-fu-su-du",
+    "name": "回復速度",
+    "maxLevel": 3,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      },
+      {
+        "level": 2
+      },
+      {
+        "level": 3
+      }
+    ],
+    "description": "ダメージを受けた際の赤ゲージ部分の回復速度が上がる。"
+  },
+  {
+    "id": "huan-jing-li-yong-nozhi-shi",
+    "name": "環境利用の知識",
+    "maxLevel": 3,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      },
+      {
+        "level": 2
+      },
+      {
+        "level": 3
+      }
+    ],
+    "description": "任意発動できる環境利用時に、体力が追加で回復できるようになる。"
+  },
+  {
+    "id": "ti-shu",
+    "name": "体術",
+    "maxLevel": 5,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      },
+      {
+        "level": 2
+      },
+      {
+        "level": 3
+      },
+      {
+        "level": 4
+      },
+      {
+        "level": 5
+      }
+    ],
+    "description": "回避などの固定でスタミナを消費する行動のスタミナ消費量が軽減される。"
+  },
+  {
+    "id": "sutaminaji-su-hui-fu",
+    "name": "スタミナ急速回復",
+    "maxLevel": 3,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      },
+      {
+        "level": 2
+      },
+      {
+        "level": 3
+      }
+    ],
+    "description": "スタミナの回復速度が速くなる。"
+  },
+  {
+    "id": "ranna",
+    "name": "ランナー",
+    "maxLevel": 3,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      },
+      {
+        "level": 2
+      },
+      {
+        "level": 3
+      }
+    ],
+    "description": "ダッシュなどの徐々にスタミナを消費する行動のスタミナ消費量が減少する。"
+  },
+  {
+    "id": "fu-jian-rinai-xing",
+    "name": "腹減り耐性",
+    "maxLevel": 3,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      },
+      {
+        "level": 2
+      },
+      {
+        "level": 3
+      }
+    ],
+    "description": "時間経過による、スタミナゲージの最大値の減少を抑える。"
   },
   {
     "id": "agitator",
     "name": "挑戦者",
-    "maxLevel": 7,
+    "maxLevel": 5,
     "category": "normal",
     "effects": [
       {
@@ -247,124 +1736,172 @@
       {
         "level": 5,
         "attackBonus": 20.0,
-        "affinityBonus": 12.0
-      },
-      {
-        "level": 6,
-        "attackBonus": 24.0,
-        "affinityBonus": 15.0
-      },
-      {
-        "level": 7,
-        "attackBonus": 25.0,
         "affinityBonus": 15.0
       }
     ],
-    "description": "怒り時に攻撃力・会心率+（条件付き）"
+    "description": "戦闘中の大型モンスターが怒ると、攻撃力と会心率が上昇する。"
   },
   {
-    "id": "resentment",
-    "name": "逆襲",
+    "id": "li-nojie-fang",
+    "name": "力の解放",
     "maxLevel": 5,
     "category": "normal",
     "effects": [
       {
         "level": 1,
-        "attackBonus": 5.0
+        "affinityBonus": 10.0
       },
       {
         "level": 2,
-        "attackBonus": 10.0
+        "affinityBonus": 20.0
       },
       {
         "level": 3,
-        "attackBonus": 15.0
+        "affinityBonus": 30.0
       },
       {
         "level": 4,
-        "attackBonus": 20.0
+        "affinityBonus": 40.0
       },
       {
         "level": 5,
-        "attackBonus": 25.0
+        "affinityBonus": 50.0
       }
     ],
-    "description": "被弾後に攻撃力+（条件付き）"
+    "description": "特定の条件を満たすと、一定時間会心率が上昇し、スタミナを固定で消費する行動の消費量が軽減される。"
   },
   {
-    "id": "peak-performance",
-    "name": "フルチャージ",
-    "maxLevel": 3,
+    "id": "huo-shi-chang-li",
+    "name": "火事場力",
+    "maxLevel": 5,
     "category": "normal",
     "effects": [
       {
-        "level": 1,
-        "attackBonus": 5.0
+        "level": 1
       },
       {
-        "level": 2,
-        "attackBonus": 10.0
+        "level": 2
       },
       {
-        "level": 3,
-        "attackBonus": 20.0
+        "level": 3
+      },
+      {
+        "level": 4
+      },
+      {
+        "level": 5
       }
     ],
-    "description": "体力満タン時に攻撃力+（条件付き）"
+    "description": "体力が最大値の３５％以下の時に攻撃力と防御力が上がる。"
   },
   {
-    "id": "element-crit",
-    "name": "会心撃【属性】",
-    "maxLevel": 3,
+    "id": "lian-ji",
+    "name": "連撃",
+    "maxLevel": 5,
     "category": "normal",
     "effects": [
       {
-        "level": 1,
-        "elementMultiplier": 1.15
+        "level": 1
       },
       {
-        "level": 2,
-        "elementMultiplier": 1.25
+        "level": 2
       },
       {
-        "level": 3,
-        "elementMultiplier": 1.35
+        "level": 3
+      },
+      {
+        "level": 4
+      },
+      {
+        "level": 5
       }
     ],
-    "description": "会心時に属性ダメージ+"
+    "description": "攻撃を当て続けることで、段階的に攻撃力、属性値が上がる。（上昇効果は武器種ごとに異なる）"
   },
   {
-    "id": "water-attack",
-    "name": "水属性攻撃強化",
+    "id": "gong-shi",
+    "name": "攻勢",
     "maxLevel": 5,
     "category": "normal",
     "effects": [
       {
         "level": 1,
-        "elementMultiplier": 1.05
+        "attackBonus": 6.0
       },
       {
         "level": 2,
-        "elementMultiplier": 1.06
+        "attackBonus": 8.0,
+        "affinityBonus": 5.0
       },
       {
         "level": 3,
-        "elementMultiplier": 1.08
+        "attackBonus": 10.0,
+        "affinityBonus": 10.0
       },
       {
         "level": 4,
-        "elementMultiplier": 1.1
+        "attackBonus": 12.0,
+        "affinityBonus": 15.0
       },
       {
         "level": 5,
-        "elementMultiplier": 1.2
+        "attackBonus": 15.0,
+        "affinityBonus": 20.0
       }
     ],
-    "description": "水属性値+"
+    "description": "毒、麻痺状態の大型モンスターに対して攻撃力と会心率が上がる。"
   },
   {
-    "id": "razor-sharp",
-    "name": "業物",
+    "id": "suo-ren-ci-ji",
+    "name": "鎖刃刺撃",
+    "maxLevel": 5,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      },
+      {
+        "level": 2
+      },
+      {
+        "level": 3
+      },
+      {
+        "level": 4
+      },
+      {
+        "level": 5
+      }
+    ],
+    "description": "傷をつけやすくなる。攻撃でダメージを蓄積させると、追加で無属性ダメージが発生する。（一部特定の攻撃は対象外）"
+  },
+  {
+    "id": "otomohenocai-pei",
+    "name": "オトモへの采配",
+    "maxLevel": 5,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      },
+      {
+        "level": 2
+      },
+      {
+        "level": 3
+      },
+      {
+        "level": 4
+      },
+      {
+        "level": 5
+      }
+    ],
+    "description": "オトモの攻撃力と防御力が強化される。"
+  },
+  {
+    "id": "po-huai-wang",
+    "name": "破壊王",
     "maxLevel": 3,
     "category": "normal",
     "effects": [
@@ -378,6 +1915,531 @@
         "level": 3
       }
     ],
-    "description": "斬れ味の消費を抑える（DPS換算は別途）"
+    "description": "大型モンスターの部位を破壊しやすくなり、集中弱点攻撃で傷口を破壊した時のダメージが上昇する。"
+  },
+  {
+    "id": "zai-huo-zhuan-fu",
+    "name": "災禍転福",
+    "maxLevel": 3,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      },
+      {
+        "level": 2
+      },
+      {
+        "level": 3
+      }
+    ],
+    "description": "状態異常や属性やられを解除すると一定時間属性値、状態異常値が上がる。"
+  },
+  {
+    "id": "ji-xi",
+    "name": "急襲",
+    "maxLevel": 3,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      },
+      {
+        "level": 2
+      },
+      {
+        "level": 3
+      }
+    ],
+    "description": "大型モンスターへの奇襲攻撃が成功すると一定時間、攻撃が上昇する。"
+  },
+  {
+    "id": "wu-wo-nojing-di",
+    "name": "無我の境地",
+    "maxLevel": 3,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1,
+        "affinityBonus": 3.0
+      },
+      {
+        "level": 2,
+        "affinityBonus": 6.0
+      },
+      {
+        "level": 3,
+        "affinityBonus": 10.0
+      }
+    ],
+    "description": "狂竜ウイルスに感染した時、狂竜症を克服しやすくなり、克服状態の会心率が増加する。"
+  },
+  {
+    "id": "shu-xing-xi-shou",
+    "name": "属性吸収",
+    "maxLevel": 3,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      },
+      {
+        "level": 2
+      },
+      {
+        "level": 3
+      }
+    ],
+    "description": "属性攻撃を受けると発動し、一定時間、属性に関する効果を得る。（効果終了の後、一定時間は発動しなくなります）"
+  },
+  {
+    "id": "yan-zuan",
+    "name": "研鑽",
+    "maxLevel": 1,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      }
+    ],
+    "description": "クエスト時間の経過に応じて攻撃力と防御力が上昇する。（３０分経過時に上昇値が最大となる）"
+  },
+  {
+    "id": "hui-bi-xing-neng",
+    "name": "回避性能",
+    "maxLevel": 5,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      },
+      {
+        "level": 2
+      },
+      {
+        "level": 3
+      },
+      {
+        "level": 4
+      },
+      {
+        "level": 5
+      }
+    ],
+    "description": "回避時の無敵時間が長くなる。"
+  },
+  {
+    "id": "hui-bi-ju-li-up",
+    "name": "回避距離ＵＰ",
+    "maxLevel": 3,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      },
+      {
+        "level": 2
+      },
+      {
+        "level": 3
+      }
+    ],
+    "description": "回避時の移動距離が長くなる。"
+  },
+  {
+    "id": "er-shuan",
+    "name": "耳栓",
+    "maxLevel": 3,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      },
+      {
+        "level": 2
+      },
+      {
+        "level": 3
+      }
+    ],
+    "description": "大型モンスターの咆哮に対する耐性を持つ。"
+  },
+  {
+    "id": "na-dao-shu",
+    "name": "納刀術",
+    "maxLevel": 3,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      },
+      {
+        "level": 2
+      },
+      {
+        "level": 3
+      }
+    ],
+    "description": "武器をしまう速度が速くなる。"
+  },
+  {
+    "id": "feng-ya-nai-xing",
+    "name": "風圧耐性",
+    "maxLevel": 3,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      },
+      {
+        "level": 2
+      },
+      {
+        "level": 3
+      }
+    ],
+    "description": "風圧に対する耐性を持つ。"
+  },
+  {
+    "id": "nai-zhen",
+    "name": "耐震",
+    "maxLevel": 3,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      },
+      {
+        "level": 2
+      },
+      {
+        "level": 3
+      }
+    ],
+    "description": "地面振動に対する耐性を持つ。"
+  },
+  {
+    "id": "hirumiqing-jian",
+    "name": "ひるみ軽減",
+    "maxLevel": 3,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      },
+      {
+        "level": 2
+      },
+      {
+        "level": 3
+      }
+    ],
+    "description": "小ダメージ時のリアクションを軽減する。"
+  },
+  {
+    "id": "wei-xia",
+    "name": "威嚇",
+    "maxLevel": 3,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      },
+      {
+        "level": 2
+      },
+      {
+        "level": 3
+      }
+    ],
+    "description": "小型モンスターに発見されても戦闘になりにくくなる。（甲虫種など、一部のモンスターには効果がない）"
+  },
+  {
+    "id": "zao-shi-i",
+    "name": "早食い",
+    "maxLevel": 3,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      },
+      {
+        "level": 2
+      },
+      {
+        "level": 3
+      }
+    ],
+    "description": "肉やアイテムを食べる速度が速くなる。"
+  },
+  {
+    "id": "shui-chang-you-ni-shi-ying",
+    "name": "水場・油泥適応",
+    "maxLevel": 2,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      },
+      {
+        "level": 2
+      }
+    ],
+    "description": "水場や油泥での行動制限や、水の流れによる行動制限に対する耐性を持つ。"
+  },
+  {
+    "id": "huan-chong",
+    "name": "緩衝",
+    "maxLevel": 1,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      }
+    ],
+    "description": "同行する仲間に攻撃を当てた際、または仲間からの攻撃が当たった際それぞれのダメージリアクションを無効化する。"
+  },
+  {
+    "id": "fei-biip-mi",
+    "name": "飛び込み",
+    "maxLevel": 1,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      }
+    ],
+    "description": "大型モンスターに向かってジャンプ回避ができるようになる。また、飛距離も延びる。"
+  },
+  {
+    "id": "ziyanputie-ren",
+    "name": "ジャンプ鉄人",
+    "maxLevel": 1,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      }
+    ],
+    "description": "ジャンプ中に攻撃を受けても、のけぞらなくなる。"
+  },
+  {
+    "id": "kuraima",
+    "name": "クライマー",
+    "maxLevel": 1,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      }
+    ],
+    "description": "ツタにつかまり中の行動で消費するスタミナ量が減る。"
+  },
+  {
+    "id": "guang-yu-hua",
+    "name": "広域化",
+    "maxLevel": 5,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      },
+      {
+        "level": 2
+      },
+      {
+        "level": 3
+      },
+      {
+        "level": 4
+      },
+      {
+        "level": 5
+      }
+    ],
+    "description": "一部のアイテムの効果が一定範囲内の仲間にも作用する。レベルが上がると範囲と作用する効果が大きくなる。"
+  },
+  {
+    "id": "zheng-bei",
+    "name": "整備",
+    "maxLevel": 5,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      },
+      {
+        "level": 2
+      },
+      {
+        "level": 3
+      },
+      {
+        "level": 4
+      },
+      {
+        "level": 5
+      }
+    ],
+    "description": "特殊装具が再び使用時間になるまでの時間を短縮する。"
+  },
+  {
+    "id": "boma",
+    "name": "ボマー",
+    "maxLevel": 3,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      },
+      {
+        "level": 2
+      },
+      {
+        "level": 3
+      }
+    ],
+    "description": "爆弾系アイテムのダメージが上がる。"
+  },
+  {
+    "id": "kinokoda-hao-ki",
+    "name": "キノコ大好き",
+    "maxLevel": 3,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      },
+      {
+        "level": 2
+      },
+      {
+        "level": 3
+      }
+    ],
+    "description": "普段は食べられないキノコが食べられるようになり、有効な効果を得られるようになる。"
+  },
+  {
+    "id": "aitemushi-yong-qiang-hua",
+    "name": "アイテム使用強化",
+    "maxLevel": 3,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      },
+      {
+        "level": 2
+      },
+      {
+        "level": 3
+      }
+    ],
+    "description": "一部のアイテムの効果時間が長くなる。"
+  },
+  {
+    "id": "man-zu-gan",
+    "name": "満足感",
+    "maxLevel": 3,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      },
+      {
+        "level": 2
+      },
+      {
+        "level": 3
+      }
+    ],
+    "description": "食べたり飲んだりするアイテムが一定の確率で、もう一度使える。"
+  },
+  {
+    "id": "shan-guang-qiang-hua",
+    "name": "閃光強化",
+    "maxLevel": 1,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      }
+    ],
+    "description": "発生させた閃光が効きやすくなる。"
+  },
+  {
+    "id": "zhi-sheng-xue",
+    "name": "植生学",
+    "maxLevel": 4,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      },
+      {
+        "level": 2
+      },
+      {
+        "level": 3
+      },
+      {
+        "level": 4
+      }
+    ],
+    "description": "薬草など、消費アイテムの取得数が増える。"
+  },
+  {
+    "id": "di-zhi-xue",
+    "name": "地質学",
+    "maxLevel": 3,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      },
+      {
+        "level": 2
+      },
+      {
+        "level": 3
+      }
+    ],
+    "description": "採取ポイントでのアイテム取得数が増える。"
+  },
+  {
+    "id": "kun-chong-biao-ben-noda-ren",
+    "name": "昆虫標本の達人",
+    "maxLevel": 1,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      }
+    ],
+    "description": "昆虫型の小型モンスターを攻撃で討伐した時、必ずはぎ取れる状態で残るようになる。（一部は対象外）"
+  },
+  {
+    "id": "hantasheng-huo",
+    "name": "ハンター生活",
+    "maxLevel": 1,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      }
+    ],
+    "description": "釣り、肉焼き、運搬の技術が向上する。"
+  },
+  {
+    "id": "nigirimeshi",
+    "name": "にぎりめし",
+    "maxLevel": 1,
+    "category": "normal",
+    "effects": [
+      {
+        "level": 1
+      }
+    ],
+    "description": "豪鬼専用アクションの攻撃力と気絶を誘発する威力が上昇する。"
   }
 ]

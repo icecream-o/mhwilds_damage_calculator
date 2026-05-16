@@ -1,28 +1,369 @@
 [
   {
-    "id": "garuga-soul",
-    "name": "ガルルガの魂",
-    "maxLevel": 1,
+    "id": "pi-swu-noli",
+    "name": "闢獣の力",
+    "maxLevel": 4,
     "category": "series",
     "effects": [
       {
-        "level": 1,
-        "affinityBonus": 15.0
+        "level": 2,
+        "attackBonus": 10.0
+      },
+      {
+        "level": 4,
+        "attackBonus": 25.0
       }
     ],
-    "description": "ガルルガシリーズ3部位以上で発動"
+    "description": "2 → 鍔迫り合い、または相殺が成功した時、一定時間、基礎攻撃力＋１０4 → 鍔迫り合い、または相殺が成功した時、一定時間、基礎攻撃力＋２５"
   },
   {
-    "id": "gore-soul",
-    "name": "ゴア・マガラの魂",
-    "maxLevel": 1,
+    "id": "huo-long-noli",
+    "name": "火竜の力",
+    "maxLevel": 4,
     "category": "series",
     "effects": [
       {
-        "level": 1,
-        "attackBonus": 10.0
+        "level": 2
+      },
+      {
+        "level": 4
       }
     ],
-    "description": "ゴアマガラシリーズ3部位以上で発動"
+    "description": "2 → 攻撃を当てた時、確率で追加の火属性ダメージを与える4 → 追加で与える火属性ダメージが上昇する"
+  },
+  {
+    "id": "an-qi-shao-noli",
+    "name": "暗器蛸の力",
+    "maxLevel": 4,
+    "category": "series",
+    "effects": [
+      {
+        "level": 2,
+        "attackBonus": 15.0
+      },
+      {
+        "level": 4,
+        "attackBonus": 30.0
+      }
+    ],
+    "description": "2 → こんがり肉などのアイテムを食べた時、一定時間、基礎攻撃力＋１５4 → こんがり肉などのアイテムを食べた時、一定時間、基礎攻撃力＋３０"
+  },
+  {
+    "id": "kai-long-noshou-hu",
+    "name": "鎧竜の守護",
+    "maxLevel": 4,
+    "category": "series",
+    "effects": [
+      {
+        "level": 2
+      },
+      {
+        "level": 4
+      }
+    ],
+    "description": "2 → 体力が最大の時、受けるダメージを２０％軽減する4 → 体力が最大の時、受けるダメージを３５％軽減する"
+  },
+  {
+    "id": "xue-shi-zi-nodou-zhi",
+    "name": "雪獅子の闘志",
+    "maxLevel": 4,
+    "category": "series",
+    "effects": [
+      {
+        "level": 2
+      },
+      {
+        "level": 4
+      }
+    ],
+    "description": "2 → ジェスチャー「雄叫び」をした時、一定時間、周囲の攻撃力が少し上昇。オトモとサポートハンターには効果が大きい。4 → ジェスチャー「雄叫び」をした時、一定時間、周囲の攻撃力が上昇。オトモとサポートハンターには効果が大きい。"
+  },
+  {
+    "id": "xiong-zhua-long-noli",
+    "name": "兇爪竜の力",
+    "maxLevel": 4,
+    "category": "series",
+    "effects": [
+      {
+        "level": 2,
+        "attackBonus": 8.0
+      },
+      {
+        "level": 4,
+        "attackBonus": 18.0
+      }
+    ],
+    "description": "2 → 「連撃」スキルの効果発動時、有効時間を延長し、基礎攻撃力＋８4 → 「連撃」スキルの効果発動時、有効時間をさらに延長し、基礎攻撃力＋１８"
+  },
+  {
+    "id": "lei-e-long-nodou-zhi",
+    "name": "雷顎竜の闘志",
+    "maxLevel": 4,
+    "category": "series",
+    "effects": [
+      {
+        "level": 2
+      },
+      {
+        "level": 4
+      }
+    ],
+    "description": "2 → 追加のスタミナゲージを得る4 → 長い追加のスタミナゲージを得る"
+  },
+  {
+    "id": "bo-yi-long-noshou-hu",
+    "name": "波衣竜の守護",
+    "maxLevel": 4,
+    "category": "series",
+    "effects": [
+      {
+        "level": 2
+      },
+      {
+        "level": 4
+      }
+    ],
+    "description": "2 → 特殊装具を使用した時、一定時間防御力が上昇する4 → 特殊装具を使用した時、一定時間防御力と耐性値が大きく上昇する"
+  },
+  {
+    "id": "huang-lei-long-noli",
+    "name": "煌雷竜の力",
+    "maxLevel": 4,
+    "category": "series",
+    "effects": [
+      {
+        "level": 2
+      },
+      {
+        "level": 4
+      }
+    ],
+    "description": "2 → 「力の解放」のスキル発動時間を少し延長する4 → 「力の解放」のスキル発動時間を延長する"
+  },
+  {
+    "id": "yu-yan-shao-nofan-ni",
+    "name": "獄焔蛸の反逆",
+    "maxLevel": 4,
+    "category": "series",
+    "effects": [
+      {
+        "level": 2
+      },
+      {
+        "level": 4
+      }
+    ],
+    "description": "2 → 「逆恨み」スキル発動中、追加で少しダメージを与える4 → 「逆恨み」スキル発動中、追加でダメージを与える"
+  },
+  {
+    "id": "dong-feng-long-nofan-ni",
+    "name": "凍峰竜の反逆",
+    "maxLevel": 4,
+    "category": "series",
+    "effects": [
+      {
+        "level": 2
+      },
+      {
+        "level": 4
+      }
+    ],
+    "description": "2 → 糸拘束状態、凍結状態の回復時、または拘束攻撃から解放された時、鍔迫り合いの後、一定時間、攻撃力が上昇4 → 糸拘束状態、凍結状態の回復時、または拘束攻撃から解放された時、鍔迫り合いの後、一定時間、攻撃力が大きく上昇"
+  },
+  {
+    "id": "hei-shi-long-noli",
+    "name": "黒蝕竜の力",
+    "maxLevel": 4,
+    "category": "series",
+    "effects": [
+      {
+        "level": 2
+      },
+      {
+        "level": 4
+      }
+    ],
+    "description": "2 → 大型モンスターと対峙した時、狂竜症に感染する。4 → 大型モンスターと対峙した時、狂竜症に感染し、攻撃力が上昇する。克服時、さらに攻撃力が上昇する。"
+  },
+  {
+    "id": "suo-ren-long-noji-e",
+    "name": "鎖刃竜の飢餓",
+    "maxLevel": 4,
+    "category": "series",
+    "effects": [
+      {
+        "level": 2
+      },
+      {
+        "level": 4
+      }
+    ],
+    "description": "2 → 継続してモンスターに攻撃を当てると、体力が少し回復する（武器種により回復量は変動）4 → 継続してモンスターに攻撃を当てると、体力が回復する（武器種により回復量は変動）"
+  },
+  {
+    "id": "hu-suo-ren-long-noming-mo",
+    "name": "護鎖刃竜の命脈",
+    "maxLevel": 4,
+    "category": "series",
+    "effects": [
+      {
+        "level": 2
+      },
+      {
+        "level": 4
+      }
+    ],
+    "description": "2 → 大型モンスターの傷口を破壊した時、体力が少し回復する4 → 大型モンスターの傷口を破壊した時、体力が回復する"
+  },
+  {
+    "id": "pao-hu-long-noli",
+    "name": "泡狐竜の力",
+    "maxLevel": 4,
+    "category": "series",
+    "effects": [
+      {
+        "level": 2
+      },
+      {
+        "level": 4
+      }
+    ],
+    "description": "2 → 泡状態【大】にならなくなる。回避行動を複数回行うことで泡状態【小】になる。4 → Ⅰと同様の効果が発動する。泡状態の時に回避能力が強化される。"
+  },
+  {
+    "id": "bai-chi-long-nomo-dong",
+    "name": "白熾龍の脈動",
+    "maxLevel": 4,
+    "category": "series",
+    "effects": [
+      {
+        "level": 2
+      },
+      {
+        "level": 4
+      }
+    ],
+    "description": "2 → 体力に赤ゲージが無い状態でも、最大値までゆるやかに自動回復が継続する。4 → 体力に赤ゲージが無い状態でも最大値まで自動回復が継続する。"
+  },
+  {
+    "id": "hua-wu-noqi-ri",
+    "name": "花舞の祈り",
+    "maxLevel": 4,
+    "category": "series",
+    "effects": [
+      {
+        "level": 2
+      },
+      {
+        "level": 4
+      }
+    ],
+    "description": "2 → 花舞の儀の期間中、クエストの報酬に特別なアイテムが追加される（クエストの途中からは発動しない）4 → 花舞の儀の期間中、クエストの報酬に特別なアイテムが追加され、攻撃力と防御力が大きく上昇する"
+  },
+  {
+    "id": "hai-long-nowo-lei",
+    "name": "海竜の渦雷",
+    "maxLevel": 4,
+    "category": "series",
+    "effects": [
+      {
+        "level": 2
+      },
+      {
+        "level": 4
+      }
+    ],
+    "description": "2 → 攻撃でダメージを蓄積させると、追加で雷属性ダメージが発生し、一定時間、会心率ＵＰ（一部特定の攻撃は対象外）4 → Ⅰと同様の効果が発動する。追加の雷属性ダメージが上昇し、会心率ＵＰの効果時間が少し増える。"
+  },
+  {
+    "id": "qian-ren-long-nodou-zhi",
+    "name": "千刃竜の闘志",
+    "maxLevel": 4,
+    "category": "series",
+    "effects": [
+      {
+        "level": 2
+      },
+      {
+        "level": 4
+      }
+    ],
+    "description": "2 → 「巧撃」スキルの効果時間を延長する。また、発動中に再び条件を満たすと効果時間が少し増える。（１回のみ）4 → Ⅰと同様の効果が発動する。発動中に再び条件を満たしたとき、攻撃力が上昇する。"
+  },
+  {
+    "id": "yong-huo-noqi-ri",
+    "name": "踊火の祈り",
+    "maxLevel": 4,
+    "category": "series",
+    "effects": [
+      {
+        "level": 2
+      },
+      {
+        "level": 4
+      }
+    ],
+    "description": "2 → 踊火の儀の期間中、クエストの報酬に特別なアイテムが追加される（クエストの途中からは発動しない）4 → 踊火の儀の期間中、クエストの報酬に特別なアイテムが追加され、攻撃力と防御力が大きく上昇する"
+  },
+  {
+    "id": "meng-deng-noqi-ri",
+    "name": "夢灯の祈り",
+    "maxLevel": 4,
+    "category": "series",
+    "effects": [
+      {
+        "level": 2
+      },
+      {
+        "level": 4
+      }
+    ],
+    "description": "2 → 夢灯の儀の期間中、クエストの報酬に特別なアイテムが追加される（クエストの途中からは発動しない）4 → 夢灯の儀の期間中、クエストの報酬に特別なアイテムが追加され、攻撃力と防御力が大きく上昇する"
+  },
+  {
+    "id": "zhu-yao-noqi-ri",
+    "name": "祝謡の祈り",
+    "maxLevel": 1,
+    "category": "series",
+    "effects": [],
+    "description": "2 → 祝謡の儀の期間中、クエストの報酬に特別なアイテムが追加される（クエストの途中からは発動しない）4 → 祝謡の儀の期間中、クエストの報酬に特別なアイテムが追加され、攻撃力と防御力が大きく上昇する"
+  },
+  {
+    "id": "an-hei-qi-shi-nozheng",
+    "name": "暗黒騎士の証",
+    "maxLevel": 4,
+    "category": "series",
+    "effects": [
+      {
+        "level": 2
+      },
+      {
+        "level": 4
+      }
+    ],
+    "description": "2 → 体力ゲージに赤い部分がある間、属性攻撃力が上がる。大剣の一部の溜め斬りが、３段階まで溜めると強化される。4 → 特殊アクション「ブラックナイト」が使用可能になる。"
+  },
+  {
+    "id": "omegarezonansu",
+    "name": "オメガレゾナンス",
+    "maxLevel": 4,
+    "category": "series",
+    "effects": [
+      {
+        "level": 2
+      },
+      {
+        "level": 4
+      }
+    ],
+    "description": "2 → クエスト開始後、レゾナンス：ファーもしくはニアーが交互に発動し、条件を満たすと攻撃力、または会心率が上昇4 → レゾナンスⅠの効果と、武器スキル「シールドオプション」または「連携プログラム」の効果が上昇"
+  },
+  {
+    "id": "ju-ji-long-nomo-shi-lu",
+    "name": "巨戟龍の黙示録",
+    "maxLevel": 1,
+    "category": "series",
+    "effects": [],
+    "description": "2 → 戦闘中の大型モンスターが怒ると、属性攻撃値が上昇する。4 → Ⅰの効果が上昇し、一定時間、ダメージを防ぐ防壁を得る。（防壁を得る効果は一定時間経過しないと再発動しません）"
   }
 ]

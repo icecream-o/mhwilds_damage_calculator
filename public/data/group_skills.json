@@ -1,44 +1,206 @@
 [
   {
-    "id": "consecutive-hit",
-    "name": "連撃",
+    "id": "jia-chong-nozhi-rase",
+    "name": "甲虫の知らせ",
     "maxLevel": 3,
     "category": "group",
     "effects": [
       {
-        "level": 1,
-        "attackBonus": 4.0
-      },
-      {
-        "level": 2,
-        "attackBonus": 8.0
-      },
-      {
-        "level": 3,
-        "attackBonus": 12.0
+        "level": 3
       }
     ],
-    "description": "同部位に連続ヒットで攻撃力+"
+    "description": "3 → フィールドでハチミツを採取した時の取得数が増える"
   },
   {
-    "id": "elemental-mastery",
-    "name": "属性適応",
+    "id": "jia-chong-noni-tai",
+    "name": "甲虫の擬態",
     "maxLevel": 3,
     "category": "group",
     "effects": [
       {
-        "level": 1,
-        "elementMultiplier": 1.05
-      },
-      {
-        "level": 2,
-        "elementMultiplier": 1.08
-      },
-      {
-        "level": 3,
-        "elementMultiplier": 1.1
+        "level": 3
       }
     ],
-    "description": "属性値+"
+    "description": "3 → しゃがみ移動速度が上昇し、大型モンスターに見つかりにくくなる"
+  },
+  {
+    "id": "lin-zhang-rinoji-fa",
+    "name": "鱗張りの技法",
+    "maxLevel": 3,
+    "category": "group",
+    "effects": [
+      {
+        "level": 3
+      }
+    ],
+    "description": "3 → モンスターに乗りやすくなり、乗り状態で成功しやすくなる"
+  },
+  {
+    "id": "lin-zhong-nenogong-fu",
+    "name": "鱗重ねの工夫",
+    "maxLevel": 3,
+    "category": "group",
+    "effects": [
+      {
+        "level": 3
+      }
+    ],
+    "description": "3 → 体力が４０％以下になった時、一定時間スタミナの消費量が減少する"
+  },
+  {
+    "id": "ge-xi-gong-norou-xing",
+    "name": "革細工の柔性",
+    "maxLevel": 3,
+    "category": "group",
+    "effects": [
+      {
+        "level": 3
+      }
+    ],
+    "description": "3 → 採集行動の速度が速くなり、採集・剥ぎ取り中に攻撃を受けてものけぞらなくなる"
+  },
+  {
+    "id": "ge-xi-gong-nohua-xing",
+    "name": "革細工の滑性",
+    "maxLevel": 3,
+    "category": "group",
+    "effects": [
+      {
+        "level": 3
+      }
+    ],
+    "description": "3 → 地形を利用したスライディングを行うと、一定時間会心率が上がる"
+  },
+  {
+    "id": "mao-pi-noang-yang",
+    "name": "毛皮の昂揚",
+    "maxLevel": 3,
+    "category": "group",
+    "effects": [
+      {
+        "level": 3
+      }
+    ],
+    "description": "3 → クエスト中、力尽きる度に攻撃力と防御力が上がる（最大２回まで）"
+  },
+  {
+    "id": "mao-pi-noyou-huo",
+    "name": "毛皮の誘惑",
+    "maxLevel": 3,
+    "category": "group",
+    "effects": [
+      {
+        "level": 3
+      }
+    ],
+    "description": "3 → 攻撃を当てた時、モンスターの注意をより強く引くようになる"
+  },
+  {
+    "id": "nushinokua-ri",
+    "name": "ヌシの誇り",
+    "maxLevel": 3,
+    "category": "group",
+    "effects": [
+      {
+        "level": 3
+      }
+    ],
+    "description": "3 → 旋律効果など、一定範囲内の仲間に作用する効果を発動した際、一時攻撃力上昇効果を追加で付与する"
+  },
+  {
+    "id": "nushinofen-ji",
+    "name": "ヌシの憤激",
+    "maxLevel": 3,
+    "category": "group",
+    "effects": [
+      {
+        "level": 3
+      }
+    ],
+    "description": "3 → 状態異常中、攻撃力が上昇する"
+  },
+  {
+    "id": "hu-long-nomo-dong",
+    "name": "護竜の脈動",
+    "maxLevel": 3,
+    "category": "group",
+    "effects": [
+      {
+        "level": 3
+      }
+    ],
+    "description": "3 → 竜乳結晶の近くにいると、赤ゲージとスタミナの回復速度が上昇する。"
+  },
+  {
+    "id": "hu-long-noshou-ri",
+    "name": "護竜の守り",
+    "maxLevel": 3,
+    "category": "group",
+    "effects": [
+      {
+        "level": 3
+      }
+    ],
+    "description": "3 → 竜都の跡形にいると、属性ダメージや特殊ダメージが軽減される。"
+  },
+  {
+    "id": "xian-da-nodao-ki",
+    "name": "先達の導き",
+    "maxLevel": 3,
+    "category": "group",
+    "effects": [
+      {
+        "level": 3
+      }
+    ],
+    "description": "3 → 活性化している採取ポイントの発生確率が上がる"
+  },
+  {
+    "id": "nushinohun",
+    "name": "ヌシの魂",
+    "maxLevel": 3,
+    "category": "group",
+    "effects": [
+      {
+        "level": 3
+      }
+    ],
+    "description": "3 → 致命的な大ダメージを一度だけ軽減発動前は攻撃力が上がり防御力が下がる発動後は防御力と耐性値が上がる"
+  },
+  {
+    "id": "quan-woji-meshizhe",
+    "name": "拳を極めし者",
+    "maxLevel": 3,
+    "category": "group",
+    "effects": [
+      {
+        "level": 3
+      }
+    ],
+    "description": "3 → 特殊アクションの威力が強化される。ドライブインパクトで相殺が可能になり成功すると一定時間さらに強化される。"
+  },
+  {
+    "id": "zhu-ji-noxun-ri",
+    "name": "祝祭の巡り",
+    "maxLevel": 3,
+    "category": "group",
+    "effects": [
+      {
+        "level": 3
+      }
+    ],
+    "description": "3 → クエスト中、素材を剥ぎ取れる回数＋１（クエストの途中からは発動しない）"
+  },
+  {
+    "id": "rong-guang-noyu-re",
+    "name": "栄光の誉れ",
+    "maxLevel": 3,
+    "category": "group",
+    "effects": [
+      {
+        "level": 3
+      }
+    ],
+    "description": "3 → クエストのターゲット報酬が増える（クエストの途中からは発動しない）"
   }
 ]

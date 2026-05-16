@@ -1,6 +1,1083 @@
 [
   {
-    "id": "gore-magala",
+    "id": "rioreia",
+    "name": "リオレイア",
+    "baseDefenseRate": 1.0,
+    "variants": [
+      {
+        "id": "normal",
+        "name": "通常",
+        "defenseRateMod": 1.0
+      }
+    ],
+    "parts": [
+      {
+        "id": "part-1",
+        "name": "頭",
+        "physical": 70,
+        "element": {
+          "水": 15,
+          "雷": 20,
+          "氷": 15,
+          "龍": 30
+        },
+        "woundedPhysicalBonus": 10
+      },
+      {
+        "id": "part-2",
+        "name": "胴",
+        "physical": 35,
+        "element": {
+          "水": 5,
+          "雷": 10,
+          "氷": 5,
+          "龍": 20
+        },
+        "woundedPhysicalBonus": 15
+      },
+      {
+        "id": "part-3",
+        "name": "左脚",
+        "physical": 40,
+        "element": {
+          "雷": 5,
+          "龍": 15
+        },
+        "woundedPhysicalBonus": 10
+      },
+      {
+        "id": "part-4",
+        "name": "右脚",
+        "physical": 40,
+        "element": {
+          "雷": 5,
+          "龍": 15
+        },
+        "woundedPhysicalBonus": 10
+      },
+      {
+        "id": "part-5",
+        "name": "尻尾",
+        "physical": 45,
+        "element": {
+          "水": 5,
+          "雷": 10,
+          "氷": 5,
+          "龍": 20
+        },
+        "woundedPhysicalBonus": 5
+      },
+      {
+        "id": "part-6",
+        "name": "左翼",
+        "physical": 55,
+        "element": {
+          "水": 10,
+          "雷": 15,
+          "氷": 10,
+          "龍": 25
+        },
+        "woundedPhysicalBonus": 5
+      },
+      {
+        "id": "part-7",
+        "name": "右翼",
+        "physical": 55,
+        "element": {
+          "水": 10,
+          "雷": 15,
+          "氷": 10,
+          "龍": 25
+        },
+        "woundedPhysicalBonus": 5
+      }
+    ]
+  },
+  {
+    "id": "rioreusu",
+    "name": "リオレウス",
+    "baseDefenseRate": 1.0,
+    "variants": [
+      {
+        "id": "normal",
+        "name": "通常",
+        "defenseRateMod": 1.0
+      }
+    ],
+    "parts": [
+      {
+        "id": "part-1",
+        "name": "頭",
+        "physical": 65,
+        "element": {
+          "水": 15,
+          "雷": 20,
+          "氷": 15,
+          "龍": 30
+        },
+        "woundedPhysicalBonus": 5
+      },
+      {
+        "id": "part-2",
+        "name": "首",
+        "physical": 35,
+        "element": {
+          "水": 5,
+          "雷": 10,
+          "氷": 5,
+          "龍": 20
+        },
+        "woundedPhysicalBonus": 25
+      },
+      {
+        "id": "part-3",
+        "name": "胴",
+        "physical": 25,
+        "element": {
+          "水": 5,
+          "雷": 10,
+          "氷": 5,
+          "龍": 20
+        },
+        "woundedPhysicalBonus": 35
+      },
+      {
+        "id": "part-4",
+        "name": "左翼",
+        "physical": 55,
+        "element": {
+          "水": 10,
+          "雷": 15,
+          "氷": 10,
+          "龍": 25
+        },
+        "woundedPhysicalBonus": 5
+      },
+      {
+        "id": "part-5",
+        "name": "右翼",
+        "physical": 55,
+        "element": {
+          "水": 10,
+          "雷": 15,
+          "氷": 10,
+          "龍": 25
+        },
+        "woundedPhysicalBonus": 5
+      },
+      {
+        "id": "part-6",
+        "name": "左脚",
+        "physical": 45,
+        "element": {
+          "雷": 5,
+          "龍": 15
+        },
+        "woundedPhysicalBonus": 15
+      },
+      {
+        "id": "part-7",
+        "name": "右脚",
+        "physical": 45,
+        "element": {
+          "雷": 5,
+          "龍": 15
+        },
+        "woundedPhysicalBonus": 15
+      },
+      {
+        "id": "part-8",
+        "name": "尻尾",
+        "physical": 45,
+        "element": {
+          "水": 5,
+          "雷": 10,
+          "氷": 5,
+          "龍": 20
+        },
+        "woundedPhysicalBonus": 15
+      }
+    ]
+  },
+  {
+    "id": "hu-long-rioreusu",
+    "name": "護竜リオレウス",
+    "baseDefenseRate": 1.0,
+    "variants": [
+      {
+        "id": "normal",
+        "name": "通常",
+        "defenseRateMod": 1.0
+      }
+    ],
+    "parts": [
+      {
+        "id": "part-1",
+        "name": "頭",
+        "physical": 65,
+        "element": {
+          "水": 10,
+          "雷": 15,
+          "氷": 10,
+          "龍": 25
+        }
+      },
+      {
+        "id": "part-2",
+        "name": "首",
+        "physical": 35,
+        "element": {
+          "水": 5,
+          "雷": 10,
+          "氷": 5,
+          "龍": 20
+        },
+        "woundedPhysicalBonus": 30
+      },
+      {
+        "id": "part-3",
+        "name": "胴",
+        "physical": 25,
+        "element": {
+          "水": 5,
+          "雷": 10,
+          "氷": 5,
+          "龍": 20
+        },
+        "woundedPhysicalBonus": 40
+      },
+      {
+        "id": "part-4",
+        "name": "左翼",
+        "physical": 40,
+        "element": {
+          "水": 10,
+          "雷": 15,
+          "氷": 10,
+          "龍": 25
+        },
+        "woundedPhysicalBonus": 25
+      },
+      {
+        "id": "part-5",
+        "name": "右翼",
+        "physical": 40,
+        "element": {
+          "水": 10,
+          "雷": 15,
+          "氷": 10,
+          "龍": 25
+        },
+        "woundedPhysicalBonus": 25
+      },
+      {
+        "id": "part-6",
+        "name": "左脚",
+        "physical": 60,
+        "element": {
+          "水": 15,
+          "雷": 20,
+          "氷": 15,
+          "龍": 30
+        },
+        "woundedPhysicalBonus": 5
+      },
+      {
+        "id": "part-7",
+        "name": "右脚",
+        "physical": 60,
+        "element": {
+          "水": 15,
+          "雷": 20,
+          "氷": 15,
+          "龍": 30
+        },
+        "woundedPhysicalBonus": 5
+      },
+      {
+        "id": "part-8",
+        "name": "尻尾",
+        "physical": 35,
+        "element": {
+          "雷": 5,
+          "龍": 15
+        },
+        "woundedPhysicalBonus": 30
+      }
+    ]
+  },
+  {
+    "id": "gurabimosu",
+    "name": "グラビモス",
+    "baseDefenseRate": 1.0,
+    "variants": [
+      {
+        "id": "normal",
+        "name": "通常",
+        "defenseRateMod": 1.0
+      }
+    ],
+    "parts": [
+      {
+        "id": "part-1",
+        "name": "頭",
+        "physical": 25,
+        "element": {
+          "水": 15,
+          "雷": 5,
+          "氷": 5,
+          "龍": 30
+        },
+        "woundedPhysicalBonus": 55
+      },
+      {
+        "id": "part-2",
+        "name": "首",
+        "physical": 25,
+        "element": {
+          "水": 30,
+          "雷": 5,
+          "氷": 10,
+          "龍": 20
+        },
+        "woundedPhysicalBonus": 45
+      },
+      {
+        "id": "part-3",
+        "name": "腹部",
+        "physical": 70,
+        "element": {
+          "火": 15,
+          "水": 45,
+          "雷": 5,
+          "氷": 15,
+          "龍": 40
+        }
+      },
+      {
+        "id": "part-4",
+        "name": "背中",
+        "physical": 45,
+        "element": {
+          "火": 5,
+          "水": 35,
+          "雷": 5,
+          "氷": 10,
+          "龍": 15
+        },
+        "woundedPhysicalBonus": 25
+      },
+      {
+        "id": "part-5",
+        "name": "尻尾",
+        "physical": 25,
+        "element": {
+          "水": 30,
+          "雷": 5,
+          "氷": 10,
+          "龍": 20
+        },
+        "woundedPhysicalBonus": 45
+      },
+      {
+        "id": "part-6",
+        "name": "左脚",
+        "physical": 30,
+        "element": {
+          "水": 30,
+          "雷": 5,
+          "氷": 5,
+          "龍": 10
+        },
+        "woundedPhysicalBonus": 40
+      },
+      {
+        "id": "part-7",
+        "name": "右脚",
+        "physical": 30,
+        "element": {
+          "水": 30,
+          "雷": 5,
+          "氷": 5,
+          "龍": 10
+        },
+        "woundedPhysicalBonus": 40
+      },
+      {
+        "id": "part-8",
+        "name": "左翼",
+        "physical": 35,
+        "element": {
+          "水": 20,
+          "雷": 5,
+          "氷": 5,
+          "龍": 15
+        },
+        "woundedPhysicalBonus": 35
+      },
+      {
+        "id": "part-9",
+        "name": "右翼",
+        "physical": 35,
+        "element": {
+          "水": 20,
+          "雷": 5,
+          "氷": 5,
+          "龍": 15
+        },
+        "woundedPhysicalBonus": 35
+      }
+    ]
+  },
+  {
+    "id": "iyankutsuku",
+    "name": "イャンクック",
+    "baseDefenseRate": 1.0,
+    "variants": [
+      {
+        "id": "normal",
+        "name": "通常",
+        "defenseRateMod": 1.0
+      }
+    ],
+    "parts": [
+      {
+        "id": "part-1",
+        "name": "頭",
+        "physical": 70,
+        "element": {
+          "火": 10,
+          "水": 15,
+          "雷": 20,
+          "氷": 30
+        }
+      },
+      {
+        "id": "part-2",
+        "name": "首",
+        "physical": 42,
+        "element": {
+          "火": 10,
+          "水": 25,
+          "雷": 30,
+          "氷": 40,
+          "龍": 20
+        }
+      },
+      {
+        "id": "part-3",
+        "name": "胴",
+        "physical": 66,
+        "element": {
+          "火": 5,
+          "水": 15,
+          "雷": 15,
+          "氷": 20
+        },
+        "woundedPhysicalBonus": 10
+      },
+      {
+        "id": "part-4",
+        "name": "尻尾",
+        "physical": 60,
+        "element": {
+          "火": 5,
+          "水": 15,
+          "雷": 15,
+          "氷": 20
+        },
+        "woundedPhysicalBonus": 16
+      },
+      {
+        "id": "part-5",
+        "name": "右脚",
+        "physical": 28,
+        "element": {
+          "火": 5,
+          "水": 5,
+          "雷": 5,
+          "氷": 5
+        },
+        "woundedPhysicalBonus": 48
+      },
+      {
+        "id": "part-6",
+        "name": "左脚",
+        "physical": 28,
+        "element": {
+          "火": 5,
+          "水": 5,
+          "雷": 5,
+          "氷": 5
+        },
+        "woundedPhysicalBonus": 48
+      },
+      {
+        "id": "part-7",
+        "name": "右翼",
+        "physical": 80,
+        "element": {
+          "火": 5,
+          "水": 10,
+          "雷": 25,
+          "氷": 15
+        },
+        "woundedPhysicalBonus": 10
+      },
+      {
+        "id": "part-8",
+        "name": "左翼",
+        "physical": 80,
+        "element": {
+          "火": 5,
+          "水": 10,
+          "雷": 25,
+          "氷": 15
+        },
+        "woundedPhysicalBonus": 10
+      }
+    ]
+  },
+  {
+    "id": "geriyosu",
+    "name": "ゲリョス",
+    "baseDefenseRate": 1.0,
+    "variants": [
+      {
+        "id": "normal",
+        "name": "通常",
+        "defenseRateMod": 1.0
+      }
+    ],
+    "parts": [
+      {
+        "id": "part-1",
+        "name": "頭",
+        "physical": 70,
+        "element": {
+          "火": 30,
+          "水": 10,
+          "氷": 20,
+          "龍": 10
+        }
+      },
+      {
+        "id": "part-2",
+        "name": "首",
+        "physical": 50,
+        "element": {
+          "火": 20,
+          "水": 5,
+          "氷": 10,
+          "龍": 10
+        }
+      },
+      {
+        "id": "part-3",
+        "name": "胴",
+        "physical": 45,
+        "element": {
+          "火": 20,
+          "水": 5,
+          "氷": 10,
+          "龍": 10
+        },
+        "woundedPhysicalBonus": 10
+      },
+      {
+        "id": "part-4",
+        "name": "左脚",
+        "physical": 25,
+        "element": {
+          "火": 10,
+          "水": 5,
+          "氷": 10,
+          "龍": 10
+        },
+        "woundedPhysicalBonus": 30
+      },
+      {
+        "id": "part-5",
+        "name": "右脚",
+        "physical": 25,
+        "element": {
+          "火": 10,
+          "水": 5,
+          "氷": 10,
+          "龍": 10
+        },
+        "woundedPhysicalBonus": 30
+      },
+      {
+        "id": "part-6",
+        "name": "尻尾",
+        "physical": 70,
+        "element": {
+          "火": 20,
+          "水": 5,
+          "氷": 10,
+          "龍": 10
+        },
+        "woundedPhysicalBonus": 10
+      },
+      {
+        "id": "part-7",
+        "name": "左翼",
+        "physical": 42,
+        "element": {
+          "火": 20,
+          "水": 10,
+          "氷": 20,
+          "龍": 10
+        },
+        "woundedPhysicalBonus": 13
+      },
+      {
+        "id": "part-8",
+        "name": "右翼",
+        "physical": 42,
+        "element": {
+          "火": 20,
+          "水": 10,
+          "氷": 20,
+          "龍": 10
+        },
+        "woundedPhysicalBonus": 13
+      }
+    ]
+  },
+  {
+    "id": "babakonga",
+    "name": "ババコンガ",
+    "baseDefenseRate": 1.0,
+    "variants": [
+      {
+        "id": "normal",
+        "name": "通常",
+        "defenseRateMod": 1.0
+      }
+    ],
+    "parts": [
+      {
+        "id": "part-1",
+        "name": "頭",
+        "physical": 65,
+        "element": {
+          "火": 25,
+          "水": 10,
+          "雷": 10,
+          "氷": 15,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 10
+      },
+      {
+        "id": "part-2",
+        "name": "胴",
+        "physical": 80,
+        "element": {
+          "火": 25,
+          "水": 10,
+          "雷": 10,
+          "氷": 15,
+          "龍": 5
+        }
+      },
+      {
+        "id": "part-3",
+        "name": "左前脚",
+        "physical": 45,
+        "element": {
+          "火": 15,
+          "水": 10,
+          "雷": 10,
+          "氷": 15,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 10
+      },
+      {
+        "id": "part-4",
+        "name": "右前脚",
+        "physical": 45,
+        "element": {
+          "火": 15,
+          "水": 10,
+          "雷": 10,
+          "氷": 15,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 10
+      },
+      {
+        "id": "part-5",
+        "name": "左後脚",
+        "physical": 35,
+        "element": {
+          "火": 15,
+          "水": 10,
+          "雷": 10,
+          "氷": 15,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 20
+      },
+      {
+        "id": "part-6",
+        "name": "右後脚",
+        "physical": 35,
+        "element": {
+          "火": 15,
+          "水": 10,
+          "雷": 10,
+          "氷": 15,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 20
+      },
+      {
+        "id": "part-7",
+        "name": "尻尾",
+        "physical": 45,
+        "element": {
+          "火": 15,
+          "水": 10,
+          "雷": 10,
+          "氷": 15,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 10
+      }
+    ]
+  },
+  {
+    "id": "dodoburango",
+    "name": "ドドブランゴ",
+    "baseDefenseRate": 1.0,
+    "variants": [
+      {
+        "id": "normal",
+        "name": "通常",
+        "defenseRateMod": 1.0
+      }
+    ],
+    "parts": [
+      {
+        "id": "part-1",
+        "name": "頭",
+        "physical": 70,
+        "element": {
+          "火": 30,
+          "水": 5,
+          "雷": 15
+        },
+        "woundedPhysicalBonus": 5
+      },
+      {
+        "id": "part-2",
+        "name": "胴",
+        "physical": 80,
+        "element": {
+          "火": 30,
+          "水": 5,
+          "雷": 15
+        }
+      },
+      {
+        "id": "part-3",
+        "name": "左前脚",
+        "physical": 45,
+        "element": {
+          "火": 15,
+          "水": 5,
+          "雷": 15
+        },
+        "woundedPhysicalBonus": 15
+      },
+      {
+        "id": "part-4",
+        "name": "右前脚",
+        "physical": 45,
+        "element": {
+          "火": 15,
+          "水": 5,
+          "雷": 15
+        },
+        "woundedPhysicalBonus": 15
+      },
+      {
+        "id": "part-5",
+        "name": "左後脚",
+        "physical": 45,
+        "element": {
+          "火": 15,
+          "水": 5,
+          "雷": 15
+        },
+        "woundedPhysicalBonus": 15
+      },
+      {
+        "id": "part-6",
+        "name": "右後脚",
+        "physical": 45,
+        "element": {
+          "火": 15,
+          "水": 5,
+          "雷": 15
+        },
+        "woundedPhysicalBonus": 15
+      },
+      {
+        "id": "part-7",
+        "name": "尻尾",
+        "physical": 50,
+        "element": {
+          "火": 15,
+          "水": 5,
+          "雷": 15
+        },
+        "woundedPhysicalBonus": 10
+      }
+    ]
+  },
+  {
+    "id": "ragiakurusu",
+    "name": "ラギアクルス",
+    "baseDefenseRate": 1.0,
+    "variants": [
+      {
+        "id": "normal",
+        "name": "通常",
+        "defenseRateMod": 1.0
+      }
+    ],
+    "parts": [
+      {
+        "id": "part-1",
+        "name": "頭",
+        "physical": 45,
+        "element": {
+          "火": 15,
+          "氷": 10,
+          "龍": 10
+        },
+        "woundedPhysicalBonus": 25
+      },
+      {
+        "id": "part-2",
+        "name": "首",
+        "physical": 24,
+        "element": {
+          "火": 10,
+          "氷": 5,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 36
+      },
+      {
+        "id": "part-3",
+        "name": "胸",
+        "physical": 55,
+        "element": {
+          "火": 10,
+          "氷": 10,
+          "龍": 10
+        },
+        "woundedPhysicalBonus": 5
+      },
+      {
+        "id": "part-4",
+        "name": "背中",
+        "physical": 70,
+        "element": {
+          "火": 25,
+          "氷": 15,
+          "龍": 15
+        }
+      },
+      {
+        "id": "part-5",
+        "name": "胴",
+        "physical": 25,
+        "element": {
+          "火": 5,
+          "氷": 5,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 35
+      },
+      {
+        "id": "part-6",
+        "name": "前脚",
+        "physical": 25,
+        "element": {
+          "火": 10,
+          "氷": 5,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 35
+      },
+      {
+        "id": "part-7",
+        "name": "後脚",
+        "physical": 38,
+        "element": {
+          "火": 10,
+          "氷": 5,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 22
+      },
+      {
+        "id": "part-8",
+        "name": "尻尾",
+        "physical": 30,
+        "element": {
+          "火": 20,
+          "氷": 10,
+          "龍": 10
+        },
+        "woundedPhysicalBonus": 30
+      }
+    ]
+  },
+  {
+    "id": "nerusukiyura",
+    "name": "ネルスキュラ",
+    "baseDefenseRate": 1.0,
+    "variants": [
+      {
+        "id": "normal",
+        "name": "通常",
+        "defenseRateMod": 1.0
+      }
+    ],
+    "parts": [
+      {
+        "id": "part-1",
+        "name": "頭",
+        "physical": 50,
+        "element": {
+          "火": 5,
+          "雷": 10,
+          "氷": 5
+        },
+        "woundedPhysicalBonus": 25
+      },
+      {
+        "id": "part-2",
+        "name": "胴",
+        "physical": 36,
+        "element": {
+          "火": 5,
+          "雷": 25,
+          "氷": 5
+        },
+        "woundedPhysicalBonus": 19
+      },
+      {
+        "id": "part-3",
+        "name": "腹部",
+        "physical": 45,
+        "element": {
+          "火": 5,
+          "雷": 20,
+          "氷": 5
+        },
+        "woundedPhysicalBonus": 10
+      },
+      {
+        "id": "part-4",
+        "name": "左爪",
+        "physical": 30,
+        "element": {
+          "火": 5,
+          "雷": 10,
+          "氷": 5
+        },
+        "woundedPhysicalBonus": 25
+      },
+      {
+        "id": "part-5",
+        "name": "右爪",
+        "physical": 30,
+        "element": {
+          "火": 5,
+          "雷": 10,
+          "氷": 5
+        },
+        "woundedPhysicalBonus": 25
+      },
+      {
+        "id": "part-6",
+        "name": "左前脚",
+        "physical": 35,
+        "element": {
+          "火": 5,
+          "雷": 10,
+          "氷": 5
+        },
+        "woundedPhysicalBonus": 20
+      },
+      {
+        "id": "part-7",
+        "name": "右前脚",
+        "physical": 35,
+        "element": {
+          "火": 5,
+          "雷": 10,
+          "氷": 5
+        },
+        "woundedPhysicalBonus": 20
+      },
+      {
+        "id": "part-8",
+        "name": "外套膜",
+        "physical": 45,
+        "element": {
+          "火": 5,
+          "雷": 10,
+          "氷": 5
+        },
+        "woundedPhysicalBonus": 10
+      },
+      {
+        "id": "part-9",
+        "name": "左後脚",
+        "physical": 45,
+        "element": {
+          "火": 5,
+          "雷": 10,
+          "氷": 5
+        },
+        "woundedPhysicalBonus": 10
+      },
+      {
+        "id": "part-10",
+        "name": "右後脚",
+        "physical": 45,
+        "element": {
+          "火": 5,
+          "雷": 10,
+          "氷": 5
+        },
+        "woundedPhysicalBonus": 10
+      },
+      {
+        "id": "part-11",
+        "name": "毒トゲ",
+        "physical": 30,
+        "element": {
+          "火": 5,
+          "雷": 35,
+          "氷": 5
+        },
+        "woundedPhysicalBonus": 25
+      }
+    ]
+  },
+  {
+    "id": "goamagara",
     "name": "ゴア・マガラ",
     "baseDefenseRate": 1.0,
     "variants": [
@@ -8,61 +1085,3747 @@
         "id": "normal",
         "name": "通常",
         "defenseRateMod": 1.0
-      },
-      {
-        "id": "veteran",
-        "name": "歴戦",
-        "defenseRateMod": 0.95
-      },
-      {
-        "id": "apex",
-        "name": "護竜",
-        "defenseRateMod": 0.85
       }
     ],
     "parts": [
       {
-        "id": "head",
-        "name": "頭部",
-        "physical": 85,
+        "id": "part-1",
+        "name": "頭",
+        "physical": 75,
         "element": {
-          "火": 5,
-          "水": 35,
-          "雷": 15
+          "火": 15,
+          "雷": 15,
+          "氷": 5,
+          "龍": 15
+        }
+      },
+      {
+        "id": "part-2",
+        "name": "触角",
+        "physical": 75,
+        "element": {
+          "火": 20,
+          "雷": 10,
+          "氷": 5,
+          "龍": 25
         },
-        "woundedPhysicalBonus": 10,
-        "enragedPhysical": 90,
-        "enragedElement": {
-          "火": 5,
-          "水": 40,
-          "雷": 20
-        }
+        "woundedPhysicalBonus": 5
       },
       {
-        "id": "body",
-        "name": "胴体",
-        "physical": 50,
+        "id": "part-3",
+        "name": "右翼脚",
+        "physical": 60,
         "element": {
-          "火": 5,
-          "水": 20,
-          "雷": 10
-        }
+          "火": 20,
+          "雷": 15,
+          "氷": 5,
+          "龍": 10
+        },
+        "woundedPhysicalBonus": 5
       },
       {
-        "id": "wings",
-        "name": "翼",
+        "id": "part-4",
+        "name": "左翼脚",
+        "physical": 60,
+        "element": {
+          "火": 20,
+          "雷": 15,
+          "氷": 5,
+          "龍": 10
+        },
+        "woundedPhysicalBonus": 5
+      },
+      {
+        "id": "part-5",
+        "name": "右前脚",
+        "physical": 42,
+        "element": {
+          "火": 10,
+          "雷": 5,
+          "氷": 5,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 23
+      },
+      {
+        "id": "part-6",
+        "name": "左前脚",
+        "physical": 42,
+        "element": {
+          "火": 10,
+          "雷": 5,
+          "氷": 5,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 23
+      },
+      {
+        "id": "part-7",
+        "name": "尻尾",
+        "physical": 38,
+        "element": {
+          "火": 10,
+          "雷": 10,
+          "氷": 5,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 27
+      },
+      {
+        "id": "part-8",
+        "name": "右後脚",
+        "physical": 38,
+        "element": {
+          "火": 10,
+          "雷": 5,
+          "氷": 5,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 27
+      },
+      {
+        "id": "part-9",
+        "name": "左後脚",
+        "physical": 38,
+        "element": {
+          "火": 10,
+          "雷": 5,
+          "氷": 5,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 27
+      },
+      {
+        "id": "part-10",
+        "name": "胴",
+        "physical": 25,
+        "element": {
+          "火": 10,
+          "雷": 5,
+          "氷": 5,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 40
+      },
+      {
+        "id": "part-11",
+        "name": "首",
         "physical": 45,
         "element": {
-          "水": 25,
-          "雷": 20
+          "火": 15,
+          "雷": 10,
+          "氷": 5,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 20
+      },
+      {
+        "id": "part-12",
+        "name": "右翼",
+        "physical": 26,
+        "element": {
+          "火": 15,
+          "雷": 10,
+          "氷": 5,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 39
+      },
+      {
+        "id": "part-13",
+        "name": "左翼",
+        "physical": 26,
+        "element": {
+          "火": 15,
+          "雷": 10,
+          "氷": 5,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 39
+      }
+    ]
+  },
+  {
+    "id": "seruregiosu",
+    "name": "セルレギオス",
+    "baseDefenseRate": 1.0,
+    "variants": [
+      {
+        "id": "normal",
+        "name": "通常",
+        "defenseRateMod": 1.0
+      }
+    ],
+    "parts": [
+      {
+        "id": "part-1",
+        "name": "頭",
+        "physical": 45,
+        "element": {
+          "水": 5,
+          "雷": 15,
+          "氷": 10,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 5
+      },
+      {
+        "id": "part-2",
+        "name": "首",
+        "physical": 35,
+        "element": {
+          "水": 5,
+          "雷": 10,
+          "氷": 5,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 15
+      },
+      {
+        "id": "part-3",
+        "name": "胴",
+        "physical": 35,
+        "element": {
+          "水": 5,
+          "雷": 5,
+          "氷": 5,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 25
+      },
+      {
+        "id": "part-4",
+        "name": "左脚",
+        "physical": 70,
+        "element": {
+          "水": 15,
+          "雷": 30,
+          "氷": 20,
+          "龍": 10
         }
       },
       {
-        "id": "tail",
+        "id": "part-5",
+        "name": "右脚",
+        "physical": 70,
+        "element": {
+          "水": 15,
+          "雷": 30,
+          "氷": 20,
+          "龍": 10
+        }
+      },
+      {
+        "id": "part-6",
+        "name": "左翼",
+        "physical": 30,
+        "element": {
+          "水": 5,
+          "雷": 10,
+          "氷": 5,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 30
+      },
+      {
+        "id": "part-7",
+        "name": "右翼",
+        "physical": 30,
+        "element": {
+          "水": 5,
+          "雷": 10,
+          "氷": 5,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 30
+      },
+      {
+        "id": "part-8",
         "name": "尻尾",
         "physical": 40,
         "element": {
-          "水": 15
+          "水": 5,
+          "雷": 15,
+          "氷": 10,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 20
+      }
+    ]
+  },
+  {
+    "id": "gogumaziosu",
+    "name": "ゴグマジオス",
+    "baseDefenseRate": 1.0,
+    "variants": [
+      {
+        "id": "normal",
+        "name": "通常",
+        "defenseRateMod": 1.0
+      }
+    ],
+    "parts": [
+      {
+        "id": "part-1",
+        "name": "頭",
+        "physical": 65,
+        "element": {
+          "火": 20,
+          "雷": 5,
+          "龍": 55
+        }
+      },
+      {
+        "id": "part-2",
+        "name": "背中",
+        "physical": 65,
+        "element": {
+          "火": 20,
+          "雷": 5,
+          "龍": 55
+        }
+      },
+      {
+        "id": "part-3",
+        "name": "左翼脚",
+        "physical": 65,
+        "element": {
+          "火": 20,
+          "雷": 5,
+          "龍": 55
+        }
+      },
+      {
+        "id": "part-4",
+        "name": "右翼脚",
+        "physical": 65,
+        "element": {
+          "火": 20,
+          "雷": 5,
+          "龍": 55
+        }
+      },
+      {
+        "id": "part-5",
+        "name": "胸",
+        "physical": 75,
+        "element": {
+          "火": 20,
+          "雷": 5,
+          "龍": 65
+        }
+      },
+      {
+        "id": "part-6",
+        "name": "左前脚",
+        "physical": 75,
+        "element": {
+          "火": 20,
+          "雷": 5,
+          "龍": 65
+        }
+      },
+      {
+        "id": "part-7",
+        "name": "右前脚",
+        "physical": 75,
+        "element": {
+          "火": 20,
+          "雷": 5,
+          "龍": 65
+        }
+      },
+      {
+        "id": "part-8",
+        "name": "腹部",
+        "physical": 75,
+        "element": {
+          "火": 20,
+          "雷": 5,
+          "龍": 65
+        }
+      },
+      {
+        "id": "part-9",
+        "name": "左後脚",
+        "physical": 75,
+        "element": {
+          "火": 20,
+          "雷": 5,
+          "龍": 65
+        }
+      },
+      {
+        "id": "part-10",
+        "name": "右後脚",
+        "physical": 75,
+        "element": {
+          "火": 20,
+          "雷": 5,
+          "龍": 65
+        }
+      },
+      {
+        "id": "part-11",
+        "name": "尻尾",
+        "physical": 75,
+        "element": {
+          "火": 20,
+          "雷": 5,
+          "龍": 65
+        }
+      },
+      {
+        "id": "part-12",
+        "name": "尻尾先端",
+        "physical": 75,
+        "element": {
+          "火": 20,
+          "雷": 5,
+          "龍": 65
+        }
+      }
+    ]
+  },
+  {
+    "id": "tamamitsune",
+    "name": "タマミツネ",
+    "baseDefenseRate": 1.0,
+    "variants": [
+      {
+        "id": "normal",
+        "name": "通常",
+        "defenseRateMod": 1.0
+      }
+    ],
+    "parts": [
+      {
+        "id": "part-1",
+        "name": "頭",
+        "physical": 68,
+        "element": {
+          "火": 10,
+          "雷": 15,
+          "氷": 5,
+          "龍": 10
+        },
+        "woundedPhysicalBonus": 2
+      },
+      {
+        "id": "part-2",
+        "name": "左脚",
+        "physical": 45,
+        "element": {
+          "火": 10,
+          "雷": 15,
+          "氷": 5,
+          "龍": 10
+        },
+        "woundedPhysicalBonus": 5
+      },
+      {
+        "id": "part-3",
+        "name": "左爪",
+        "physical": 45,
+        "element": {
+          "火": 10,
+          "雷": 15,
+          "氷": 5,
+          "龍": 10
+        },
+        "woundedPhysicalBonus": 5
+      },
+      {
+        "id": "part-4",
+        "name": "右脚",
+        "physical": 45,
+        "element": {
+          "火": 10,
+          "雷": 15,
+          "氷": 5,
+          "龍": 10
+        },
+        "woundedPhysicalBonus": 5
+      },
+      {
+        "id": "part-5",
+        "name": "右爪",
+        "physical": 45,
+        "element": {
+          "火": 10,
+          "雷": 15,
+          "氷": 5,
+          "龍": 10
+        },
+        "woundedPhysicalBonus": 5
+      },
+      {
+        "id": "part-6",
+        "name": "左後脚",
+        "physical": 38,
+        "element": {
+          "火": 5,
+          "雷": 10,
+          "氷": 5,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 12
+      },
+      {
+        "id": "part-7",
+        "name": "右後脚",
+        "physical": 38,
+        "element": {
+          "火": 5,
+          "雷": 10,
+          "氷": 5,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 12
+      },
+      {
+        "id": "part-8",
+        "name": "胴",
+        "physical": 25,
+        "element": {
+          "火": 5,
+          "雷": 10,
+          "氷": 5,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 25
+      },
+      {
+        "id": "part-9",
+        "name": "尻尾",
+        "physical": 43,
+        "element": {
+          "火": 5,
+          "雷": 10,
+          "氷": 5,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 7
+      },
+      {
+        "id": "part-10",
+        "name": "背ビレ",
+        "physical": 43,
+        "element": {
+          "火": 8,
+          "雷": 15,
+          "氷": 5,
+          "龍": 10
+        },
+        "woundedPhysicalBonus": 7
+      }
+    ]
+  },
+  {
+    "id": "hu-long-anziyanahuya-zhong",
+    "name": "護竜アンジャナフ亜種",
+    "baseDefenseRate": 1.0,
+    "variants": [
+      {
+        "id": "normal",
+        "name": "通常",
+        "defenseRateMod": 1.0
+      }
+    ],
+    "parts": [
+      {
+        "id": "part-1",
+        "name": "頭",
+        "physical": 100,
+        "element": {
+          "火": 10,
+          "水": 20,
+          "氷": 30,
+          "龍": 30
+        }
+      },
+      {
+        "id": "part-2",
+        "name": "鼻",
+        "physical": 65,
+        "element": {
+          "火": 15,
+          "水": 40,
+          "氷": 25,
+          "龍": 30
+        }
+      },
+      {
+        "id": "part-3",
+        "name": "首",
+        "physical": 26,
+        "element": {
+          "火": 5,
+          "水": 25,
+          "氷": 20,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 34
+      },
+      {
+        "id": "part-4",
+        "name": "胴",
+        "physical": 26,
+        "element": {
+          "火": 5,
+          "水": 20,
+          "氷": 15
+        },
+        "woundedPhysicalBonus": 34
+      },
+      {
+        "id": "part-5",
+        "name": "左翼",
+        "physical": 55,
+        "element": {
+          "火": 15,
+          "水": 40,
+          "氷": 25,
+          "龍": 10
+        },
+        "woundedPhysicalBonus": 5
+      },
+      {
+        "id": "part-6",
+        "name": "右翼",
+        "physical": 55,
+        "element": {
+          "火": 15,
+          "水": 40,
+          "氷": 25,
+          "龍": 10
+        },
+        "woundedPhysicalBonus": 5
+      },
+      {
+        "id": "part-7",
+        "name": "左脚",
+        "physical": 45,
+        "element": {
+          "火": 5,
+          "水": 20,
+          "氷": 20
+        },
+        "woundedPhysicalBonus": 15
+      },
+      {
+        "id": "part-8",
+        "name": "右脚",
+        "physical": 45,
+        "element": {
+          "火": 5,
+          "水": 20,
+          "氷": 20
+        },
+        "woundedPhysicalBonus": 15
+      },
+      {
+        "id": "part-9",
+        "name": "尻尾",
+        "physical": 60,
+        "element": {
+          "火": 10,
+          "水": 20,
+          "氷": 20,
+          "龍": 5
+        }
+      }
+    ]
+  },
+  {
+    "id": "hu-long-odogaronya-zhong",
+    "name": "護竜オドガロン亜種",
+    "baseDefenseRate": 1.0,
+    "variants": [
+      {
+        "id": "normal",
+        "name": "通常",
+        "defenseRateMod": 1.0
+      }
+    ],
+    "parts": [
+      {
+        "id": "part-1",
+        "name": "頭",
+        "physical": 60,
+        "element": {
+          "火": 20,
+          "水": 30,
+          "雷": 20,
+          "氷": 20,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 10
+      },
+      {
+        "id": "part-2",
+        "name": "首",
+        "physical": 25,
+        "element": {
+          "火": 15,
+          "水": 25,
+          "雷": 15,
+          "氷": 15,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 35
+      },
+      {
+        "id": "part-3",
+        "name": "背中",
+        "physical": 30,
+        "element": {
+          "火": 10,
+          "水": 20,
+          "雷": 10,
+          "氷": 10,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 30
+      },
+      {
+        "id": "part-4",
+        "name": "胴",
+        "physical": 30,
+        "element": {
+          "火": 10,
+          "水": 20,
+          "雷": 10,
+          "氷": 10,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 30
+      },
+      {
+        "id": "part-5",
+        "name": "左前脚",
+        "physical": 100,
+        "element": {
+          "火": 15,
+          "水": 25,
+          "雷": 15,
+          "氷": 15,
+          "龍": 30
+        }
+      },
+      {
+        "id": "part-6",
+        "name": "右前脚",
+        "physical": 100,
+        "element": {
+          "火": 15,
+          "水": 25,
+          "雷": 15,
+          "氷": 15,
+          "龍": 30
+        }
+      },
+      {
+        "id": "part-7",
+        "name": "左後脚",
+        "physical": 50,
+        "element": {
+          "火": 10,
+          "水": 25,
+          "雷": 10,
+          "氷": 10,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 10
+      },
+      {
+        "id": "part-8",
+        "name": "右後脚",
+        "physical": 50,
+        "element": {
+          "火": 10,
+          "水": 25,
+          "雷": 10,
+          "氷": 10,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 10
+      },
+      {
+        "id": "part-9",
+        "name": "尻尾",
+        "physical": 100,
+        "element": {
+          "火": 15,
+          "水": 25,
+          "雷": 15,
+          "氷": 15,
+          "龍": 30
+        }
+      },
+      {
+        "id": "part-10",
+        "name": "尻尾先端",
+        "physical": 50,
+        "element": {
+          "火": 10,
+          "水": 20,
+          "雷": 10,
+          "氷": 10,
+          "龍": 30
+        },
+        "woundedPhysicalBonus": 10
+      }
+    ]
+  },
+  {
+    "id": "doshiyaguma",
+    "name": "ドシャグマ",
+    "baseDefenseRate": 1.0,
+    "variants": [
+      {
+        "id": "normal",
+        "name": "通常",
+        "defenseRateMod": 1.0
+      }
+    ],
+    "parts": [
+      {
+        "id": "part-1",
+        "name": "頭",
+        "physical": 48,
+        "element": {
+          "火": 20,
+          "水": 10,
+          "雷": 20,
+          "氷": 10,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 17
+      },
+      {
+        "id": "part-2",
+        "name": "胴",
+        "physical": 80,
+        "element": {
+          "火": 20,
+          "水": 5,
+          "雷": 15,
+          "氷": 5
+        }
+      },
+      {
+        "id": "part-3",
+        "name": "右前脚",
+        "physical": 47,
+        "element": {
+          "火": 15,
+          "水": 5,
+          "雷": 5,
+          "氷": 5,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 5
+      },
+      {
+        "id": "part-4",
+        "name": "左前脚",
+        "physical": 47,
+        "element": {
+          "火": 15,
+          "水": 5,
+          "雷": 5,
+          "氷": 5,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 5
+      },
+      {
+        "id": "part-5",
+        "name": "右後脚",
+        "physical": 40,
+        "element": {
+          "火": 15,
+          "水": 5,
+          "雷": 10,
+          "氷": 5,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 12
+      },
+      {
+        "id": "part-6",
+        "name": "左後脚",
+        "physical": 40,
+        "element": {
+          "火": 15,
+          "水": 5,
+          "雷": 10,
+          "氷": 5,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 12
+      },
+      {
+        "id": "part-7",
+        "name": "尾毛",
+        "physical": 38,
+        "element": {
+          "火": 10,
+          "水": 5,
+          "雷": 5,
+          "氷": 5
+        },
+        "woundedPhysicalBonus": 14
+      }
+    ]
+  },
+  {
+    "id": "hu-long-doshiyaguma",
+    "name": "護竜ドシャグマ",
+    "baseDefenseRate": 1.0,
+    "variants": [
+      {
+        "id": "normal",
+        "name": "通常",
+        "defenseRateMod": 1.0
+      }
+    ],
+    "parts": [
+      {
+        "id": "part-1",
+        "name": "頭",
+        "physical": 55,
+        "element": {
+          "火": 25,
+          "水": 5,
+          "雷": 20,
+          "氷": 15,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 15
+      },
+      {
+        "id": "part-2",
+        "name": "胴",
+        "physical": 38,
+        "element": {
+          "火": 25,
+          "水": 5,
+          "雷": 15,
+          "氷": 10,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 27
+      },
+      {
+        "id": "part-3",
+        "name": "右前脚",
+        "physical": 100,
+        "element": {
+          "火": 25,
+          "水": 5,
+          "雷": 15,
+          "氷": 10,
+          "龍": 30
+        }
+      },
+      {
+        "id": "part-4",
+        "name": "左前脚",
+        "physical": 100,
+        "element": {
+          "火": 25,
+          "水": 5,
+          "雷": 15,
+          "氷": 10,
+          "龍": 30
+        }
+      },
+      {
+        "id": "part-5",
+        "name": "右後脚",
+        "physical": 40,
+        "element": {
+          "火": 10,
+          "水": 5,
+          "雷": 15,
+          "氷": 20,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 25
+      },
+      {
+        "id": "part-6",
+        "name": "左後脚",
+        "physical": 40,
+        "element": {
+          "火": 10,
+          "水": 5,
+          "雷": 10,
+          "氷": 20,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 25
+      },
+      {
+        "id": "part-7",
+        "name": "尾毛",
+        "physical": 35,
+        "element": {
+          "火": 10,
+          "水": 5,
+          "雷": 10,
+          "氷": 20,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 30
+      }
+    ]
+  },
+  {
+    "id": "barahara",
+    "name": "バーラハーラ",
+    "baseDefenseRate": 1.0,
+    "variants": [
+      {
+        "id": "normal",
+        "name": "通常",
+        "defenseRateMod": 1.0
+      }
+    ],
+    "parts": [
+      {
+        "id": "part-1",
+        "name": "頭",
+        "physical": 50,
+        "element": {
+          "火": 10,
+          "雷": 20,
+          "氷": 5,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 20
+      },
+      {
+        "id": "part-2",
+        "name": "首",
+        "physical": 50,
+        "element": {
+          "火": 10,
+          "雷": 20,
+          "氷": 5,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 10
+      },
+      {
+        "id": "part-3",
+        "name": "胴",
+        "physical": 38,
+        "element": {
+          "火": 5,
+          "雷": 15,
+          "氷": 5,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 22
+      },
+      {
+        "id": "part-4",
+        "name": "右前脚",
+        "physical": 42,
+        "element": {
+          "火": 5,
+          "雷": 15,
+          "氷": 5,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 18
+      },
+      {
+        "id": "part-5",
+        "name": "左前脚",
+        "physical": 42,
+        "element": {
+          "火": 5,
+          "雷": 15,
+          "氷": 5,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 18
+      },
+      {
+        "id": "part-6",
+        "name": "右後脚",
+        "physical": 35,
+        "element": {
+          "火": 5,
+          "雷": 15,
+          "氷": 5,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 25
+      },
+      {
+        "id": "part-7",
+        "name": "左後脚",
+        "physical": 35,
+        "element": {
+          "火": 5,
+          "雷": 15,
+          "氷": 5,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 25
+      },
+      {
+        "id": "part-8",
+        "name": "尻尾",
+        "physical": 55,
+        "element": {
+          "火": 10,
+          "雷": 15,
+          "氷": 5,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 5
+      }
+    ]
+  },
+  {
+    "id": "chiyatakabura",
+    "name": "チャタカブラ",
+    "baseDefenseRate": 1.0,
+    "variants": [
+      {
+        "id": "normal",
+        "name": "通常",
+        "defenseRateMod": 1.0
+      }
+    ],
+    "parts": [
+      {
+        "id": "part-1",
+        "name": "頭",
+        "physical": 90,
+        "element": {
+          "火": 10,
+          "水": 5,
+          "雷": 30,
+          "氷": 15
+        }
+      },
+      {
+        "id": "part-2",
+        "name": "胴",
+        "physical": 45,
+        "element": {
+          "火": 10,
+          "水": 5,
+          "雷": 20,
+          "氷": 15
+        },
+        "woundedPhysicalBonus": 20
+      },
+      {
+        "id": "part-3",
+        "name": "左前脚",
+        "physical": 55,
+        "element": {
+          "水": 5,
+          "雷": 15,
+          "氷": 10
+        },
+        "woundedPhysicalBonus": 25
+      },
+      {
+        "id": "part-4",
+        "name": "右前脚",
+        "physical": 55,
+        "element": {
+          "水": 5,
+          "雷": 15,
+          "氷": 10
+        },
+        "woundedPhysicalBonus": 25
+      },
+      {
+        "id": "part-5",
+        "name": "左後脚",
+        "physical": 45,
+        "element": {
+          "雷": 20,
+          "氷": 15
+        },
+        "woundedPhysicalBonus": 20
+      },
+      {
+        "id": "part-6",
+        "name": "右後脚",
+        "physical": 45,
+        "element": {
+          "雷": 20,
+          "氷": 15
+        },
+        "woundedPhysicalBonus": 20
+      },
+      {
+        "id": "part-7",
+        "name": "尻",
+        "physical": 50,
+        "element": {
+          "火": 10,
+          "水": 5,
+          "雷": 20,
+          "氷": 15
+        },
+        "woundedPhysicalBonus": 15
+      },
+      {
+        "id": "part-8",
+        "name": "舌",
+        "physical": 85,
+        "element": {
+          "火": 10,
+          "水": 5,
+          "雷": 25,
+          "氷": 15
+        }
+      }
+    ]
+  },
+  {
+    "id": "kematorisu",
+    "name": "ケマトリス",
+    "baseDefenseRate": 1.0,
+    "variants": [
+      {
+        "id": "normal",
+        "name": "通常",
+        "defenseRateMod": 1.0
+      }
+    ],
+    "parts": [
+      {
+        "id": "part-1",
+        "name": "頭",
+        "physical": 80,
+        "element": {
+          "水": 20,
+          "雷": 5,
+          "氷": 10,
+          "龍": 5
+        }
+      },
+      {
+        "id": "part-2",
+        "name": "胴",
+        "physical": 40,
+        "element": {
+          "水": 15,
+          "雷": 5,
+          "氷": 5,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 25
+      },
+      {
+        "id": "part-3",
+        "name": "尻尾",
+        "physical": 65,
+        "element": {
+          "水": 25,
+          "雷": 5,
+          "氷": 10,
+          "龍": 5
+        }
+      },
+      {
+        "id": "part-4",
+        "name": "右前脚",
+        "physical": 40,
+        "element": {
+          "水": 15,
+          "雷": 5,
+          "氷": 5,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 25
+      },
+      {
+        "id": "part-5",
+        "name": "左前脚",
+        "physical": 40,
+        "element": {
+          "水": 15,
+          "雷": 5,
+          "氷": 5,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 25
+      },
+      {
+        "id": "part-6",
+        "name": "右後脚",
+        "physical": 40,
+        "element": {
+          "水": 15,
+          "雷": 5,
+          "氷": 5,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 25
+      },
+      {
+        "id": "part-7",
+        "name": "左後脚",
+        "physical": 40,
+        "element": {
+          "水": 15,
+          "雷": 5,
+          "氷": 5,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 25
+      }
+    ]
+  },
+  {
+    "id": "rabarabarina",
+    "name": "ラバラ・バリナ",
+    "baseDefenseRate": 1.0,
+    "variants": [
+      {
+        "id": "normal",
+        "name": "通常",
+        "defenseRateMod": 1.0
+      }
+    ],
+    "parts": [
+      {
+        "id": "part-1",
+        "name": "頭",
+        "physical": 55,
+        "element": {
+          "火": 20,
+          "雷": 10,
+          "氷": 5
+        },
+        "woundedPhysicalBonus": 15
+      },
+      {
+        "id": "part-2",
+        "name": "胴",
+        "physical": 40,
+        "element": {
+          "火": 15,
+          "雷": 10,
+          "氷": 5
+        },
+        "woundedPhysicalBonus": 25
+      },
+      {
+        "id": "part-3",
+        "name": "尻尾",
+        "physical": 90,
+        "element": {
+          "火": 25,
+          "雷": 10,
+          "氷": 5
+        }
+      },
+      {
+        "id": "part-4",
+        "name": "左爪",
+        "physical": 45,
+        "element": {
+          "火": 15,
+          "雷": 10,
+          "氷": 5
+        },
+        "woundedPhysicalBonus": 20
+      },
+      {
+        "id": "part-5",
+        "name": "右爪",
+        "physical": 45,
+        "element": {
+          "火": 15,
+          "雷": 10,
+          "氷": 5
+        },
+        "woundedPhysicalBonus": 20
+      },
+      {
+        "id": "part-6",
+        "name": "左前脚",
+        "physical": 45,
+        "element": {
+          "火": 15,
+          "雷": 10,
+          "氷": 5
+        },
+        "woundedPhysicalBonus": 20
+      },
+      {
+        "id": "part-7",
+        "name": "右前脚",
+        "physical": 45,
+        "element": {
+          "火": 15,
+          "雷": 10,
+          "氷": 5
+        },
+        "woundedPhysicalBonus": 20
+      },
+      {
+        "id": "part-8",
+        "name": "左後脚",
+        "physical": 45,
+        "element": {
+          "火": 15,
+          "雷": 10,
+          "氷": 5
+        },
+        "woundedPhysicalBonus": 20
+      },
+      {
+        "id": "part-9",
+        "name": "右後脚",
+        "physical": 45,
+        "element": {
+          "火": 15,
+          "雷": 10,
+          "氷": 5
+        },
+        "woundedPhysicalBonus": 20
+      },
+      {
+        "id": "part-10",
+        "name": "花弁状部",
+        "physical": 60,
+        "element": {
+          "火": 25,
+          "雷": 10,
+          "氷": 5
+        },
+        "woundedPhysicalBonus": 5
+      }
+    ]
+  },
+  {
+    "id": "pupuroporu",
+    "name": "ププロポル",
+    "baseDefenseRate": 1.0,
+    "variants": [
+      {
+        "id": "normal",
+        "name": "通常",
+        "defenseRateMod": 1.0
+      }
+    ],
+    "parts": [
+      {
+        "id": "part-1",
+        "name": "頭",
+        "physical": 80,
+        "element": {
+          "火": 10,
+          "水": 20,
+          "雷": 10,
+          "氷": 10,
+          "龍": 5
+        }
+      },
+      {
+        "id": "part-2",
+        "name": "胴",
+        "physical": 35,
+        "element": {
+          "火": 5,
+          "水": 15,
+          "雷": 5,
+          "氷": 5,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 15
+      },
+      {
+        "id": "part-3",
+        "name": "背中",
+        "physical": 45,
+        "element": {
+          "火": 10,
+          "水": 20,
+          "雷": 10,
+          "氷": 10,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 25
+      },
+      {
+        "id": "part-4",
+        "name": "左前脚",
+        "physical": 40,
+        "element": {
+          "火": 5,
+          "水": 15,
+          "雷": 5,
+          "氷": 5,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 10
+      },
+      {
+        "id": "part-5",
+        "name": "右前脚",
+        "physical": 40,
+        "element": {
+          "火": 5,
+          "水": 15,
+          "雷": 5,
+          "氷": 5,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 10
+      },
+      {
+        "id": "part-6",
+        "name": "左後脚",
+        "physical": 33,
+        "element": {
+          "火": 5,
+          "水": 15,
+          "雷": 5,
+          "氷": 5,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 17
+      },
+      {
+        "id": "part-7",
+        "name": "右後脚",
+        "physical": 33,
+        "element": {
+          "火": 5,
+          "水": 15,
+          "雷": 5,
+          "氷": 5,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 17
+      },
+      {
+        "id": "part-8",
+        "name": "尻尾",
+        "physical": 45,
+        "element": {
+          "火": 10,
+          "水": 20,
+          "雷": 10,
+          "氷": 10,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 25
+      }
+    ]
+  },
+  {
+    "id": "redau",
+    "name": "レ・ダウ",
+    "baseDefenseRate": 1.0,
+    "variants": [
+      {
+        "id": "normal",
+        "name": "通常",
+        "defenseRateMod": 1.0
+      }
+    ],
+    "parts": [
+      {
+        "id": "part-1",
+        "name": "頭",
+        "physical": 80,
+        "element": {
+          "火": 5,
+          "水": 20,
+          "氷": 25,
+          "龍": 5
+        }
+      },
+      {
+        "id": "part-2",
+        "name": "胴",
+        "physical": 30,
+        "element": {
+          "火": 5,
+          "水": 5,
+          "氷": 5,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 35
+      },
+      {
+        "id": "part-3",
+        "name": "左脚",
+        "physical": 37,
+        "element": {
+          "火": 5,
+          "水": 5,
+          "氷": 5,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 28
+      },
+      {
+        "id": "part-4",
+        "name": "右脚",
+        "physical": 37,
+        "element": {
+          "火": 5,
+          "水": 5,
+          "氷": 5,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 28
+      },
+      {
+        "id": "part-5",
+        "name": "尻尾",
+        "physical": 45,
+        "element": {
+          "火": 5,
+          "水": 5,
+          "氷": 10,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 20
+      },
+      {
+        "id": "part-6",
+        "name": "左翼",
+        "physical": 45,
+        "element": {
+          "火": 5,
+          "水": 10,
+          "氷": 15,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 20
+      },
+      {
+        "id": "part-7",
+        "name": "右翼",
+        "physical": 45,
+        "element": {
+          "火": 5,
+          "水": 10,
+          "氷": 15,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 20
+      }
+    ]
+  },
+  {
+    "id": "uzutouna",
+    "name": "ウズ・トゥナ",
+    "baseDefenseRate": 1.0,
+    "variants": [
+      {
+        "id": "normal",
+        "name": "通常",
+        "defenseRateMod": 1.0
+      }
+    ],
+    "parts": [
+      {
+        "id": "part-1",
+        "name": "頭",
+        "physical": 90,
+        "element": {
+          "火": 15,
+          "雷": 25,
+          "氷": 5,
+          "龍": 5
+        }
+      },
+      {
+        "id": "part-2",
+        "name": "胴",
+        "physical": 50,
+        "element": {
+          "火": 5,
+          "雷": 10,
+          "氷": 5,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 30
+      },
+      {
+        "id": "part-3",
+        "name": "右前脚",
+        "physical": 65,
+        "element": {
+          "火": 10,
+          "雷": 15,
+          "氷": 5,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 15
+      },
+      {
+        "id": "part-4",
+        "name": "左前脚",
+        "physical": 65,
+        "element": {
+          "火": 10,
+          "雷": 15,
+          "氷": 5,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 15
+      },
+      {
+        "id": "part-5",
+        "name": "右後脚",
+        "physical": 55,
+        "element": {
+          "火": 10,
+          "雷": 15,
+          "氷": 5,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 25
+      },
+      {
+        "id": "part-6",
+        "name": "左後脚",
+        "physical": 55,
+        "element": {
+          "火": 10,
+          "雷": 15,
+          "氷": 5,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 25
+      },
+      {
+        "id": "part-7",
+        "name": "尻尾",
+        "physical": 45,
+        "element": {
+          "火": 5,
+          "雷": 5,
+          "氷": 5,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 35
+      },
+      {
+        "id": "part-8",
+        "name": "水膜（右頭部）",
+        "physical": 90,
+        "element": {
+          "雷": 20
+        }
+      },
+      {
+        "id": "part-9",
+        "name": "水膜（左頭部）",
+        "physical": 90,
+        "element": {
+          "雷": 20
+        }
+      },
+      {
+        "id": "part-10",
+        "name": "水膜（右胴）",
+        "physical": 90,
+        "element": {
+          "雷": 20
+        }
+      },
+      {
+        "id": "part-11",
+        "name": "水膜（左胴）",
+        "physical": 90,
+        "element": {
+          "雷": 20
+        }
+      },
+      {
+        "id": "part-12",
+        "name": "水膜（右前脚）",
+        "physical": 90,
+        "element": {
+          "雷": 20
+        }
+      },
+      {
+        "id": "part-13",
+        "name": "水膜（左前脚）",
+        "physical": 90,
+        "element": {
+          "雷": 20
+        }
+      },
+      {
+        "id": "part-14",
+        "name": "水膜（尻尾右部）",
+        "physical": 90,
+        "element": {
+          "雷": 20
+        }
+      },
+      {
+        "id": "part-15",
+        "name": "水膜（尻尾）",
+        "physical": 90,
+        "element": {
+          "雷": 20
+        }
+      },
+      {
+        "id": "part-16",
+        "name": "水膜（尻尾左部）",
+        "physical": 90,
+        "element": {
+          "雷": 20
+        }
+      }
+    ]
+  },
+  {
+    "id": "nuegudora",
+    "name": "ヌ・エグドラ",
+    "baseDefenseRate": 1.0,
+    "variants": [
+      {
+        "id": "normal",
+        "name": "通常",
+        "defenseRateMod": 1.0
+      }
+    ],
+    "parts": [
+      {
+        "id": "part-1",
+        "name": "頭",
+        "physical": 65,
+        "element": {
+          "水": 20,
+          "雷": 5,
+          "氷": 5,
+          "龍": 10
+        },
+        "woundedPhysicalBonus": 15
+      },
+      {
+        "id": "part-2",
+        "name": "触腕",
+        "physical": 35,
+        "element": {
+          "水": 20,
+          "雷": 5,
+          "氷": 5,
+          "龍": 10
+        }
+      },
+      {
+        "id": "part-3",
+        "name": "傘膜",
+        "physical": 35,
+        "element": {
+          "水": 20,
+          "雷": 5,
+          "氷": 5,
+          "龍": 10
+        },
+        "woundedPhysicalBonus": 30
+      },
+      {
+        "id": "part-4",
+        "name": "胴",
+        "physical": 48,
+        "element": {
+          "水": 20,
+          "雷": 5,
+          "氷": 5,
+          "龍": 10
+        },
+        "woundedPhysicalBonus": 17
+      },
+      {
+        "id": "part-5",
+        "name": "左第１腕",
+        "physical": 48,
+        "element": {
+          "水": 20,
+          "雷": 5,
+          "氷": 5,
+          "龍": 10
+        },
+        "woundedPhysicalBonus": 17
+      },
+      {
+        "id": "part-6",
+        "name": "右第１腕",
+        "physical": 48,
+        "element": {
+          "水": 20,
+          "雷": 5,
+          "氷": 5,
+          "龍": 10
+        },
+        "woundedPhysicalBonus": 17
+      },
+      {
+        "id": "part-7",
+        "name": "左第２腕",
+        "physical": 48,
+        "element": {
+          "水": 20,
+          "雷": 5,
+          "氷": 5,
+          "龍": 10
+        },
+        "woundedPhysicalBonus": 17
+      },
+      {
+        "id": "part-8",
+        "name": "右第２腕",
+        "physical": 48,
+        "element": {
+          "水": 20,
+          "雷": 5,
+          "氷": 5,
+          "龍": 10
+        },
+        "woundedPhysicalBonus": 17
+      },
+      {
+        "id": "part-9",
+        "name": "左第３腕",
+        "physical": 48,
+        "element": {
+          "水": 20,
+          "雷": 5,
+          "氷": 5,
+          "龍": 10
+        },
+        "woundedPhysicalBonus": 17
+      },
+      {
+        "id": "part-10",
+        "name": "右第３腕",
+        "physical": 48,
+        "element": {
+          "水": 20,
+          "雷": 5,
+          "氷": 5,
+          "龍": 10
+        },
+        "woundedPhysicalBonus": 17
+      },
+      {
+        "id": "part-11",
+        "name": "口",
+        "physical": 80,
+        "element": {
+          "水": 20,
+          "雷": 5,
+          "氷": 5,
+          "龍": 10
+        }
+      }
+    ]
+  },
+  {
+    "id": "aziyarakan",
+    "name": "アジャラカン",
+    "baseDefenseRate": 1.0,
+    "variants": [
+      {
+        "id": "normal",
+        "name": "通常",
+        "defenseRateMod": 1.0
+      }
+    ],
+    "parts": [
+      {
+        "id": "part-1",
+        "name": "頭",
+        "physical": 50,
+        "element": {
+          "水": 20,
+          "雷": 5,
+          "氷": 15,
+          "龍": 10
+        },
+        "woundedPhysicalBonus": 30
+      },
+      {
+        "id": "part-2",
+        "name": "右前脚",
+        "physical": 90,
+        "element": {
+          "水": 25,
+          "雷": 10,
+          "氷": 20,
+          "龍": 15
+        }
+      },
+      {
+        "id": "part-3",
+        "name": "左前脚",
+        "physical": 90,
+        "element": {
+          "水": 25,
+          "雷": 10,
+          "氷": 20,
+          "龍": 15
+        }
+      },
+      {
+        "id": "part-4",
+        "name": "右後脚",
+        "physical": 25,
+        "element": {
+          "水": 15,
+          "雷": 5,
+          "氷": 10,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 45
+      },
+      {
+        "id": "part-5",
+        "name": "左後脚",
+        "physical": 25,
+        "element": {
+          "水": 15,
+          "雷": 5,
+          "氷": 10,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 45
+      },
+      {
+        "id": "part-6",
+        "name": "尻尾先端",
+        "physical": 45,
+        "element": {
+          "水": 20,
+          "雷": 5,
+          "氷": 15,
+          "龍": 10
+        },
+        "woundedPhysicalBonus": 25
+      },
+      {
+        "id": "part-7",
+        "name": "尻尾",
+        "physical": 40,
+        "element": {
+          "水": 15,
+          "雷": 5,
+          "氷": 10,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 30
+      },
+      {
+        "id": "part-8",
+        "name": "背中",
+        "physical": 30,
+        "element": {
+          "水": 20,
+          "雷": 5,
+          "氷": 15,
+          "龍": 10
+        },
+        "woundedPhysicalBonus": 40
+      },
+      {
+        "id": "part-9",
+        "name": "腹部",
+        "physical": 45,
+        "element": {
+          "水": 15,
+          "雷": 5,
+          "氷": 10,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 25
+      }
+    ]
+  },
+  {
+    "id": "arushiyuberudo",
+    "name": "アルシュベルド",
+    "baseDefenseRate": 1.0,
+    "variants": [
+      {
+        "id": "normal",
+        "name": "通常",
+        "defenseRateMod": 1.0
+      }
+    ],
+    "parts": [
+      {
+        "id": "part-1",
+        "name": "頭",
+        "physical": 45,
+        "element": {
+          "火": 5,
+          "水": 5,
+          "雷": 5,
+          "氷": 5,
+          "龍": 5
+        }
+      },
+      {
+        "id": "part-2",
+        "name": "胴",
+        "physical": 28,
+        "element": {
+          "火": 1,
+          "水": 1,
+          "雷": 1,
+          "氷": 1,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 32
+      },
+      {
+        "id": "part-3",
+        "name": "左脚",
+        "physical": 26,
+        "element": {
+          "火": 2,
+          "水": 2,
+          "雷": 2,
+          "氷": 2,
+          "龍": 4
+        },
+        "woundedPhysicalBonus": 34
+      },
+      {
+        "id": "part-4",
+        "name": "右脚",
+        "physical": 26,
+        "element": {
+          "火": 2,
+          "水": 2,
+          "雷": 2,
+          "氷": 2,
+          "龍": 4
+        },
+        "woundedPhysicalBonus": 34
+      },
+      {
+        "id": "part-5",
+        "name": "尻尾",
+        "physical": 45,
+        "element": {
+          "火": 5,
+          "水": 5,
+          "雷": 5,
+          "氷": 5,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 15
+      },
+      {
+        "id": "part-6",
+        "name": "左翼",
+        "physical": 42,
+        "element": {
+          "火": 2,
+          "水": 2,
+          "雷": 2,
+          "氷": 2,
+          "龍": 4
+        },
+        "woundedPhysicalBonus": 18
+      },
+      {
+        "id": "part-7",
+        "name": "右翼",
+        "physical": 42,
+        "element": {
+          "火": 2,
+          "水": 2,
+          "雷": 2,
+          "氷": 2,
+          "龍": 4
+        },
+        "woundedPhysicalBonus": 18
+      },
+      {
+        "id": "part-8",
+        "name": "左鎖翼刃",
+        "physical": 52,
+        "element": {
+          "火": 20,
+          "水": 20,
+          "雷": 20,
+          "氷": 20,
+          "龍": 25
+        },
+        "woundedPhysicalBonus": 18
+      },
+      {
+        "id": "part-9",
+        "name": "右鎖翼刃",
+        "physical": 52,
+        "element": {
+          "火": 20,
+          "水": 20,
+          "雷": 20,
+          "氷": 20,
+          "龍": 25
+        },
+        "woundedPhysicalBonus": 18
+      }
+    ]
+  },
+  {
+    "id": "hu-long-arushiyuberudo",
+    "name": "護竜アルシュベルド",
+    "baseDefenseRate": 1.0,
+    "variants": [
+      {
+        "id": "normal",
+        "name": "通常",
+        "defenseRateMod": 1.0
+      }
+    ],
+    "parts": [
+      {
+        "id": "part-1",
+        "name": "頭",
+        "physical": 45,
+        "element": {
+          "火": 5,
+          "水": 5,
+          "雷": 5,
+          "氷": 5,
+          "龍": 5
+        }
+      },
+      {
+        "id": "part-2",
+        "name": "胴",
+        "physical": 28,
+        "element": {
+          "火": 1,
+          "水": 1,
+          "雷": 1,
+          "氷": 1,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 32
+      },
+      {
+        "id": "part-3",
+        "name": "左脚",
+        "physical": 26,
+        "element": {
+          "火": 2,
+          "水": 2,
+          "雷": 2,
+          "氷": 2,
+          "龍": 4
+        },
+        "woundedPhysicalBonus": 34
+      },
+      {
+        "id": "part-4",
+        "name": "右脚",
+        "physical": 26,
+        "element": {
+          "火": 2,
+          "水": 2,
+          "雷": 2,
+          "氷": 2,
+          "龍": 4
+        },
+        "woundedPhysicalBonus": 34
+      },
+      {
+        "id": "part-5",
+        "name": "尻尾",
+        "physical": 45,
+        "element": {
+          "火": 5,
+          "水": 5,
+          "雷": 5,
+          "氷": 5,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 15
+      },
+      {
+        "id": "part-6",
+        "name": "左翼",
+        "physical": 42,
+        "element": {
+          "火": 2,
+          "水": 2,
+          "雷": 2,
+          "氷": 2,
+          "龍": 4
+        },
+        "woundedPhysicalBonus": 18
+      },
+      {
+        "id": "part-7",
+        "name": "右翼",
+        "physical": 42,
+        "element": {
+          "火": 2,
+          "水": 2,
+          "雷": 2,
+          "氷": 2,
+          "龍": 4
+        },
+        "woundedPhysicalBonus": 18
+      },
+      {
+        "id": "part-8",
+        "name": "左鎖翼刃",
+        "physical": 52,
+        "element": {
+          "火": 20,
+          "水": 20,
+          "雷": 20,
+          "氷": 20,
+          "龍": 25
+        },
+        "woundedPhysicalBonus": 18
+      },
+      {
+        "id": "part-9",
+        "name": "右鎖翼刃",
+        "physical": 52,
+        "element": {
+          "火": 20,
+          "水": 20,
+          "雷": 20,
+          "氷": 20,
+          "龍": 25
+        },
+        "woundedPhysicalBonus": 18
+      }
+    ]
+  },
+  {
+    "id": "hirabami",
+    "name": "ヒラバミ",
+    "baseDefenseRate": 1.0,
+    "variants": [
+      {
+        "id": "normal",
+        "name": "通常",
+        "defenseRateMod": 1.0
+      }
+    ],
+    "parts": [
+      {
+        "id": "part-1",
+        "name": "頭",
+        "physical": 55,
+        "element": {
+          "火": 20,
+          "水": 10,
+          "雷": 20,
+          "龍": 10
+        },
+        "woundedPhysicalBonus": 20
+      },
+      {
+        "id": "part-2",
+        "name": "首",
+        "physical": 55,
+        "element": {
+          "火": 20,
+          "水": 10,
+          "雷": 20,
+          "龍": 10
+        },
+        "woundedPhysicalBonus": 10
+      },
+      {
+        "id": "part-3",
+        "name": "胴",
+        "physical": 40,
+        "element": {
+          "火": 10,
+          "水": 5,
+          "雷": 10,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 25
+      },
+      {
+        "id": "part-4",
+        "name": "右前脚",
+        "physical": 45,
+        "element": {
+          "火": 10,
+          "水": 5,
+          "雷": 10,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 20
+      },
+      {
+        "id": "part-5",
+        "name": "左前脚",
+        "physical": 45,
+        "element": {
+          "火": 10,
+          "水": 5,
+          "雷": 10,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 20
+      },
+      {
+        "id": "part-6",
+        "name": "右後脚",
+        "physical": 45,
+        "element": {
+          "火": 10,
+          "水": 5,
+          "雷": 10,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 20
+      },
+      {
+        "id": "part-7",
+        "name": "左後脚",
+        "physical": 45,
+        "element": {
+          "火": 10,
+          "水": 5,
+          "雷": 10,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 20
+      },
+      {
+        "id": "part-8",
+        "name": "尻尾",
+        "physical": 50,
+        "element": {
+          "火": 20,
+          "水": 5,
+          "雷": 10,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 15
+      }
+    ]
+  },
+  {
+    "id": "zindahado",
+    "name": "ジン・ダハド",
+    "baseDefenseRate": 1.0,
+    "variants": [
+      {
+        "id": "normal",
+        "name": "通常",
+        "defenseRateMod": 1.0
+      }
+    ],
+    "parts": [
+      {
+        "id": "part-1",
+        "name": "頭",
+        "physical": 75,
+        "element": {
+          "火": 20,
+          "水": 5,
+          "雷": 5,
+          "龍": 5
+        }
+      },
+      {
+        "id": "part-2",
+        "name": "首",
+        "physical": 60,
+        "element": {
+          "火": 10,
+          "水": 5,
+          "雷": 5,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 15
+      },
+      {
+        "id": "part-3",
+        "name": "胴",
+        "physical": 30,
+        "element": {
+          "火": 5,
+          "水": 5,
+          "雷": 5,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 25
+      },
+      {
+        "id": "part-4",
+        "name": "右前脚",
+        "physical": 45,
+        "element": {
+          "火": 15,
+          "水": 5,
+          "雷": 5,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 10
+      },
+      {
+        "id": "part-5",
+        "name": "左前脚",
+        "physical": 45,
+        "element": {
+          "火": 15,
+          "水": 5,
+          "雷": 5,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 10
+      },
+      {
+        "id": "part-6",
+        "name": "右後脚",
+        "physical": 45,
+        "element": {
+          "火": 15,
+          "水": 5,
+          "雷": 5,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 10
+      },
+      {
+        "id": "part-7",
+        "name": "左後脚",
+        "physical": 45,
+        "element": {
+          "火": 15,
+          "水": 5,
+          "雷": 5,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 10
+      },
+      {
+        "id": "part-8",
+        "name": "尻尾",
+        "physical": 95,
+        "element": {
+          "火": 20,
+          "水": 5,
+          "雷": 5,
+          "龍": 5
+        }
+      },
+      {
+        "id": "part-9",
+        "name": "凍成殻（腰部）",
+        "physical": 95,
+        "element": {
+          "火": 20,
+          "水": 5,
+          "雷": 5,
+          "龍": 5
+        }
+      },
+      {
+        "id": "part-10",
+        "name": "大凍成殻（露出前）",
+        "physical": 1,
+        "element": {}
+      },
+      {
+        "id": "part-11",
+        "name": "大凍成殻（露出後）",
+        "physical": 95,
+        "element": {
+          "火": 20,
+          "水": 5,
+          "雷": 5,
+          "龍": 5
+        }
+      }
+    ]
+  },
+  {
+    "id": "shiu",
+    "name": "シーウー",
+    "baseDefenseRate": 1.0,
+    "variants": [
+      {
+        "id": "normal",
+        "name": "通常",
+        "defenseRateMod": 1.0
+      }
+    ],
+    "parts": [
+      {
+        "id": "part-1",
+        "name": "頭",
+        "physical": 70,
+        "element": {
+          "火": 5,
+          "水": 3,
+          "雷": 5,
+          "氷": 25
+        },
+        "woundedPhysicalBonus": 10
+      },
+      {
+        "id": "part-2",
+        "name": "触腕",
+        "physical": 30,
+        "element": {
+          "火": 10,
+          "水": 5,
+          "雷": 10,
+          "氷": 30
+        },
+        "woundedPhysicalBonus": 30
+      },
+      {
+        "id": "part-3",
+        "name": "傘膜",
+        "physical": 30,
+        "element": {
+          "火": 10,
+          "水": 5,
+          "雷": 10,
+          "氷": 30
+        },
+        "woundedPhysicalBonus": 30
+      },
+      {
+        "id": "part-4",
+        "name": "胴",
+        "physical": 30,
+        "element": {
+          "火": 10,
+          "水": 5,
+          "雷": 10,
+          "氷": 30
+        },
+        "woundedPhysicalBonus": 30
+      },
+      {
+        "id": "part-5",
+        "name": "左第１腕",
+        "physical": 50,
+        "element": {
+          "火": 5,
+          "水": 3,
+          "雷": 5,
+          "氷": 25
+        },
+        "woundedPhysicalBonus": 10
+      },
+      {
+        "id": "part-6",
+        "name": "右第１腕",
+        "physical": 50,
+        "element": {
+          "火": 5,
+          "水": 3,
+          "雷": 5,
+          "氷": 25
+        },
+        "woundedPhysicalBonus": 10
+      },
+      {
+        "id": "part-7",
+        "name": "左第２腕",
+        "physical": 50,
+        "element": {
+          "火": 5,
+          "水": 3,
+          "雷": 5,
+          "氷": 25
+        },
+        "woundedPhysicalBonus": 10
+      },
+      {
+        "id": "part-8",
+        "name": "右第２腕",
+        "physical": 50,
+        "element": {
+          "火": 5,
+          "水": 3,
+          "雷": 5,
+          "氷": 25
+        },
+        "woundedPhysicalBonus": 10
+      },
+      {
+        "id": "part-9",
+        "name": "左第３腕",
+        "physical": 50,
+        "element": {
+          "火": 5,
+          "水": 3,
+          "雷": 5,
+          "氷": 25
+        },
+        "woundedPhysicalBonus": 10
+      },
+      {
+        "id": "part-10",
+        "name": "右第３腕",
+        "physical": 50,
+        "element": {
+          "火": 5,
+          "水": 3,
+          "雷": 5,
+          "氷": 25
+        },
+        "woundedPhysicalBonus": 10
+      },
+      {
+        "id": "part-11",
+        "name": "口",
+        "physical": 100,
+        "element": {
+          "火": 15,
+          "水": 10,
+          "雷": 15,
+          "氷": 45
+        }
+      }
+    ]
+  },
+  {
+    "id": "zoshia",
+    "name": "ゾ・シア",
+    "baseDefenseRate": 1.0,
+    "variants": [
+      {
+        "id": "normal",
+        "name": "通常",
+        "defenseRateMod": 1.0
+      }
+    ],
+    "parts": [
+      {
+        "id": "part-1",
+        "name": "頭（白纏晶）",
+        "physical": 40,
+        "element": {
+          "火": 10,
+          "水": 5,
+          "雷": 5,
+          "氷": 5,
+          "龍": 15
+        }
+      },
+      {
+        "id": "part-2",
+        "name": "左翼腕（白纏晶）",
+        "physical": 40,
+        "element": {
+          "火": 10,
+          "水": 5,
+          "雷": 5,
+          "氷": 5,
+          "龍": 15
+        }
+      },
+      {
+        "id": "part-3",
+        "name": "右翼腕（白纏晶）",
+        "physical": 40,
+        "element": {
+          "火": 10,
+          "水": 5,
+          "雷": 5,
+          "氷": 5,
+          "龍": 15
+        }
+      },
+      {
+        "id": "part-4",
+        "name": "頭",
+        "physical": 60,
+        "element": {
+          "火": 10,
+          "水": 5,
+          "雷": 5,
+          "氷": 5,
+          "龍": 20
+        },
+        "woundedPhysicalBonus": 10
+      },
+      {
+        "id": "part-5",
+        "name": "左翼腕",
+        "physical": 100,
+        "element": {
+          "火": 10,
+          "水": 5,
+          "雷": 5,
+          "氷": 5,
+          "龍": 20
+        }
+      },
+      {
+        "id": "part-6",
+        "name": "右翼腕",
+        "physical": 100,
+        "element": {
+          "火": 10,
+          "水": 5,
+          "雷": 5,
+          "氷": 5,
+          "龍": 20
+        }
+      },
+      {
+        "id": "part-7",
+        "name": "左前脚",
+        "physical": 50,
+        "element": {
+          "火": 15,
+          "水": 5,
+          "雷": 5,
+          "氷": 10,
+          "龍": 20
+        },
+        "woundedPhysicalBonus": 10
+      },
+      {
+        "id": "part-8",
+        "name": "右前脚",
+        "physical": 50,
+        "element": {
+          "火": 15,
+          "水": 5,
+          "雷": 5,
+          "氷": 10,
+          "龍": 20
+        },
+        "woundedPhysicalBonus": 10
+      },
+      {
+        "id": "part-9",
+        "name": "左後脚",
+        "physical": 40,
+        "element": {
+          "火": 10,
+          "水": 5,
+          "雷": 5,
+          "氷": 5,
+          "龍": 20
+        },
+        "woundedPhysicalBonus": 20
+      },
+      {
+        "id": "part-10",
+        "name": "右後脚",
+        "physical": 40,
+        "element": {
+          "火": 10,
+          "水": 5,
+          "雷": 5,
+          "氷": 5,
+          "龍": 20
+        },
+        "woundedPhysicalBonus": 20
+      },
+      {
+        "id": "part-11",
+        "name": "首",
+        "physical": 35,
+        "element": {
+          "火": 15,
+          "水": 5,
+          "雷": 5,
+          "氷": 10,
+          "龍": 30
+        },
+        "woundedPhysicalBonus": 25
+      },
+      {
+        "id": "part-12",
+        "name": "胴",
+        "physical": 30,
+        "element": {
+          "火": 10,
+          "水": 5,
+          "雷": 5,
+          "氷": 5,
+          "龍": 20
+        },
+        "woundedPhysicalBonus": 30
+      },
+      {
+        "id": "part-13",
+        "name": "尻尾",
+        "physical": 45,
+        "element": {
+          "火": 10,
+          "水": 5,
+          "雷": 5,
+          "氷": 5,
+          "龍": 30
+        },
+        "woundedPhysicalBonus": 15
+      }
+    ]
+  },
+  {
+    "id": "omegapuranetesu",
+    "name": "オメガ・プラネテス",
+    "baseDefenseRate": 1.0,
+    "variants": [
+      {
+        "id": "normal",
+        "name": "通常",
+        "defenseRateMod": 1.0
+      }
+    ],
+    "parts": [
+      {
+        "id": "part-1",
+        "name": "頭",
+        "physical": 55,
+        "element": {
+          "水": 10,
+          "雷": 25,
+          "氷": 5,
+          "龍": 20
+        }
+      },
+      {
+        "id": "part-2",
+        "name": "左前脚",
+        "physical": 45,
+        "element": {
+          "水": 5,
+          "雷": 15,
+          "氷": 5,
+          "龍": 10
+        },
+        "woundedPhysicalBonus": 20
+      },
+      {
+        "id": "part-3",
+        "name": "右前脚",
+        "physical": 45,
+        "element": {
+          "水": 5,
+          "雷": 15,
+          "氷": 5,
+          "龍": 10
+        },
+        "woundedPhysicalBonus": 20
+      },
+      {
+        "id": "part-4",
+        "name": "左後脚",
+        "physical": 65,
+        "element": {
+          "水": 5,
+          "雷": 15,
+          "氷": 5,
+          "龍": 10
+        }
+      },
+      {
+        "id": "part-5",
+        "name": "右後脚",
+        "physical": 65,
+        "element": {
+          "水": 5,
+          "雷": 15,
+          "氷": 5,
+          "龍": 10
+        }
+      },
+      {
+        "id": "part-6",
+        "name": "胴",
+        "physical": 10,
+        "element": {
+          "水": 5,
+          "雷": 5,
+          "龍": 5
+        },
+        "woundedPhysicalBonus": 55
+      },
+      {
+        "id": "part-7",
+        "name": "背中ユニット",
+        "physical": 40,
+        "element": {
+          "水": 5,
+          "雷": 10,
+          "氷": 5,
+          "龍": 20
+        },
+        "woundedPhysicalBonus": 40
+      },
+      {
+        "id": "part-8",
+        "name": "背中",
+        "physical": 30,
+        "element": {
+          "水": 5,
+          "雷": 20,
+          "氷": 5,
+          "龍": 15
+        },
+        "woundedPhysicalBonus": 35
+      }
+    ]
+  },
+  {
+    "id": "rangosuta",
+    "name": "ランゴスタ",
+    "baseDefenseRate": 1.0,
+    "variants": [
+      {
+        "id": "normal",
+        "name": "通常",
+        "defenseRateMod": 1.0
+      }
+    ],
+    "parts": [
+      {
+        "id": "part-1",
+        "name": "全身",
+        "physical": 85,
+        "element": {
+          "火": 100,
+          "水": 50,
+          "雷": 10,
+          "氷": 50
+        }
+      }
+    ]
+  },
+  {
+    "id": "konga",
+    "name": "コンガ",
+    "baseDefenseRate": 1.0,
+    "variants": [
+      {
+        "id": "normal",
+        "name": "通常",
+        "defenseRateMod": 1.0
+      }
+    ],
+    "parts": [
+      {
+        "id": "part-1",
+        "name": "頭",
+        "physical": 56,
+        "element": {
+          "火": 30,
+          "水": 10,
+          "雷": 10,
+          "氷": 15
+        }
+      },
+      {
+        "id": "part-2",
+        "name": "体",
+        "physical": 56,
+        "element": {
+          "火": 30,
+          "水": 10,
+          "雷": 10,
+          "氷": 15
+        }
+      }
+    ]
+  },
+  {
+    "id": "burango",
+    "name": "ブランゴ",
+    "baseDefenseRate": 1.0,
+    "variants": [
+      {
+        "id": "normal",
+        "name": "通常",
+        "defenseRateMod": 1.0
+      }
+    ],
+    "parts": [
+      {
+        "id": "part-1",
+        "name": "頭",
+        "physical": 65,
+        "element": {
+          "火": 40,
+          "水": 5,
+          "雷": 15
+        }
+      },
+      {
+        "id": "part-2",
+        "name": "体",
+        "physical": 65,
+        "element": {
+          "火": 40,
+          "水": 5,
+          "雷": 15
+        }
+      }
+    ]
+  },
+  {
+    "id": "keratonosu",
+    "name": "ケラトノス♂",
+    "baseDefenseRate": 1.0,
+    "variants": [
+      {
+        "id": "normal",
+        "name": "通常",
+        "defenseRateMod": 1.0
+      }
+    ],
+    "parts": [
+      {
+        "id": "part-1",
+        "name": "頭",
+        "physical": 75,
+        "element": {
+          "火": 50,
+          "水": 50,
+          "雷": 50,
+          "氷": 50,
+          "龍": 10
+        }
+      },
+      {
+        "id": "part-2",
+        "name": "体",
+        "physical": 75,
+        "element": {
+          "火": 50,
+          "水": 50,
+          "雷": 50,
+          "氷": 50,
+          "龍": 10
+        }
+      },
+      {
+        "id": "part-1",
+        "name": "頭",
+        "physical": 75,
+        "element": {
+          "火": 50,
+          "水": 50,
+          "雷": 50,
+          "氷": 50,
+          "龍": 10
+        }
+      },
+      {
+        "id": "part-2",
+        "name": "体",
+        "physical": 75,
+        "element": {
+          "火": 50,
+          "水": 50,
+          "雷": 50,
+          "氷": 50,
+          "龍": 10
+        }
+      }
+    ]
+  },
+  {
+    "id": "darutodon",
+    "name": "ダルトドン",
+    "baseDefenseRate": 1.0,
+    "variants": [
+      {
+        "id": "normal",
+        "name": "通常",
+        "defenseRateMod": 1.0
+      }
+    ],
+    "parts": [
+      {
+        "id": "part-1",
+        "name": "頭",
+        "physical": 50,
+        "element": {
+          "火": 50,
+          "水": 50,
+          "雷": 50,
+          "氷": 50,
+          "龍": 50
+        }
+      },
+      {
+        "id": "part-2",
+        "name": "体",
+        "physical": 80,
+        "element": {
+          "火": 70,
+          "水": 70,
+          "雷": 70,
+          "氷": 70,
+          "龍": 70
+        }
+      }
+    ]
+  },
+  {
+    "id": "darutodonjia-chu-zhong",
+    "name": "ダルトドン（家畜種）",
+    "baseDefenseRate": 1.0,
+    "variants": [
+      {
+        "id": "normal",
+        "name": "通常",
+        "defenseRateMod": 1.0
+      }
+    ],
+    "parts": [
+      {
+        "id": "part-1",
+        "name": "頭",
+        "physical": 50,
+        "element": {
+          "火": 50,
+          "水": 50,
+          "雷": 50,
+          "氷": 50,
+          "龍": 50
+        }
+      },
+      {
+        "id": "part-2",
+        "name": "体",
+        "physical": 80,
+        "element": {
+          "火": 70,
+          "水": 70,
+          "雷": 70,
+          "氷": 70,
+          "龍": 70
+        }
+      }
+    ]
+  },
+  {
+    "id": "buburachika",
+    "name": "ブブラチカ",
+    "baseDefenseRate": 1.0,
+    "variants": [
+      {
+        "id": "normal",
+        "name": "通常",
+        "defenseRateMod": 1.0
+      }
+    ],
+    "parts": [
+      {
+        "id": "part-1",
+        "name": "頭",
+        "physical": 75,
+        "element": {
+          "火": 100,
+          "水": 50,
+          "雷": 50,
+          "氷": 50,
+          "龍": 50
+        }
+      },
+      {
+        "id": "part-2",
+        "name": "体",
+        "physical": 75,
+        "element": {
+          "火": 100,
+          "水": 50,
+          "雷": 50,
+          "氷": 50,
+          "龍": 50
+        }
+      }
+    ]
+  },
+  {
+    "id": "tariosu",
+    "name": "タリオス",
+    "baseDefenseRate": 1.0,
+    "variants": [
+      {
+        "id": "normal",
+        "name": "通常",
+        "defenseRateMod": 1.0
+      }
+    ],
+    "parts": [
+      {
+        "id": "part-1",
+        "name": "頭",
+        "physical": 75,
+        "element": {
+          "火": 50,
+          "水": 50,
+          "雷": 50,
+          "氷": 50,
+          "龍": 10
+        }
+      },
+      {
+        "id": "part-2",
+        "name": "体",
+        "physical": 75,
+        "element": {
+          "火": 50,
+          "水": 50,
+          "雷": 50,
+          "氷": 50,
+          "龍": 10
+        }
+      }
+    ]
+  },
+  {
+    "id": "baonosu",
+    "name": "バオノス",
+    "baseDefenseRate": 1.0,
+    "variants": [
+      {
+        "id": "normal",
+        "name": "通常",
+        "defenseRateMod": 1.0
+      }
+    ],
+    "parts": [
+      {
+        "id": "part-1",
+        "name": "体",
+        "physical": 75,
+        "element": {
+          "火": 50,
+          "水": 50,
+          "雷": 50,
+          "氷": 50,
+          "龍": 10
+        }
+      },
+      {
+        "id": "part-2",
+        "name": "頭",
+        "physical": 75,
+        "element": {
+          "火": 50,
+          "水": 50,
+          "雷": 50,
+          "氷": 50,
+          "龍": 10
+        }
+      }
+    ]
+  },
+  {
+    "id": "gaziosu",
+    "name": "ガジオス",
+    "baseDefenseRate": 1.0,
+    "variants": [
+      {
+        "id": "normal",
+        "name": "通常",
+        "defenseRateMod": 1.0
+      }
+    ],
+    "parts": [
+      {
+        "id": "part-1",
+        "name": "頭",
+        "physical": 75,
+        "element": {
+          "火": 50,
+          "水": 5,
+          "雷": 50,
+          "氷": 50,
+          "龍": 10
+        }
+      },
+      {
+        "id": "part-2",
+        "name": "体",
+        "physical": 75,
+        "element": {
+          "火": 50,
+          "水": 5,
+          "雷": 50,
+          "氷": 50,
+          "龍": 10
+        }
+      }
+    ]
+  },
+  {
+    "id": "piragiru",
+    "name": "ピラギル",
+    "baseDefenseRate": 1.0,
+    "variants": [
+      {
+        "id": "normal",
+        "name": "通常",
+        "defenseRateMod": 1.0
+      }
+    ],
+    "parts": [
+      {
+        "id": "part-1",
+        "name": "頭",
+        "physical": 70,
+        "element": {
+          "火": 50,
+          "水": 5,
+          "雷": 80,
+          "氷": 20,
+          "龍": 10
+        }
+      },
+      {
+        "id": "part-2",
+        "name": "体",
+        "physical": 80,
+        "element": {
+          "火": 40,
+          "水": 5,
+          "雷": 60,
+          "氷": 20,
+          "龍": 10
+        }
+      }
+    ]
+  },
+  {
+    "id": "harupusu",
+    "name": "ハルプス",
+    "baseDefenseRate": 1.0,
+    "variants": [
+      {
+        "id": "normal",
+        "name": "通常",
+        "defenseRateMod": 1.0
+      }
+    ],
+    "parts": [
+      {
+        "id": "part-1",
+        "name": "体",
+        "physical": 75,
+        "element": {
+          "火": 50,
+          "水": 50,
+          "雷": 50,
+          "氷": 50,
+          "龍": 10
+        }
+      },
+      {
+        "id": "part-2",
+        "name": "頭",
+        "physical": 75,
+        "element": {
+          "火": 50,
+          "水": 50,
+          "雷": 50,
+          "氷": 50,
+          "龍": 10
+        }
+      }
+    ]
+  },
+  {
+    "id": "kuranodasu",
+    "name": "クラノダス",
+    "baseDefenseRate": 1.0,
+    "variants": [
+      {
+        "id": "normal",
+        "name": "通常",
+        "defenseRateMod": 1.0
+      }
+    ],
+    "parts": [
+      {
+        "id": "part-1",
+        "name": "頭",
+        "physical": 75,
+        "element": {
+          "水": 40,
+          "雷": 15,
+          "氷": 30,
+          "龍": 10
+        }
+      },
+      {
+        "id": "part-2",
+        "name": "体",
+        "physical": 75,
+        "element": {
+          "水": 40,
+          "雷": 15,
+          "氷": 30,
+          "龍": 10
+        }
+      }
+    ]
+  },
+  {
+    "id": "nemarachika",
+    "name": "ネマラチカ",
+    "baseDefenseRate": 1.0,
+    "variants": [
+      {
+        "id": "normal",
+        "name": "通常",
+        "defenseRateMod": 1.0
+      }
+    ],
+    "parts": [
+      {
+        "id": "part-1",
+        "name": "頭",
+        "physical": 70,
+        "element": {
+          "火": 90,
+          "水": 50,
+          "雷": 50,
+          "氷": 20,
+          "龍": 50
+        }
+      },
+      {
+        "id": "part-2",
+        "name": "体",
+        "physical": 70,
+        "element": {
+          "火": 90,
+          "水": 50,
+          "雷": 50,
+          "氷": 20,
+          "龍": 50
+        }
+      }
+    ]
+  },
+  {
+    "id": "zeredoron",
+    "name": "ゼレドロン",
+    "baseDefenseRate": 1.0,
+    "variants": [
+      {
+        "id": "normal",
+        "name": "通常",
+        "defenseRateMod": 1.0
+      }
+    ],
+    "parts": [
+      {
+        "id": "part-1",
+        "name": "頭",
+        "physical": 65,
+        "element": {
+          "火": 10,
+          "水": 20,
+          "雷": 70,
+          "氷": 55,
+          "龍": 10
+        }
+      },
+      {
+        "id": "part-2",
+        "name": "体",
+        "physical": 70,
+        "element": {
+          "火": 10,
+          "水": 20,
+          "雷": 70,
+          "氷": 55,
+          "龍": 10
+        }
+      }
+    ]
+  },
+  {
+    "id": "rahuma",
+    "name": "ラフマー",
+    "baseDefenseRate": 1.0,
+    "variants": [
+      {
+        "id": "normal",
+        "name": "通常",
+        "defenseRateMod": 1.0
+      }
+    ],
+    "parts": [
+      {
+        "id": "part-1",
+        "name": "頭",
+        "physical": 70,
+        "element": {
+          "火": 80,
+          "水": 35,
+          "雷": 5,
+          "氷": 5,
+          "龍": 10
+        }
+      },
+      {
+        "id": "part-2",
+        "name": "体",
+        "physical": 55,
+        "element": {
+          "火": 80,
+          "水": 35,
+          "雷": 5,
+          "氷": 5,
+          "龍": 10
+        }
+      }
+    ]
+  },
+  {
+    "id": "porukepina",
+    "name": "ポルケピナ",
+    "baseDefenseRate": 1.0,
+    "variants": [
+      {
+        "id": "normal",
+        "name": "通常",
+        "defenseRateMod": 1.0
+      }
+    ],
+    "parts": [
+      {
+        "id": "part-1",
+        "name": "頭",
+        "physical": 75,
+        "element": {
+          "火": 40,
+          "水": 15,
+          "雷": 30
+        }
+      },
+      {
+        "id": "part-2",
+        "name": "体",
+        "physical": 75,
+        "element": {
+          "火": 40,
+          "水": 15,
+          "雷": 30
+        }
+      }
+    ]
+  },
+  {
+    "id": "nerusukiyurabebi",
+    "name": "ネルスキュラベビー",
+    "baseDefenseRate": 1.0,
+    "variants": [
+      {
+        "id": "normal",
+        "name": "通常",
+        "defenseRateMod": 1.0
+      }
+    ],
+    "parts": [
+      {
+        "id": "part-1",
+        "name": "全身",
+        "physical": 75,
+        "element": {
+          "火": 50,
+          "水": 50,
+          "雷": 100,
+          "氷": 50,
+          "龍": 50
+        }
+      }
+    ]
+  },
+  {
+    "id": "hu-long-sekureto",
+    "name": "護竜セクレト",
+    "baseDefenseRate": 1.0,
+    "variants": [
+      {
+        "id": "normal",
+        "name": "通常",
+        "defenseRateMod": 1.0
+      }
+    ],
+    "parts": [
+      {
+        "id": "part-1",
+        "name": "頭",
+        "physical": 65,
+        "element": {
+          "火": 30,
+          "水": 30,
+          "雷": 10,
+          "氷": 30,
+          "龍": 60
+        }
+      },
+      {
+        "id": "part-2",
+        "name": "体",
+        "physical": 65,
+        "element": {
+          "火": 30,
+          "水": 30,
+          "雷": 10,
+          "氷": 30,
+          "龍": 60
+        }
+      }
+    ]
+  },
+  {
+    "id": "omegamikurosu",
+    "name": "オメガ・ミクロス",
+    "baseDefenseRate": 1.0,
+    "variants": [
+      {
+        "id": "normal",
+        "name": "通常",
+        "defenseRateMod": 1.0
+      }
+    ],
+    "parts": [
+      {
+        "id": "part-1",
+        "name": "全身",
+        "physical": 30,
+        "element": {
+          "水": 40,
+          "雷": 100,
+          "氷": 20,
+          "龍": 80
         }
       }
     ]
