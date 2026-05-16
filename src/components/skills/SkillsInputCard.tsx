@@ -34,9 +34,19 @@ export function SkillsInputCard() {
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
         <div style={{
-          fontSize: 9.5, color: 'var(--text-4)', fontWeight: 600,
-          letterSpacing: '0.1em', textTransform: 'uppercase',
-        }}>{title}</div>
+          display: 'flex', alignItems: 'center', gap: 8,
+          paddingBottom: 4, borderBottom: '1px solid var(--line)',
+        }}>
+          <span style={{
+            fontSize: 11, color: 'var(--text-2)', fontWeight: 700,
+            letterSpacing: '0.08em',
+          }}>{title}</span>
+          <span style={{
+            fontSize: 10, color: 'var(--text-4)', fontFamily: 'var(--mono)',
+          }}>
+            ({masters.length})
+          </span>
+        </div>
         <SkillSearch
           masters={masters}
           excludeIds={skills.map(s => s.skillId)}
