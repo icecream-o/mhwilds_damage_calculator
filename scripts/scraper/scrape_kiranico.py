@@ -81,11 +81,22 @@ EFFECT_FIELDS = [
     "skill_id", "level",
     "attack_bonus", "affinity_bonus", "crit_multiplier",
     "element_multiplier", "attack_multiplier", "physical_multiplier",
+    "element_bonus",
 ]
 
 
 def parse_effect_text(text: str) -> dict:
-    """日本語効果テキストから数値フィールドを抽出する。"""
+    """日本語効果テキストから数値フィールドを抽出する。
+
+    対応パターン:
+      - 基礎攻撃力+N             → attack_bonus
+      - 攻撃力をX.X倍            → attack_multiplier
+      - 会心率+N%               → affinity_bonus
+      - ダメージ倍率をX.X倍       → crit_multiplier (超会心)
+      - (火|水|雷|氷|龍)属性…X.X倍 → element_multiplier
+      - (火|水|雷|氷|龍)属性攻撃値+N → element_bonus
+      - 威力をX.X倍 / 威力がX.X倍 / 与えるダメージX.X倍 → physical_multiplier
+    """
     t = fw2hw(text)
     effect: dict = {}
 
@@ -94,7 +105,7 @@ def parse_effect_text(text: str) -> dict:
     if m:
         effect["attack_bonus"] = float(m.group(1))
 
-    # 攻撃倍率: 攻撃力をX.XX倍
+    # 攻撃倍率: 攻撃力をX.X倍
     m = re.search(r"攻撃力を(\d+\.\d+)倍", t)
     if m:
         effect["attack_multiplier"] = float(m.group(1))
@@ -104,15 +115,27 @@ def parse_effect_text(text: str) -> dict:
     if m:
         effect["affinity_bonus"] = float(m.group(1))
 
-    # 超会心: ダメージ倍率をX.XX倍
+    # 超会心: ダメージ倍率をX.X倍
     m = re.search(r"ダメージ倍率を(\d+\.\d+)倍", t)
     if m:
         effect["crit_multiplier"] = float(m.group(1))
 
-    # 属性強化: 属性値...X.XX倍
-    m = re.search(r"属性.{0,15}(\d+\.\d+)倍", t)
+    # 属性強化倍率: (火|水|雷|氷|龍)属性...X.X倍 / 属性値をX.X倍
+    m = re.search(r"(?:火|水|雷|氷|龍)属性.{0,20}(\d+\.\d+)倍", t)
     if m:
         effect["element_multiplier"] = float(m.group(1))
+
+    # 属性絶対値ボーナス: (火|水|雷|氷|龍)属性攻撃値[に]?+N
+    # 「火属性攻撃値+40」も「火属性攻撃値に+50」も両方受け付ける
+    m = re.search(r"(?:火|水|雷|氷|龍)属性攻撃値[にを]?[+＋](\d+)", t)
+    if m:
+        effect["element_bonus"] = float(m.group(1))
+
+    # 物理倍率: 威力をX.X倍 / 威力がX.X倍 / 与えるダメージX.X倍
+    # 「攻撃力をX.X倍」は除外（既に attack_multiplier で捕捉済み）
+    m = re.search(r"(?<!攻撃力を)(?:威力[をが]|与えるダメージ)(\d+\.\d+)倍", t)
+    if m:
+        effect["physical_multiplier"] = float(m.group(1))
 
     return effect
 
@@ -207,6 +230,7 @@ def scrape_skills() -> None:
                     "element_multiplier": e.get("element_multiplier", ""),
                     "attack_multiplier": e.get("attack_multiplier", ""),
                     "physical_multiplier": e.get("physical_multiplier", ""),
+                    "element_bonus": e.get("element_bonus", ""),
                 })
 
         write_csv(DATA_DIR / f"{skill_csv}.csv", SKILL_FIELDS, skill_rows)

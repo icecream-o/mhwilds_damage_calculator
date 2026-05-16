@@ -14,12 +14,16 @@ export interface ResolvedSkills {
   affinityBonus: number;
   critMultiplier: number;
   elementMultiplier: number;
+  elementBonus: number;
   physicalMultiplier: number;
 }
 
 function isApplicable(app: SkillApplicability | undefined, ctx: MotionContext): boolean {
   if (!app) return true;
   if (app.requireHitzonePhysical !== undefined && ctx.hitzonePhysical < app.requireHitzonePhysical) {
+    return false;
+  }
+  if (app.requireHitzonePhysicalMax !== undefined && ctx.hitzonePhysical > app.requireHitzonePhysicalMax) {
     return false;
   }
   if (app.requireTags && app.requireTags.length > 0) {
@@ -45,6 +49,7 @@ export function resolveSkills(
     affinityBonus: 0,
     critMultiplier: 1.25, // デフォルト会心倍率
     elementMultiplier: 1,
+    elementBonus: 0,
     physicalMultiplier: 1,
   };
   let critMultiplierOverridden = false;
@@ -76,6 +81,9 @@ export function resolveSkills(
     }
     if (effect.elementMultiplier !== undefined) {
       result.elementMultiplier *= effect.elementMultiplier;
+    }
+    if (effect.elementBonus !== undefined) {
+      result.elementBonus += effect.elementBonus * w;
     }
     if (effect.physicalMultiplier !== undefined) {
       result.physicalMultiplier *= effect.physicalMultiplier;

@@ -69,6 +69,8 @@ export interface SkillApplicability {
   requireDamageType?: DamageType[];
   /** 物理肉質がこの値以上のモーションにのみ適用（弱点特効: 45） */
   requireHitzonePhysical?: number;
+  /** 物理肉質がこの値以下のモーションにのみ適用（心眼: 45） */
+  requireHitzonePhysicalMax?: number;
 }
 
 export interface SkillEffectByLevel {
@@ -83,6 +85,8 @@ export interface SkillEffectByLevel {
   critMultiplier?: number;
   /** 属性値 ×X */
   elementMultiplier?: number;
+  /** 属性値 +X（火属性攻撃強化Lv1: +40 等） */
+  elementBonus?: number;
   /** 物理ダメージ ×X（一部条件付きスキル） */
   physicalMultiplier?: number;
 }

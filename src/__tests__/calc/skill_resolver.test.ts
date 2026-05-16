@@ -31,6 +31,23 @@ const masters: SkillMaster[] = [
     id: 'agitator', name: '挑戦者', maxLevel: 7, category: 'normal',
     effects: [{ level: 7, attackBonus: 25, affinityBonus: 15 }],
   },
+  {
+    id: 'fire-attack', name: '火属性攻撃強化', maxLevel: 3, category: 'normal',
+    effects: [
+      { level: 1, elementBonus: 40 },
+      { level: 2, elementBonus: 50, elementMultiplier: 1.1 },
+      { level: 3, elementBonus: 60, elementMultiplier: 1.2 },
+    ],
+  },
+  {
+    id: 'mind-eye', name: '心眼', maxLevel: 3, category: 'normal',
+    applicability: { requireHitzonePhysicalMax: 45 },
+    effects: [
+      { level: 1, physicalMultiplier: 1.1 },
+      { level: 2, physicalMultiplier: 1.15 },
+      { level: 3, physicalMultiplier: 1.3 },
+    ],
+  },
 ];
 
 describe('resolveSkills - 基本ボーナス集計', () => {
@@ -82,6 +99,36 @@ describe('resolveSkills - uptime 重み付け', () => {
     const skills: ActiveSkill[] = [{ skillId: 'attack', level: 5 }];
     const r = resolveSkills(skills, masters, { hitzonePhysical: 50, tags: [], damageType: 'physical' });
     expect(r.attackBonus).toBe(9);
+  });
+});
+
+describe('resolveSkills - elementBonus / requireHitzonePhysicalMax', () => {
+  test('火属性攻撃強化Lv1 → elementBonus +40', () => {
+    const skills: ActiveSkill[] = [{ skillId: 'fire-attack', level: 1 }];
+    const r = resolveSkills(skills, masters, { hitzonePhysical: 50, tags: [], damageType: 'physical' });
+    expect(r.elementBonus).toBe(40);
+    expect(r.elementMultiplier).toBe(1);
+  });
+
+  test('火属性攻撃強化Lv3 → elementBonus +60 と elementMultiplier 1.2 が併用', () => {
+    const skills: ActiveSkill[] = [{ skillId: 'fire-attack', level: 3 }];
+    const r = resolveSkills(skills, masters, { hitzonePhysical: 50, tags: [], damageType: 'physical' });
+    expect(r.elementBonus).toBe(60);
+    expect(r.elementMultiplier).toBeCloseTo(1.2);
+  });
+
+  test('心眼Lv3 は肉質≤45の部位のみ発動（≤45で1.3倍）', () => {
+    const skills: ActiveSkill[] = [{ skillId: 'mind-eye', level: 3 }];
+    const ctx = { tags: [] as const, damageType: 'physical' as const };
+    expect(resolveSkills(skills, masters, { hitzonePhysical: 30, ...ctx }).physicalMultiplier).toBeCloseTo(1.3);
+    expect(resolveSkills(skills, masters, { hitzonePhysical: 45, ...ctx }).physicalMultiplier).toBeCloseTo(1.3);
+    expect(resolveSkills(skills, masters, { hitzonePhysical: 50, ...ctx }).physicalMultiplier).toBe(1);
+  });
+
+  test('elementBonus は uptime で重み付けされる', () => {
+    const skills: ActiveSkill[] = [{ skillId: 'fire-attack', level: 1, uptime: 0.5 }];
+    const r = resolveSkills(skills, masters, { hitzonePhysical: 50, tags: [], damageType: 'physical' });
+    expect(r.elementBonus).toBe(20);
   });
 });
 

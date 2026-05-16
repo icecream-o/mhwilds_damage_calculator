@@ -104,11 +104,16 @@ function calcMotionDamage(
   }
 
   // 属性ダメージ（砲撃・固定値は属性なし）
+  // 計算式: min((属性値 + elementBonus) * elementMultiplier, cap)
+  // elementBonus は属性攻撃強化Lv1等の絶対値ボーナス。属性0の武器には適用しない。
   let element = 0;
   if (input.weapon.element && damageType !== 'fixed' && !damageType.startsWith('shell-')) {
     const baseValue = input.weapon.element.value;
     const cap = elementCap(baseValue, input.weapon.elementCap);
-    const effectiveElementValue = Math.min(baseValue * skills.elementMultiplier, cap);
+    const effectiveElementValue = Math.min(
+      (baseValue + skills.elementBonus) * skills.elementMultiplier,
+      cap,
+    );
     element = effectiveElementValue
             * sharpElem
             * (elementHitzone / 100)

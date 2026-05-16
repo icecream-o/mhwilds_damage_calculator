@@ -33,6 +33,7 @@ SKILL_EFFECT_FIELD_MAP = {
     "element_multiplier": "elementMultiplier",
     "attack_multiplier": "attackMultiplier",
     "physical_multiplier": "physicalMultiplier",
+    "element_bonus": "elementBonus",
 }
 
 BUFF_FIELD_MAP = {
@@ -87,6 +88,8 @@ def convert_skills(skills_file: Path, effects_file: Path) -> list:
             app: dict = {}
             if v := _int_or_none(row.get("require_hitzone_physical", "")):
                 app["requireHitzonePhysical"] = v
+            if v := _int_or_none(row.get("require_hitzone_physical_max", "")):
+                app["requireHitzonePhysicalMax"] = v
             if tags := _tags(row.get("require_tags", "")):
                 app["requireTags"] = tags
                 if row.get("match_any", "").strip() == "true":

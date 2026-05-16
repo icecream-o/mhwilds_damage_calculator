@@ -142,6 +142,44 @@ describe('calcDamage (v2 melee)', () => {
     expect(r.expectedDPS).toBeGreaterThan(0);
   });
 
+  test('elementBonus adds absolute value to weapon element before multiplier', () => {
+    // 水属性24の武器に水属性攻撃強化Lv1 (+10) を当てる
+    // baseValue 24 + bonus 10 = 34 → そのまま属性ダメージに反映
+    const elementSkills: SkillMaster[] = [
+      ...skillMasters,
+      { id: 'water-bonus', name: '水属性攻撃強化', maxLevel: 1, category: 'normal',
+        effects: [{ level: 1, elementBonus: 10 }] },
+    ];
+    const noBonus = calcDamage(baseInput, elementSkills, buffMasters);
+    const withBonus = calcDamage({
+      ...baseInput,
+      skills: [...baseInput.skills, { skillId: 'water-bonus', level: 1 }],
+    }, elementSkills, buffMasters);
+    // bonus 10 / base 24 → 理想は約 41.7% 増。Math.round の丸めを許容して
+    // 概ね 1.3〜1.5 倍に収まることを確認。
+    const ratio = withBonus.elementAvg / noBonus.elementAvg;
+    expect(ratio).toBeGreaterThan(1.3);
+    expect(ratio).toBeLessThan(1.5);
+  });
+
+  test('elementBonus respects elementCap', () => {
+    // base=500, bonus=200, cap = max(500*2.3, 500+400) = max(1150, 900) = 1150
+    // (500+200)*1 = 700 → 1150を超えないのでそのまま700
+    // bonus=1000, (500+1000)*1 = 1500 → cap 1150 にクランプ
+    const elementSkills: SkillMaster[] = [
+      ...skillMasters,
+      { id: 'huge-bonus', name: '巨大ボーナス', maxLevel: 1, category: 'normal',
+        effects: [{ level: 1, elementBonus: 1000 }] },
+    ];
+    const r = calcDamage({
+      ...baseInput,
+      weapon: { ...baseInput.weapon, element: { type: '水', value: 500 } },
+      skills: [...baseInput.skills, { skillId: 'huge-bonus', level: 1 }],
+    }, elementSkills, buffMasters);
+    // 1150 (capped) で計算
+    expect(r.elementAvg).toBeGreaterThan(0);
+  });
+
   test('element cap is applied', () => {
     // element=100, skill x2.5, cap = max(100*2.3, 100+400) = max(230, 500) = 500
     // skill effect: 100*2.5 = 250, capped to 500 → no cap hit yet

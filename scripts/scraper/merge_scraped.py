@@ -11,6 +11,14 @@ ROOT = Path(__file__).parent.parent.parent
 DATA = ROOT / "data"
 
 # ─── 日本語スキル名 → 既存英語ID マッピング ────────────────────────────────────
+# ─── 手動の適用条件（スクレイパーでは判定できないもの）──────────────────────
+# 心眼: 硬い部位（≤45）への威力倍率。Wildsの正確な閾値は不明だが、弱点特効の
+#       鏡像値として≤45を採用。実測情報が出たら調整。
+MANUAL_APPLICABILITY = {
+    "xin-yan": {"require_hitzone_physical_max": "45"},
+}
+
+
 NAME_TO_ID = {
     "攻撃":           "attack",
     "見切り":          "critical-eye",
@@ -30,15 +38,16 @@ NAME_TO_ID = {
 
 # 既存スキルの適用条件フィールドを読み込む
 def load_applicability(csv_path: Path) -> dict:
-    """id → {require_hitzone_physical, require_tags, match_any, require_damage_type}"""
+    """id → 適用条件フィールド辞書"""
     result = {}
     with open(csv_path, encoding="utf-8") as f:
         for row in csv.DictReader(f):
             result[row["id"]] = {
-                "require_hitzone_physical": row.get("require_hitzone_physical", ""),
-                "require_tags":             row.get("require_tags", ""),
-                "match_any":               row.get("match_any", ""),
-                "require_damage_type":     row.get("require_damage_type", ""),
+                "require_hitzone_physical":     row.get("require_hitzone_physical", ""),
+                "require_hitzone_physical_max": row.get("require_hitzone_physical_max", ""),
+                "require_tags":                 row.get("require_tags", ""),
+                "match_any":                   row.get("match_any", ""),
+                "require_damage_type":         row.get("require_damage_type", ""),
             }
     return result
 
@@ -75,27 +84,32 @@ def merge_skills():
         slug_to_id[slug] = mapped_id
 
         appl = applicability.get(mapped_id, {})
+        # 心眼など、scraped IDではなくmapped IDに対するハードコード適用条件
+        manual_appl = MANUAL_APPLICABILITY.get(mapped_id, {})
         skill_rows.append({
-            "id":                      mapped_id,
-            "name":                    name,
-            "max_level":               s["max_level"],
-            "category":                s["category"],
-            "description":             s["description"],
-            "require_hitzone_physical": appl.get("require_hitzone_physical", ""),
-            "require_tags":            appl.get("require_tags", ""),
-            "match_any":              appl.get("match_any", ""),
-            "require_damage_type":    appl.get("require_damage_type", ""),
+            "id":                           mapped_id,
+            "name":                         name,
+            "max_level":                    s["max_level"],
+            "category":                     s["category"],
+            "description":                  s["description"],
+            "require_hitzone_physical":     appl.get("require_hitzone_physical", "")     or manual_appl.get("require_hitzone_physical", ""),
+            "require_hitzone_physical_max": appl.get("require_hitzone_physical_max", "") or manual_appl.get("require_hitzone_physical_max", ""),
+            "require_tags":                 appl.get("require_tags", "")                 or manual_appl.get("require_tags", ""),
+            "match_any":                    appl.get("match_any", "")                    or manual_appl.get("match_any", ""),
+            "require_damage_type":          appl.get("require_damage_type", "")          or manual_appl.get("require_damage_type", ""),
         })
 
     # エフェクトのskill_idをマッピング
     SKILL_FIELDS = [
         "id", "name", "max_level", "category", "description",
-        "require_hitzone_physical", "require_tags", "match_any", "require_damage_type",
+        "require_hitzone_physical", "require_hitzone_physical_max",
+        "require_tags", "match_any", "require_damage_type",
     ]
     EFFECT_FIELDS = [
         "skill_id", "level",
         "attack_bonus", "affinity_bonus", "crit_multiplier",
         "element_multiplier", "attack_multiplier", "physical_multiplier",
+        "element_bonus",
     ]
 
     effect_rows = []
@@ -111,6 +125,7 @@ def merge_skills():
             "element_multiplier": e.get("element_multiplier", ""),
             "attack_multiplier":  e.get("attack_multiplier", ""),
             "physical_multiplier":e.get("physical_multiplier", ""),
+            "element_bonus":      e.get("element_bonus", ""),
         })
 
     write_csv(DATA / "skills.csv",        SKILL_FIELDS,  skill_rows)
@@ -122,12 +137,14 @@ def merge_skills():
 def merge_group():
     SKILL_FIELDS = [
         "id", "name", "max_level", "category", "description",
-        "require_hitzone_physical", "require_tags", "match_any", "require_damage_type",
+        "require_hitzone_physical", "require_hitzone_physical_max",
+        "require_tags", "match_any", "require_damage_type",
     ]
     EFFECT_FIELDS = [
         "skill_id", "level",
         "attack_bonus", "affinity_bonus", "crit_multiplier",
         "element_multiplier", "attack_multiplier", "physical_multiplier",
+        "element_bonus",
     ]
     write_csv(DATA / "group_skills.csv",        SKILL_FIELDS, read_csv(DATA / "group_skills_scraped.csv"))
     write_csv(DATA / "group_skill_effects.csv", EFFECT_FIELDS, read_csv(DATA / "group_skill_effects_scraped.csv"))
