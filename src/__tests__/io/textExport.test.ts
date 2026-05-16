@@ -10,7 +10,7 @@ const snap: AppSnapshot = {
   },
   skills: [
     { skillId: 'attack', level: 5 },
-    { skillId: 'critical-eye', level: 7 },
+    { skillId: 'critical-eye', level: 5 },
   ],
   buffs: [],
   patterns: [

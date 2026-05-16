@@ -10,8 +10,8 @@ const masters: SkillMaster[] = [
     ],
   },
   {
-    id: 'critical-eye', name: '見切り', maxLevel: 7, category: 'normal',
-    effects: [{ level: 7, affinityBonus: 30 }],
+    id: 'critical-eye', name: '見切り', maxLevel: 5, category: 'normal',
+    effects: [{ level: 5, affinityBonus: 30 }],
   },
   {
     id: 'critical-boost', name: '超会心', maxLevel: 3, category: 'normal',
@@ -28,8 +28,8 @@ const masters: SkillMaster[] = [
     effects: [{ level: 3, affinityBonus: 30 }],
   },
   {
-    id: 'agitator', name: '挑戦者', maxLevel: 7, category: 'normal',
-    effects: [{ level: 7, attackBonus: 25, affinityBonus: 15 }],
+    id: 'agitator', name: '挑戦者', maxLevel: 5, category: 'normal',
+    effects: [{ level: 5, attackBonus: 25, affinityBonus: 15 }],
   },
   {
     id: 'fire-attack', name: '火属性攻撃強化', maxLevel: 3, category: 'normal',
@@ -57,8 +57,8 @@ describe('resolveSkills - 基本ボーナス集計', () => {
     expect(r.attackBonus).toBe(9);
   });
 
-  test('見切りLv7 → +30 affinity', () => {
-    const skills: ActiveSkill[] = [{ skillId: 'critical-eye', level: 7 }];
+  test('見切りLv5 → +30 affinity', () => {
+    const skills: ActiveSkill[] = [{ skillId: 'critical-eye', level: 5 }];
     const r = resolveSkills(skills, masters, { hitzonePhysical: 50, tags: [], damageType: 'physical' });
     expect(r.affinityBonus).toBe(30);
   });
@@ -88,8 +88,8 @@ describe('resolveSkills - applicability', () => {
 });
 
 describe('resolveSkills - uptime 重み付け', () => {
-  test('挑戦者Lv7 at 60% uptime → +15 attack, +9 affinity', () => {
-    const skills: ActiveSkill[] = [{ skillId: 'agitator', level: 7, uptime: 0.60 }];
+  test('挑戦者Lv5 at 60% uptime → +15 attack, +9 affinity', () => {
+    const skills: ActiveSkill[] = [{ skillId: 'agitator', level: 5, uptime: 0.60 }];
     const r = resolveSkills(skills, masters, { hitzonePhysical: 50, tags: [], damageType: 'physical' });
     expect(r.attackBonus).toBeCloseTo(15);
     expect(r.affinityBonus).toBeCloseTo(9);
@@ -133,10 +133,10 @@ describe('resolveSkills - elementBonus / requireHitzonePhysicalMax', () => {
 });
 
 describe('resolveSkills - 複合', () => {
-  test('攻撃Lv5 + 見切りLv7 + 弱点特効Lv3 (肉質85)', () => {
+  test('攻撃Lv5 + 見切りLv5 + 弱点特効Lv3 (肉質85)', () => {
     const skills: ActiveSkill[] = [
       { skillId: 'attack', level: 5 },
-      { skillId: 'critical-eye', level: 7 },
+      { skillId: 'critical-eye', level: 5 },
       { skillId: 'weakness-exploit', level: 3 },
     ];
     const r = resolveSkills(skills, masters, { hitzonePhysical: 85, tags: [], damageType: 'physical' });

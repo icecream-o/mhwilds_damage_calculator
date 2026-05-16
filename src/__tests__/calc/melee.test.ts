@@ -4,8 +4,8 @@ import type { CalcInput, SkillMaster, Buff, Monster } from '../../types';
 const skillMasters: SkillMaster[] = [
   { id: 'attack', name: '攻撃', maxLevel: 5, category: 'normal',
     effects: [{ level: 5, attackBonus: 9 }] },
-  { id: 'critical-eye', name: '見切り', maxLevel: 7, category: 'normal',
-    effects: [{ level: 7, affinityBonus: 30 }] },
+  { id: 'critical-eye', name: '見切り', maxLevel: 5, category: 'normal',
+    effects: [{ level: 5, affinityBonus: 30 }] },
   { id: 'critical-boost', name: '超会心', maxLevel: 3, category: 'normal',
     effects: [{ level: 3, critMultiplier: 1.40 }] },
   { id: 'weakness-exploit', name: '弱点特効', maxLevel: 3, category: 'normal',
@@ -31,7 +31,7 @@ const baseInput: CalcInput = {
   },
   skills: [
     { skillId: 'attack', level: 5 },
-    { skillId: 'critical-eye', level: 7 },
+    { skillId: 'critical-eye', level: 5 },
     { skillId: 'critical-boost', level: 3 },
     { skillId: 'weakness-exploit', level: 3 },
   ],

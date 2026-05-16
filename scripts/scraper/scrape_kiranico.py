@@ -1,11 +1,18 @@
 """
-Kiranicoからスキル・モンスター肉質データをスクレイピングする。
-正しいURLパターン: /ja/data/skills, /ja/data/monsters
+Kiranicoからスキル・モンスター肉質データをスクレイピングして
+data/*.csv に直接書き込む（中間ファイルなし）。
 
 使い方:
     python scrape_kiranico.py skills    # スキルのみ
     python scrape_kiranico.py monsters  # モンスターのみ
     python scrape_kiranico.py           # 全部
+
+仕組み:
+    - 取得HTMLは cache/*.html にキャッシュ（再実行高速化）
+    - 既存 data/*.csv の英語ID・適用条件フィールドを保持しつつ
+      Kiranicoの最新値で更新
+    - 新規スキルは NAME_TO_ID でメジャー名を英語IDに変換、その他は
+      Kiranicoのpinyinスラッグをそのまま使用
 """
 import csv
 import re
@@ -28,6 +35,45 @@ ROOT = Path(__file__).parent.parent.parent
 DATA_DIR = ROOT / "data"
 CACHE_DIR = Path(__file__).parent / "cache"
 CACHE_DIR.mkdir(exist_ok=True)
+
+
+# ─── 日本語スキル名 → 英語ID マッピング ──────────────────────────────────────
+# Kiranicoのpinyinスラッグから人間に分かりやすい英語IDへの置換テーブル。
+# ここに無いスキルはKiranicoスラッグがそのままIDになる。
+NAME_TO_ID = {
+    "攻撃":         "attack",
+    "見切り":        "critical-eye",
+    "超会心":        "critical-boost",
+    "弱点特効":      "weakness-exploit",
+    "抜刀術【技】":   "punishing-draw-tech",
+    "抜刀術【力】":   "punishing-draw-power",
+    "飛燕":         "ranger",
+    "砲術":         "artillery",
+    "挑戦者":        "agitator",
+    "逆襲":         "resentment",
+    "フルチャージ":   "peak-performance",
+    "会心撃【属性】": "element-crit",
+    "業物":         "razor-sharp",
+    "心眼":         "mind-eye",
+    "渾身":         "maximum-might",
+    "逆恨み":        "resentment-attack",
+    "巧撃":         "adrenaline-rush",
+    "攻勢":         "offensive-guard",
+    "力の解放":      "latent-power",
+    "無我の境地":    "free-meal-master",
+    "鈍器使い":      "bludgeoner",
+    "火属性攻撃強化": "fire-attack",
+    "水属性攻撃強化": "water-attack",
+    "雷属性攻撃強化": "thunder-attack",
+    "氷属性攻撃強化": "ice-attack",
+    "龍属性攻撃強化": "dragon-attack",
+}
+
+# スクレイパーでは判定できない手動の適用条件。
+# 心眼: 硬い部位（≤45）への威力倍率。弱点特効の鏡像値として≤45を採用。
+MANUAL_APPLICABILITY = {
+    "mind-eye": {"require_hitzone_physical_max": "45"},
+}
 
 
 # ─── HTTP ───────────────────────────────────────────────────────────────────
@@ -53,6 +99,13 @@ def fw2hw(s: str) -> str:
     return s.translate(str.maketrans("０１２３４５６７８９．＋－", "0123456789.+-"))
 
 
+def read_csv(path: Path) -> list[dict]:
+    if not path.exists():
+        return []
+    with open(path, encoding="utf-8") as f:
+        return list(csv.DictReader(f))
+
+
 def write_csv(path: Path, fieldnames: list, rows: list) -> None:
     with open(path, "w", newline="", encoding="utf-8") as f:
         w = csv.DictWriter(f, fieldnames=fieldnames, extrasaction="ignore")
@@ -68,14 +121,15 @@ SECTION_CATEGORY = {"Weapon": "normal", "Equip": "normal", "Group": "group", "Se
 
 # カテゴリ → (スキルCSV名, エフェクトCSV名)
 CATEGORY_CSV = {
-    "normal": ("skills_scraped", "skill_effects_scraped"),
-    "group":  ("group_skills_scraped", "group_skill_effects_scraped"),
-    "series": ("series_skills_scraped", "series_skill_effects_scraped"),
+    "normal": ("skills", "skill_effects"),
+    "group":  ("group_skills", "group_skill_effects"),
+    "series": ("series_skills", "series_skill_effects"),
 }
 
 SKILL_FIELDS = [
     "id", "name", "max_level", "category", "description",
-    "require_hitzone_physical", "require_tags", "match_any", "require_damage_type",
+    "require_hitzone_physical", "require_hitzone_physical_max",
+    "require_tags", "match_any", "require_damage_type",
 ]
 EFFECT_FIELDS = [
     "skill_id", "level",
@@ -94,48 +148,33 @@ def parse_effect_text(text: str) -> dict:
       - 会心率+N%               → affinity_bonus
       - ダメージ倍率をX.X倍       → crit_multiplier (超会心)
       - (火|水|雷|氷|龍)属性…X.X倍 → element_multiplier
-      - (火|水|雷|氷|龍)属性攻撃値+N → element_bonus
-      - 威力をX.X倍 / 威力がX.X倍 / 与えるダメージX.X倍 → physical_multiplier
+      - (火|水|雷|氷|龍)属性攻撃値[にを]?+N → element_bonus
+      - 威力[をが]X.X倍 / 与えるダメージX.X倍 → physical_multiplier
     """
     t = fw2hw(text)
     effect: dict = {}
 
-    # 攻撃力ボーナス: 基礎攻撃力+N
     m = re.search(r"基礎攻撃力[+＋](\d+)", t)
-    if m:
-        effect["attack_bonus"] = float(m.group(1))
+    if m: effect["attack_bonus"] = float(m.group(1))
 
-    # 攻撃倍率: 攻撃力をX.X倍
     m = re.search(r"攻撃力を(\d+\.\d+)倍", t)
-    if m:
-        effect["attack_multiplier"] = float(m.group(1))
+    if m: effect["attack_multiplier"] = float(m.group(1))
 
-    # 会心率: 会心率+N%
     m = re.search(r"会心率[+＋](\d+)[%％]", t)
-    if m:
-        effect["affinity_bonus"] = float(m.group(1))
+    if m: effect["affinity_bonus"] = float(m.group(1))
 
-    # 超会心: ダメージ倍率をX.X倍
     m = re.search(r"ダメージ倍率を(\d+\.\d+)倍", t)
-    if m:
-        effect["crit_multiplier"] = float(m.group(1))
+    if m: effect["crit_multiplier"] = float(m.group(1))
 
-    # 属性強化倍率: (火|水|雷|氷|龍)属性...X.X倍 / 属性値をX.X倍
     m = re.search(r"(?:火|水|雷|氷|龍)属性.{0,20}(\d+\.\d+)倍", t)
-    if m:
-        effect["element_multiplier"] = float(m.group(1))
+    if m: effect["element_multiplier"] = float(m.group(1))
 
-    # 属性絶対値ボーナス: (火|水|雷|氷|龍)属性攻撃値[に]?+N
-    # 「火属性攻撃値+40」も「火属性攻撃値に+50」も両方受け付ける
     m = re.search(r"(?:火|水|雷|氷|龍)属性攻撃値[にを]?[+＋](\d+)", t)
-    if m:
-        effect["element_bonus"] = float(m.group(1))
+    if m: effect["element_bonus"] = float(m.group(1))
 
-    # 物理倍率: 威力をX.X倍 / 威力がX.X倍 / 与えるダメージX.X倍
-    # 「攻撃力をX.X倍」は除外（既に attack_multiplier で捕捉済み）
+    # 「攻撃力をX.X倍」は除外（attack_multiplier で捕捉済み）
     m = re.search(r"(?<!攻撃力を)(?:威力[をが]|与えるダメージ)(\d+\.\d+)倍", t)
-    if m:
-        effect["physical_multiplier"] = float(m.group(1))
+    if m: effect["physical_multiplier"] = float(m.group(1))
 
     return effect
 
@@ -161,6 +200,18 @@ def scrape_skill_detail(url: str) -> list[dict]:
         effect["level"] = level
         rows.append(effect)
     return rows
+
+
+def load_existing_applicability(csv_path: Path) -> dict:
+    """既存CSVから id → applicability フィールド辞書 を読み込む。"""
+    result = {}
+    for row in read_csv(csv_path):
+        result[row["id"]] = {
+            k: row.get(k, "")
+            for k in ("require_hitzone_physical", "require_hitzone_physical_max",
+                      "require_tags", "match_any", "require_damage_type")
+        }
+    return result
 
 
 def scrape_skills() -> None:
@@ -200,41 +251,56 @@ def scrape_skills() -> None:
     for cat, skills in by_category.items():
         if not skills:
             continue
-        skill_csv, effect_csv = CATEGORY_CSV[cat]
+        skill_csv_name, effect_csv_name = CATEGORY_CSV[cat]
+        skill_csv_path = DATA_DIR / f"{skill_csv_name}.csv"
+        effect_csv_path = DATA_DIR / f"{effect_csv_name}.csv"
+
+        # 既存CSVから手動設定の applicability を保持
+        existing_applicability = load_existing_applicability(skill_csv_path)
+
         skill_rows = []
         effect_rows = []
 
         for s in skills:
-            print(f"  [{cat}] {s['name']}...")
+            slug = s["slug"]
+            mapped_id = NAME_TO_ID.get(s["name"], slug)
+            print(f"  [{cat}] {s['name']} → {mapped_id}")
             effects = scrape_skill_detail(s["url"])
             max_lv = max((e["level"] for e in effects), default=1)
 
+            # 適用条件: 既存CSV保持 → 手動定義 → 空 の優先順位
+            appl = existing_applicability.get(mapped_id, {})
+            manual = MANUAL_APPLICABILITY.get(mapped_id, {})
+            def pick(key: str) -> str:
+                return appl.get(key, "") or manual.get(key, "")
+
             skill_rows.append({
-                "id": s["slug"],
-                "name": s["name"],
-                "max_level": max_lv,
-                "category": cat,
-                "description": s["description"],
-                "require_hitzone_physical": "",
-                "require_tags": "",
-                "match_any": "",
-                "require_damage_type": "",
+                "id":                           mapped_id,
+                "name":                         s["name"],
+                "max_level":                    max_lv,
+                "category":                     cat,
+                "description":                  s["description"],
+                "require_hitzone_physical":     pick("require_hitzone_physical"),
+                "require_hitzone_physical_max": pick("require_hitzone_physical_max"),
+                "require_tags":                 pick("require_tags"),
+                "match_any":                    pick("match_any"),
+                "require_damage_type":          pick("require_damage_type"),
             })
             for e in effects:
                 effect_rows.append({
-                    "skill_id": s["slug"],
-                    "level": e["level"],
-                    "attack_bonus": e.get("attack_bonus", ""),
-                    "affinity_bonus": e.get("affinity_bonus", ""),
-                    "crit_multiplier": e.get("crit_multiplier", ""),
+                    "skill_id":           mapped_id,
+                    "level":              e["level"],
+                    "attack_bonus":       e.get("attack_bonus", ""),
+                    "affinity_bonus":     e.get("affinity_bonus", ""),
+                    "crit_multiplier":    e.get("crit_multiplier", ""),
                     "element_multiplier": e.get("element_multiplier", ""),
-                    "attack_multiplier": e.get("attack_multiplier", ""),
-                    "physical_multiplier": e.get("physical_multiplier", ""),
-                    "element_bonus": e.get("element_bonus", ""),
+                    "attack_multiplier":  e.get("attack_multiplier", ""),
+                    "physical_multiplier":e.get("physical_multiplier", ""),
+                    "element_bonus":      e.get("element_bonus", ""),
                 })
 
-        write_csv(DATA_DIR / f"{skill_csv}.csv", SKILL_FIELDS, skill_rows)
-        write_csv(DATA_DIR / f"{effect_csv}.csv", EFFECT_FIELDS, effect_rows)
+        write_csv(skill_csv_path, SKILL_FIELDS, skill_rows)
+        write_csv(effect_csv_path, EFFECT_FIELDS, effect_rows)
 
 
 # ─── モンスター ──────────────────────────────────────────────────────────────
@@ -365,7 +431,7 @@ def scrape_monsters() -> None:
                 "enraged_thunder": "", "enraged_ice": "", "enraged_dragon": "",
             })
 
-    write_csv(DATA_DIR / "monsters_scraped.csv", MONSTER_FIELDS, rows)
+    write_csv(DATA_DIR / "monsters.csv", MONSTER_FIELDS, rows)
 
 
 # ─── エントリポイント ─────────────────────────────────────────────────────────
@@ -376,4 +442,4 @@ if __name__ == "__main__":
         scrape_skills()
     if target in ("all", "monsters"):
         scrape_monsters()
-    print("Done.")
+    print("Done. Next: cd scripts/scraper && python csv_to_json.py")
