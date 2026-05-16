@@ -7,3 +7,6 @@ motion_name,motion_value,frames,is_draw,tags,damage_type
 気刃兜割,110,90,false,,
 居合抜刀気刃斬り,70,50,true,draw,
 見切り斬り,28,36,false,,
+練気解放無双斬り,180,140,false,,
+気刃大回転斬り,55,45,false,,
+特殊納刀,0,30,false,,

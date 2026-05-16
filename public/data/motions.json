@@ -50,6 +50,24 @@
       "motionValue": 28,
       "frames": 36,
       "isDraw": false
+    },
+    {
+      "motionName": "練気解放無双斬り",
+      "motionValue": 180,
+      "frames": 140,
+      "isDraw": false
+    },
+    {
+      "motionName": "気刃大回転斬り",
+      "motionValue": 55,
+      "frames": 45,
+      "isDraw": false
+    },
+    {
+      "motionName": "特殊納刀",
+      "motionValue": 0,
+      "frames": 30,
+      "isDraw": false
     }
   ],
   "greatsword": [
